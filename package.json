@@ -16,5 +16,10 @@
   "bugs": {
     "url": "https://github.com/elzneik/myFlix-client/issues"
   },
-  "homepage": "https://github.com/elzneik/myFlix-client#readme"
+  "homepage": "https://github.com/elzneik/myFlix-client#readme",
+  "dependencies": {
+    "and": "^0.0.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
 }

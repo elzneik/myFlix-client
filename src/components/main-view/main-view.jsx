@@ -1,8 +1,8 @@
-import React from "react";
+import React from "react"; // requirement for creating a component, like a blueprint
 import { MovieCard } from "./movie-card/movie-card";
 
-export class MainView extends React.Component{
-    render(){
+export class MainView extends React.Component{ //creates MainView Component 
+    render(){ //render function inside the component & can only have one root element
         return(
                 <div className="MainView">
                     <div>Inception</div>

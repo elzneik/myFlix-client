@@ -19,6 +19,7 @@
   "homepage": "https://github.com/elzneik/myFlix-client#readme",
   "dependencies": {
     "and": "^0.0.3",
+    "axios": "^0.27.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },

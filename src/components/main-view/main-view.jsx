@@ -1,4 +1,5 @@
 import React from "react"; // requirement for creating a component, like a blueprint
+import axios from 'axios'; // fetch movie list from myFlix database
 import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from '../movie-view/movie-view';
 
@@ -12,17 +13,17 @@ export class MainView extends React.Component{ //creates MainView Component
             { _id: 2, Title: 'The Shawshank Redemption', Description: 'desc2...', ImagePath: '...'},
             { _id: 3, Title: 'Gladiator', Description: 'desc3...', ImagePath: '...'}
           ],
-            setSelectedMovie(newSelectedMovie) {
-              this.setState({
-                selectedMovie: newSelectedMovie
-              });
-          }
         }
       }
       
+      setSelectedMovie(newSelectedMovie) {
+        this.setState({
+          selectedMovie: newSelectedMovie
+        });
+    }
+
     render() {
       const { movies, selectedMovie } = this.state;
-      if (selectedMovie) return <MovieView movie={selectedMovie} />;
       if (movies.length === 0) return <div className="main-view">The list is empty!</div>; 
       return (
         <div className="main-view">

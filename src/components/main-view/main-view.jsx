@@ -12,7 +12,10 @@ export class MainView extends React.Component{ //creates MainView Component
             { _id: 2, Title: 'The Shawshank Redemption', Description: 'desc2...', ImagePath: '...'},
             { _id: 3, Title: 'Gladiator', Description: 'desc3...', ImagePath: '...'}
           ],
-            selectedMovie: null
+            setSelectedMovie(newSelectedMovie) {
+              this.setState({
+                selectedMovie: newSelectedMovie
+              });
           };
         }
       

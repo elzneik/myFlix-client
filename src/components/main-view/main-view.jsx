@@ -16,7 +16,7 @@ export class MainView extends React.Component{ //creates MainView Component
               this.setState({
                 selectedMovie: newSelectedMovie
               });
-          };
+          }
         }
       
 

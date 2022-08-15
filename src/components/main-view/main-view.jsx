@@ -18,8 +18,7 @@ export class MainView extends React.Component{ //creates MainView Component
               });
           }
         }
-      
-
+      }
       
     render() {
       const { movies, selectedMovie } = this.state;
@@ -36,5 +35,4 @@ export class MainView extends React.Component{ //creates MainView Component
         </div>
       );
     }
-  
   }

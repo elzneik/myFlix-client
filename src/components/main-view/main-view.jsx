@@ -8,32 +8,40 @@ export class MainView extends React.Component{ //creates MainView Component
   constructor(){
         super();
         this.state = {
-          movies: [
-            { _id: 1, Title: 'Inception', Description: 'desc1...', ImagePath: '...'},
-            { _id: 2, Title: 'The Shawshank Redemption', Description: 'desc2...', ImagePath: '...'},
-            { _id: 3, Title: 'Gladiator', Description: 'desc3...', ImagePath: '...'}
-          ],
+          movies: [],
         }
       }
-      
-      setSelectedMovie(newSelectedMovie) {
+     
+  componentDidMount(){
+    axios.get('https://protected-river-88909.herokuapp.com/movies')
+      .then(response => {
         this.setState({
-          selectedMovie: newSelectedMovie
+          movies: response.data
         });
-    }
-
-    render() {
-      const { movies, selectedMovie } = this.state;
-      if (movies.length === 0) return <div className="main-view">The list is empty!</div>; 
-      return (
-        <div className="main-view">
-          {selectedMovie
-            ? <MovieView movie={selectedMovie} onBackClick={newSelectedMovie => { this.setSelectedMovie(newSelectedMovie); }}/>
-            : movies.map(movie => (
-              <MovieCard key={movie._id} movie={movie} onMovieClick={(movie) => { this.setSelectedMovie(movie) }}/>
-            ))
-          }
-        </div>
-      );
-    }
+      })
+      .catch(error => {
+        console.log(error);
+      });
   }
+
+  setSelectedMovie(newSelectedMovie) {
+    this.setState({
+      selectedMovie: newSelectedMovie
+    });
+  }
+
+  render() {
+    const { movies, selectedMovie } = this.state;
+    if (movies.length === 0) return <div className="main-view">The list is empty!</div>; 
+    return (
+      <div className="main-view">
+        {selectedMovie
+          ? <MovieView movie={selectedMovie} onBackClick={newSelectedMovie => { this.setSelectedMovie(newSelectedMovie); }}/>
+          : movies.map(movie => (
+            <MovieCard key={movie._id} movie={movie} onMovieClick={(movie) => { this.setSelectedMovie(movie) }}/>
+          ))
+        }
+      </div>
+    );
+  }
+}

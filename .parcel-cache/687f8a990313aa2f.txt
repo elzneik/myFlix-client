@@ -1,4 +1,4 @@
-5552
+5554
 122C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\@nodelib\fs.walk\out\types133040258431746715 1
 133C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\highlight.js\styles\gruvbox-light.css133040258440168408 0
 113C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\@msgpackr-extract133051311449154605 1
@@ -42,7 +42,7 @@
 107C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\fs.realpath133040258414677663 1
 115C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\form-data\Readme.md133050444932157509 0
 144C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\unset-value\node_modules\has-values\package.json133040258405663494 0
-97C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\src\components133051252393588723 1
+97C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\src\components133052088333879614 1
 118C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\run-parallel\README.md133040258412077715 0
 111C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\shebang-command133040258411212022 1
 118C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\reusify\.coveralls.yml133040258407638225 0
@@ -99,7 +99,7 @@
 115C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\wrappy\package.json133040258405045145 0
 123C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\src\components\login-view\login-view.jsx133051365783939746 0
 136C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\lmdb-store\dependencies\lz4\lib\xxhash.h133040258457716719 0
-96C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\src\index.jsx133039805875726963 0
+96C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\src\index.jsx133052098459108267 0
 149C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\caniuse-lite\data\features\focusin-focusout-events.js133040258474960880 0
 117C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\object-visit\index.js133040258412157498 0
 160C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\@parcel\core\node_modules\@parcel\utils\src\isDirectoryInside.js133040258439649823 0
@@ -142,13 +142,25 @@
 121C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\snapdragon-node\README.md133040258407598316 0
 130C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\highlight.js\lib\languages\ldif.js133040258467580617 0
 112C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\follow-redirects133050444932127607 1
+136C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\highlight.js\scss\atelier-dune-dark.scss133040258474212884 0
+124C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\readable-stream\node_modules133040258377357561 1
+136C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\highlight.js\lib\languages\properties.js133040258469665038 0
+115C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\src\components\registration-view133052088890517617 1
+114C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\reusify\benchmarks133040258424222545 1
+114C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\which\package.json133040258405055127 0
+164C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\@parcel\core\test\fixtures\targets-default-distdir-none\package.json133040258467610541 0
+119C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\shebang-command\license133040258409842327 0
+122C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\imurmurhash\imurmurhash.js133040258410061733 0
+135C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\caniuse-lite\data\features\css-table.js133040258469196293 0
+127C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\caniuse-lite\data\regions\ME.js133040258493577272 0
+137C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\src\components\registration-view\registration-view.jsx133052088890517617 0
 130C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\highlight.js\styles\railscasts.css133040258447244073 0
-123C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\src\components\movie-view\movie-view.jsx133051365783939746 0
+123C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\src\components\movie-view\movie-view.jsx133052098520397874 0
 116C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\msgpackr\unpack.d.ts133040258432006039 0
 119C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\@parcel\workers\LICENSE133040258405583731 0
 104C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\chokidar133040258422397436 1
 132C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\highlight.js\lib\languages\x86asm.js133040258472647066 0
-123C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\src\components\movie-card\movie-card.jsx133051365489853864 0
+123C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\src\components\movie-card\movie-card.jsx133052085469269159 0
 143C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\@parcel\logger\node_modules\@parcel\events\test133040258427534913 1
 101C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\fastq133040258427005122 1
 115C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\is-extglob\index.js133040258412257247 0
@@ -592,16 +604,16 @@
 127C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\caniuse-lite\data\regions\PG.js133040258496359829 0
 102C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\is-url133040258417904219 1
 113C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\urix\package.json133040258405055127 0
+127C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\weak-lru-cache\rollup.config.js133040258416223554 0
+128C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\highlight.js\scss\night-owl.scss133040258477703573 0
+117C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\msgpackr\package.json133040258429715508 0
+123C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\source-map\lib\array-set.js133040258431255264 0
 110C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\.bin\which.cmd133040258503923972 0
 134C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\chokidar\node_modules\braces\README.md133040258416123807 0
 158C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\@parcel\core\node_modules\@parcel\utils\test\sourcemap.test.js133040258443839302 0
 158C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\@parcel\core\node_modules\@parcel\watcher\src\watchman\BSER.hh133040258431627044 0
 106C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\is-windows133040258411341678 1
 133C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\fill-range\node_modules\is-extendable133040258411838350 1
-128C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\highlight.js\scss\night-owl.scss133040258477703573 0
-117C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\msgpackr\package.json133040258429715508 0
-123C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\source-map\lib\array-set.js133040258431255264 0
-127C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\weak-lru-cache\rollup.config.js133040258416223554 0
 133C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\ncp\test\symlink-fixtures\src\dir\bar133040258431525803 0
 115C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\set-value\README.md133040258412077715 0
 145C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\lmdb\dependencies\lmdb\libraries\liblmdb\module.c133040258442682407 0
@@ -1008,11 +1020,6 @@
 112C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\wrappy\wrappy.js133040258411987953 0
 120C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\to-regex-range\README.md133040258407558555 0
 105C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\which\bin133040258417141070 1
-136C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\highlight.js\scss\atelier-dune-dark.scss133040258474212884 0
-124C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\readable-stream\node_modules133040258377357561 1
-136C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\highlight.js\lib\languages\properties.js133040258469665038 0
-114C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\reusify\benchmarks133040258424222545 1
-114C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\which\package.json133040258405055127 0
 111C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\which\bin\which133040258417515258 0
 122C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\node-releases\package.json133040258411361617 0
 156C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\@msgpackr-extract\msgpackr-extract-win32-x64\node.abi93.node133040258416732179 0
@@ -1182,8 +1189,8 @@
 134C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\prop-types\factoryWithThrowingShims.js133051311448721340 0
 142C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\source-map-resolve\lib\decode-uri-component.js133040258408336350 0
 115C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\unset-value\LICENSE133040258409792469 0
-124C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\source-map\lib\base64-vlq.js133040258431617086 0
 144C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\split2\node_modules\readable-stream\lib\internal133040258420951314 1
+124C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\source-map\lib\base64-vlq.js133040258431617086 0
 120C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\unset-value\node_modules133040258377377516 1
 115C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\safe-buffer\LICENSE133040258405144887 0
 144C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\caniuse-lite\data\features\navigator-language.js133040258495033380 0
@@ -1355,10 +1362,10 @@
 117C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\string-width\index.js133040258407568411 0
 164C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\split2\node_modules\readable-stream\lib\internal\streams\pipeline.js133040258430425411 0
 116C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\string-width\license133040258405095029 0
+116C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\lmdb-store\benchmark133040258458723926 1
+129C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\highlight.js\scss\railscasts.scss133040258478291990 0
 118C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\static-extend\index.js133040258409802435 0
 124C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\sass\types\logger\index.d.ts133040258448063274 0
-129C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\highlight.js\scss\railscasts.scss133040258478291990 0
-116C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\lmdb-store\benchmark133040258458723926 1
 121C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\string-width\package.json133040258409832346 0
 118C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\string-width\readme.md133040258412067740 0
 116C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\is-url\test\index.js133040258419136155 0
@@ -1702,8 +1709,6 @@
 152C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\lmdb\dependencies\lmdb-data-v1\libraries\liblmdb\tooltag133040258430455321 0
 155C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\lmdb\dependencies\lmdb-data-v1\libraries\liblmdb\mdb_copy.1133040258431185457 0
 117C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\shebang-regex\license133040258409842327 0
-164C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\@parcel\core\test\fixtures\targets-default-distdir-none\package.json133040258467610541 0
-119C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\shebang-command\license133040258409842327 0
 134C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\object-copy\node_modules\is-descriptor133040258411778520 1
 146C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\@parcel\workers\test\integration\workerfarm\ipc.js133040258431617086 0
 113C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\set-value\LICENSE133040258409852298 0
@@ -2471,8 +2476,8 @@
 118C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\msgpackr\node-index.js133040258423674009 0
 114C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\msgpackr\pack.d.ts133040258431736743 0
 147C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\@parcel\core\node_modules\@parcel\codeframe\LICENSE133040258405922800 0
-146C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\caniuse-lite\data\features\spellcheck-attribute.js133040258499092516 0
 122C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\@parcel\watcher\src\shared133040258431205402 1
+146C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\caniuse-lite\data\features\spellcheck-attribute.js133040258499092516 0
 137C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\lmdb\node_modules\node-addon-api\index.js133040258430455321 0
 112C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\msgpackr\pack.js133040258425299679 0
 114C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\msgpackr\unpack.js133040258429210581 0
@@ -3106,8 +3111,6 @@
 154C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\@parcel\core\node_modules\@parcel\utils\src\getExisting.js133040258431637017 0
 112C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\inflight\LICENSE133040258410051758 0
 127C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\caniuse-lite\data\regions\BW.js133040258450164579 0
-122C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\imurmurhash\imurmurhash.js133040258410061733 0
-135C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\caniuse-lite\data\features\css-table.js133040258469196293 0
 138C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\@parcel\markdown-ansi\src\markdown-ansi.js133040258411012555 0
 117C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\imurmurhash\README.md133040258407837677 0
 113C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\immutable\LICENSE133040258405384239 0
@@ -4127,7 +4130,6 @@
 127C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\caniuse-lite\data\regions\MC.js133040258493527409 0
 140C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\@parcel\watcher\src\macos\FSEventsBackend.cc133040258421639468 0
 127C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\caniuse-lite\data\regions\MD.js133040258493547343 0
-127C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\caniuse-lite\data\regions\ME.js133040258493577272 0
 127C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\caniuse-lite\data\regions\MH.js133040258493986172 0
 127C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\caniuse-lite\data\regions\MK.js133040258494095887 0
 134C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\@parcel\core\test\fixtures\main-global133040258467401100 1
@@ -4447,7 +4449,6 @@
 137C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\caniuse-lite\data\features\mediasource.js133040258493766760 0
 130C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\caniuse-lite\data\features\menu.js133040258493826602 0
 142C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\caniuse-lite\data\features\meta-theme-color.js133040258493856518 0
-132C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\@parcel\watcher\src\PromiseRunner.hh133040258433737885 0
 143C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\@parcel\core\test\fixtures\config-node-pipeline133040258417435471 1
 130C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\caniuse-lite\data\features\midi.js133040258494006124 0
 135C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\caniuse-lite\data\features\mpeg-dash.js133040258494395089 0
@@ -4704,6 +4705,7 @@
 126C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\@parcel\watcher\src\binding.cc133040258410663491 0
 126C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\@parcel\watcher\src\DirTree.hh133040258432405439 0
 121C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\@parcel\watcher\src\macos133040258432865013 1
+132C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\@parcel\watcher\src\PromiseRunner.hh133040258433737885 0
 170C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\@parcel\core\node_modules\@parcel\package-manager\test\fixtures\packages\a133040258439208305 1
 125C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\@parcel\watcher\src\Signal.hh133040258433957303 0
 147C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\@parcel\source-map\parcel_sourcemap_node\Cargo.toml133040258444258205 0

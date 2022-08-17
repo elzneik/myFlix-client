@@ -1,5 +1,6 @@
 import React from "react"; // requirement for creating a component, like a blueprint
 import axios from 'axios'; // fetch movie list from myFlix database
+import { RegistrationView } from '../registration-view/registration-view';
 import { LoginView } from '../login-view/login-view';
 import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from '../movie-view/movie-view';
@@ -53,7 +54,7 @@ export class MainView extends React.Component{ //creates MainView Component
     const { movies, selectedMovie, user } = this.state;
     if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
     if (movies.length === 0) return <div className="main-view" />; //The list is empty!</div>; 
-    
+   
     return (
       <div className="main-view">
         {selectedMovie
@@ -65,4 +66,10 @@ export class MainView extends React.Component{ //creates MainView Component
       </div>
     );
   }
+
+  function Button({label}) {
+    return (
+    <button>{label}</button>);
+    }
+
 }

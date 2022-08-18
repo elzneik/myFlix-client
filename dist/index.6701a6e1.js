@@ -25263,6 +25263,7 @@ var _react = require("react"); // requirement for creating a component, like a b
 var _reactDefault = parcelHelpers.interopDefault(_react);
 var _axios = require("axios"); // fetch movie list from myFlix database
 var _axiosDefault = parcelHelpers.interopDefault(_axios);
+// import Row from 'react-bootstrap/Row'; // use react bootstrap UI
 var _registrationView = require("../registration-view/registration-view");
 var _loginView = require("../login-view/login-view");
 var _movieCard = require("../movie-card/movie-card");
@@ -25291,13 +25292,7 @@ class MainView extends _reactDefault.default.Component {
             selectedMovie: movie
         });
     }
-    /*
-  setSelectedMovie(newSelectedMovie) {
-    this.setState({
-      selectedMovie: newSelectedMovie
-    });
-  }
-*/ //when user logs-in, function is invoked, state of user is updated
+    //when user logs-in, function is invoked, state of user is updated
     onLoggedIn(user) {
         this.setState({
             user
@@ -25310,7 +25305,7 @@ class MainView extends _reactDefault.default.Component {
             ,
             __source: {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 55
+                lineNumber: 46
             },
             __self: this
         }));
@@ -25318,7 +25313,7 @@ class MainView extends _reactDefault.default.Component {
             className: "main-view",
             __source: {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 56
+                lineNumber: 47
             },
             __self: this
         })); //The list is empty!</div>; 
@@ -25326,19 +25321,26 @@ class MainView extends _reactDefault.default.Component {
             className: "main-view",
             __source: {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 59
+                lineNumber: 50
             },
             __self: this,
-            children: selectedMovie ? /*#__PURE__*/ _jsxRuntime.jsx(_movieView.MovieView, {
-                movie: selectedMovie,
-                onBackClick: (newSelectedMovie)=>{
-                    this.setSelectedMovie(newSelectedMovie);
-                },
+            children: selectedMovie ? /*#__PURE__*/ _jsxRuntime.jsx(Row, {
                 __source: {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 61
+                    lineNumber: 53
                 },
-                __self: this
+                __self: this,
+                children: /*#__PURE__*/ _jsxRuntime.jsx(_movieView.MovieView, {
+                    movie: selectedMovie,
+                    onBackClick: (newSelectedMovie)=>{
+                        this.setSelectedMovie(newSelectedMovie);
+                    },
+                    __source: {
+                        fileName: "src/components/main-view/main-view.jsx",
+                        lineNumber: 54
+                    },
+                    __self: this
+                })
             }) : movies.map((movie)=>/*#__PURE__*/ _jsxRuntime.jsx(_movieCard.MovieCard, {
                     movie: movie,
                     onMovieClick: (newSelectedMovie)=>{
@@ -25346,7 +25348,7 @@ class MainView extends _reactDefault.default.Component {
                     },
                     __source: {
                         fileName: "src/components/main-view/main-view.jsx",
-                        lineNumber: 63
+                        lineNumber: 57
                     },
                     __self: this
                 }, movie._id)

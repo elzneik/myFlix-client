@@ -1,9 +1,11 @@
 import React from "react"; // requirement for creating a component, like a blueprint
 import axios from 'axios'; // fetch movie list from myFlix database
+import Row from 'react-bootstrap/Row'; // use react bootstrap UI
 import { RegistrationView } from '../registration-view/registration-view';
 import { LoginView } from '../login-view/login-view';
 import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from '../movie-view/movie-view';
+
 
 export class MainView extends React.Component{ //creates MainView Component 
       
@@ -27,29 +29,18 @@ export class MainView extends React.Component{ //creates MainView Component
         console.log(error);
       });
   }
-
   //when movie selected, function is invoked, and state is updated
   setSelectedMovie(movie) {
     this.setState({
       selectedMovie: movie
     });
   }
-
-  /*
-  setSelectedMovie(newSelectedMovie) {
-    this.setState({
-      selectedMovie: newSelectedMovie
-    });
-  }
-*/
-
   //when user logs-in, function is invoked, state of user is updated
   onLoggedIn(user) {
     this.setState({
       user
     });
   }
-
   render() {
     const { movies, selectedMovie, user } = this.state;
     if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
@@ -58,11 +49,21 @@ export class MainView extends React.Component{ //creates MainView Component
     return (
       <div className="main-view">
         {selectedMovie
-          ? <MovieView movie={selectedMovie} onBackClick={newSelectedMovie => { this.setSelectedMovie(newSelectedMovie); }}/>
-          : movies.map(movie => (
-            <MovieCard key={movie._id} movie={movie} onMovieClick={(newSelectedMovie) => { this.setSelectedMovie(newSelectedMovie) }}/>
+          ? ( //possible only to use one justify-content because of the condition that only one view is shown (Card or View)
+          // <Row className="justify-content-md-center">
+          <Row className="mainView justify-content-md-center">
+            <Col md{8}> 
+          <MovieView movie={selectedMovie} onBackClick={newSelectedMovie => { this.setSelectedMovie(newSelectedMovie); }}/>
+            </Col>
+          )
+          :  
+            movies.map(movie => ( <Col md{3}> 
+            <MovieCard key={movie._id} movie={movie} onMovieClick={(newSelectedMovie) => { this.setSelectedMovie(newSelectedMovie); }}/>
+            </Col>
           ))
         }
+        </Row>
+        );
       </div>
     );
   }

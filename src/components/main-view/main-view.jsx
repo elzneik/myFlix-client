@@ -1,6 +1,6 @@
 import React from "react"; // requirement for creating a component, like a blueprint
 import axios from 'axios'; // fetch movie list from myFlix database
-import Row from 'react-bootstrap/Row'; // use react bootstrap UI
+import {Row, Col, Container, Nav, Navbar, NavDropDown} from 'react-bootstrap/Row'; // use react bootstrap UI
 import { RegistrationView } from '../registration-view/registration-view';
 import { LoginView } from '../login-view/login-view';
 import { MovieCard } from "../movie-card/movie-card";
@@ -16,8 +16,7 @@ export class MainView extends React.Component{ //creates MainView Component
           selectedMovie: null,
           user: null
         };
-      }
-     
+  } 
   componentDidMount(){ 
     axios.get('https://protected-river-88909.herokuapp.com/movies')
       .then(response => {
@@ -48,20 +47,38 @@ export class MainView extends React.Component{ //creates MainView Component
    
     return (
       <div className="main-view">
-        {selectedMovie
-          ? ( //possible only to use one justify-content because of the condition that only one view is shown (Card or View)
-          // <Row className="justify-content-md-center">
-          <Row className="mainView justify-content-md-center">
-            <Col md{8}> 
-          <MovieView movie={selectedMovie} onBackClick={newSelectedMovie => { this.setSelectedMovie(newSelectedMovie); }}/>
-            </Col>
-          )
-          :  
-            movies.map(movie => ( <Col md{3}> 
-            <MovieCard key={movie._id} movie={movie} onMovieClick={(newSelectedMovie) => { this.setSelectedMovie(newSelectedMovie); }}/>
-            </Col>
-          ))
-        }
+        <Navbar bg="light" expand="lg">
+          <Container fluid>
+            <Navbar.Brand href="#home">myFlix Movie App</Navbar.Brand>
+            <Navbar.Toggle aria-controls="basic-navbar-nav" />
+            <Navbar.Collapse id="basic-navbar-nav">
+              <Nav className="me-auto">
+                <Nav.Link href="#home">Home</Nav.Link>
+                <Nav.Link href="#profile">Profile</Nav.Link>
+                <Nav.Link href="#logout">Logout</Nav.Link>
+              </Nav>
+            </Navbar.Collapse>
+          </Container>
+        </Navbar>
+        <Row className="mainView justify-content-md-center">
+          {selectedMovie ? (
+              <Col md={8}> 
+                <MovieView
+                  movie={selectedMovie} 
+                  onBackClick={newSelectedMovie => { 
+                  this.setSelectedMovie(newSelectedMovie); }}/>
+              </Col>
+              ) :  
+              movies.map(movie => (
+                <Col md={3}>
+                <MovieCard
+                  key={movie._id}
+                  movie={movie}
+                  onMovieClick={(newSelectedMovie) => { 
+                  this.setSelectedMovie(newSelectedMovie); }}/>
+                </Col>
+              ))
+            }
         </Row>
         );
       </div>

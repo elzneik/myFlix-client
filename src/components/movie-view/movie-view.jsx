@@ -1,20 +1,7 @@
 import React from "react";
+import PropTypes from 'prop-types';
 
 export class MovieView extends React.Component {
-
-    /*Practise purpose
-    keypressCallback(event) {
-        console.log(event.key);
-      }
-      // component method replaces callback function
-      componentDidMount() {
-        document.addEventListener('keypress', this.keypressCallback); 
-      }
-
-      componentWillUnmount() {
-        document.removeEventListener('keypress', this.keypressCallback);
-      }
-      */
 
     render() {
         const { movie, onBackClick } = this.props;

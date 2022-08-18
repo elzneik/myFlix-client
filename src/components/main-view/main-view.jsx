@@ -66,10 +66,4 @@ export class MainView extends React.Component{ //creates MainView Component
       </div>
     );
   }
-
-  function Button({label}) {
-    return (
-    <button>{label}</button>);
-    }
-
 }

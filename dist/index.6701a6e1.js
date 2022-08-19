@@ -38675,7 +38675,7 @@ class MovieView extends _reactDefault.default.Component {
         const { movie , onBackClick  } = this.props;
         return(/*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Container, {
             fluid: true,
-            className: "movieViewContainer",
+            className: "movie-View",
             __source: {
                 fileName: "src/components/movie-view/movie-view.jsx",
                 lineNumber: 11

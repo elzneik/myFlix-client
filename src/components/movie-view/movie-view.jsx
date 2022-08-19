@@ -8,7 +8,7 @@ export class MovieView extends React.Component {
         const { movie, onBackClick } = this.props;
 
         return (
-            <Container fluid className="movieViewContainer">
+            <Container fluid className="movie-View">
                 <Row>
                     <Col>
                         <div className="movie-poster">

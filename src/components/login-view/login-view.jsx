@@ -6,15 +6,36 @@ import {Form, Button, Card, CardGroup, Container, Row, Col} from "react-bootstra
 export function LoginView(props) {
   const [ username, setUsername ] = useState('');
   const [ password, setPassword ] = useState('');
+  // Declare hook for each input
+  const [ usernameErr, setUsernameErr ] = useState('');
+  const [ passwordErr, setPasswordErr ] = useState('');
 
-  const handleSubmit = (e) => {
+// validate user inputs
+const validate = () => {
+    let isReq = true;
+    if(!username){
+    setUsernameErr('Username Required');
+    isReq = false;
+    }else if(username.length < 2){
+    setUsernameErr('Username must be 2 characters long');
+    isReq = false;
+    }
+    if(!password){
+    setPasswordErr('Password Required');
+    isReq = false;
+    }else if(password.length < 6){
+    setPassword('Password must be 6 characters long');
+    isReq = false;
+    }
+    return isReq;
+}
+
+const handleSubmit = (e) => {
     e.preventDefault();
-    // console.log(username, password);
-    /* Send a request to the server for authentication */
-    /* then call props.onLoggedIn(username), 
-    which provides the username to our parent component 
-    (child to parent communication) */
-    // props.onLoggedIn(username);
+    const isReq = validate();
+    if(isReq) {
+      /* Send request to the server for authentication */
+
     axios.post('https://protected-river-88909.herokuapp.com/login', {
       Username: username,
       Password: password
@@ -26,7 +47,8 @@ export function LoginView(props) {
     .catch(e => {
       console.log('no such user')
     });
-  };
+  }
+};
 
 return (
   <Container>
@@ -44,8 +66,10 @@ return (
                     value={username}
                     onChange={e => setUsername(e.target.value)} 
                     required
-                    placeholder="Enter a username"
+                    placeholder="Enter username"
                     />
+                    {/* code added here to display validation error */}
+                    {setUsernameErr && <p>{setUsernameErr}</p>}
                 </Form.Group>
                 <Form.Group controlId="formPassword">
                   <Form.Label>Password:</Form.Label>
@@ -54,9 +78,11 @@ return (
                     value={password}
                     onChange={e => setPassword(e.target.value)}
                     required
-                    minLength="8"
-                    placeholder="Your password must be 8 or more characters"
-                    />
+                    minLength="5"
+                    placeholder="Your password must be 5 or more characters"
+                    /> 
+                    {/* code added here to display validation error */}
+                    {setPasswordErr && <p>{setPasswordErr}</p>}
                   <Form.Text className="text-muted">
                     We'll never share your password with anyone else.
                   </Form.Text>

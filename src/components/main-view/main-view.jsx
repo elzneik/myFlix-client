@@ -80,6 +80,14 @@ export class MainView extends React.Component{ //creates MainView Component
     });
   }
 
+  onLoggedOut() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    this.setState({
+      user: null
+    });
+  }
+
   render() {
     const { movies, selectedMovie, user } = this.state;
     if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
@@ -120,6 +128,11 @@ export class MainView extends React.Component{ //creates MainView Component
               ))
             }
         </Row>
+        <button 
+          onClick={() => { 
+          this.onLoggedOut() }}>
+            Logout
+          </button>
         );
       </div>
     );

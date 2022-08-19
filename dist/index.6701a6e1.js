@@ -25445,7 +25445,7 @@ class MainView extends _reactDefault.default.Component {
                     })
                 }),
                 /*#__PURE__*/ _jsxRuntime.jsx(_row.Row, {
-                    className: "mainView justify-content-md-center",
+                    className: "main-View justify-content-md-center",
                     __source: {
                         fileName: "src/components/main-view/main-view.jsx",
                         lineNumber: 103

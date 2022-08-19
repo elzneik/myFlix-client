@@ -100,7 +100,7 @@ export class MainView extends React.Component{ //creates MainView Component
             </Navbar.Collapse>
           </Container>
         </Navbar>
-        <Row className="mainView justify-content-md-center">
+        <Row className="main-View justify-content-md-center">
           {selectedMovie ? (
               <Col md={8}> 
                 <MovieView

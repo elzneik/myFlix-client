@@ -13,7 +13,7 @@ export function RegistrationView(props) {
     const [ usernameErr, setUsernameErr ] = useState('');
     const [ passwordErr, setPasswordErr ] = useState('');
     const [ emailErr, setEmailErr ] = useState('');
-    const [ birthday, setBirthdayErr ] = useState('');
+    const [ birthdayErr, setBirthdayErr ] = useState('');
     
 
     // validate input

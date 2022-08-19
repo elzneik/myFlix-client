@@ -1,10 +1,13 @@
 import React from "react"; // requirement for creating a component, like a blueprint
 import axios from 'axios'; // fetch movie list from myFlix database
-import {Row, Col, Container, Nav, Navbar, NavDropDown} from 'react-bootstrap/Row'; // use react bootstrap UI
-import { RegistrationView } from '../registration-view/registration-view';
+import {Row, Col, Container, Nav, Navbar, NavDropDown} from 'react-bootstrap/Row';
+
+import { BrowserRouter as Router, Route } from "react-router-dom";
+
 import { LoginView } from '../login-view/login-view';
 import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from '../movie-view/movie-view';
+import { RegistrationView } from '../registration-view/registration-view';
 
 
 export class MainView extends React.Component{ //creates MainView Component 
@@ -13,57 +16,10 @@ export class MainView extends React.Component{ //creates MainView Component
         super();
         this.state = {
           movies: [],
-          selectedMovie: null,
+          // selectedMovie: null,
           user: null
         };
   } 
-  /*
-  componentDidMount(){ 
-    axios.get('https://protected-river-88909.herokuapp.com/movies')
-      .then(response => {
-        this.setState({
-          movies: response.data
-        });
-      })
-      .catch(error => {
-        console.log(error);
-      });
-  }
-*/
-  componentDidMount() {
-    let accessToken = localStorage.getItem('token');
-    if (accessToken !== null) {
-      this.setState({
-        user: localStorage.getItem('user')
-      });
-      this.getMovies(accessToken);
-    }
-  }
-
-  //when movie selected, function is invoked, and state is updated
-  setSelectedMovie(movie) {
-    this.setState({
-      selectedMovie: movie
-    });
-  }
-  /*
-  //when user logs-in, function is invoked, state of user is updated
-  onLoggedIn(user) {
-    this.setState({
-      user
-    });
-  }
-  */
-  onLoggedIn(authData) {
-    console.log(authData);
-    this.setState({
-      user: authData.user.Username
-    });
-  
-    localStorage.setItem('token', authData.token);
-    localStorage.setItem('user', authData.user.Username);
-    this.getMovies(authData.token);
-  }
 
   getMovies(token) {
     axios.get('https://protected-river-88909.herokuapp.com/movies', {
@@ -80,6 +36,35 @@ export class MainView extends React.Component{ //creates MainView Component
     });
   }
 
+  componentDidMount() {
+    let accessToken = localStorage.getItem('token');
+    if (accessToken !== null) {
+      this.setState({
+        user: localStorage.getItem('user')
+      });
+      this.getMovies(accessToken);
+    }
+  }
+
+  //when movie selected, function is invoked, and state is updated
+  /* setSelectedMovie(movie) {
+    this.setState({
+      selectedMovie: movie
+    });
+  }
+*/
+
+  onLoggedIn(authData) {
+    console.log(authData);
+    this.setState({
+      user: authData.user.Username
+    });
+  
+    localStorage.setItem('token', authData.token);
+    localStorage.setItem('user', authData.user.Username);
+    this.getMovies(authData.token);
+  }
+
   onLoggedOut() {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
@@ -89,11 +74,38 @@ export class MainView extends React.Component{ //creates MainView Component
   }
 
   render() {
-    const { movies, selectedMovie, user } = this.state;
-    if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
+    const { movies, user } = this.state; // selectedMovie, 
+    if (!user) return 
+      <Row>
+        <Col>
+          <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
+        </Col>
+      </Row>
     if (movies.length === 0) return <div className="main-view" />; //The list is empty!</div>; 
    
     return (
+      <Router>
+        <Row className="main-view justify-content-md-center">
+          <Route exact path="/" render={() => {
+            return movies.map(m => (
+              <Col md={3} key={m._id}>
+                <MovieCard movie={m} />
+              </Col>
+            ))
+          }} />
+          <Route path="/movies/:movieId" render={({ match }) => {
+            return <Col md={8}>
+              <MovieView movie={movies.find(m => m._id === match.params.movieId)} />
+            </Col>
+          }} />
+
+        </Row>
+      </Router>
+    );
+  }
+}
+
+/*
       <div className="main-view">
         <Navbar bg="light" expand="lg">
           <Container fluid>
@@ -138,3 +150,4 @@ export class MainView extends React.Component{ //creates MainView Component
     );
   }
 }
+*/

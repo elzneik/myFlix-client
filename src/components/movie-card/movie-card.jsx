@@ -5,7 +5,7 @@ import {Button, Card, CardGroup, Container, Row, Col} from 'react-bootstrap';
 
 export class MovieCard extends React.Component {
 render() {
-    const { movie, onMovieClick } = this.props;
+    const { movie } = this.props;
 
     return (
       <Container fluid className="movieCardContainer">

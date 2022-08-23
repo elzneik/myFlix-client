@@ -949,7 +949,7 @@ var _mainView = require("./components/main-view/main-view");
 var _container = require("react-bootstrap/Container");
 var _containerDefault = parcelHelpers.interopDefault(_container);
 // bundle `./index.scss`
-var _indexScss = require("./index.scss");
+// import './index.scss';
 // Main component (will eventually use all the others)
 class MyFlixApplication extends _reactDefault.default.Component {
     render() {
@@ -979,7 +979,7 @@ _reactDomDefault.default.render(/*#__PURE__*/ _reactDefault.default.createElemen
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"8xIwr","react":"6TuXu","react-dom":"gkWJK","./components/main-view/main-view":"2zHas","./index.scss":"jUTZ8","@parcel/transformer-js/src/esmodule-helpers.js":"7VCmx","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7iESW","react-bootstrap/Container":"2PRIq"}],"8xIwr":[function(require,module,exports) {
+},{"react/jsx-runtime":"8xIwr","react":"6TuXu","react-dom":"gkWJK","./components/main-view/main-view":"2zHas","@parcel/transformer-js/src/esmodule-helpers.js":"7VCmx","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7iESW","react-bootstrap/Container":"2PRIq"}],"8xIwr":[function(require,module,exports) {
 'use strict';
 module.exports = require('./cjs/react-jsx-runtime.development.js');
 
@@ -45386,6 +45386,6 @@ $RefreshReg$(_c, "NavBar");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"8xIwr","react":"6TuXu","react-bootstrap":"h2YVd","@parcel/transformer-js/src/esmodule-helpers.js":"7VCmx","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7iESW"}],"jUTZ8":[function() {},{}]},["Dtqvr","e0bDS","dLPEP"], "dLPEP", "parcelRequireaec4")
+},{"react/jsx-runtime":"8xIwr","react":"6TuXu","react-bootstrap":"h2YVd","@parcel/transformer-js/src/esmodule-helpers.js":"7VCmx","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7iESW"}]},["Dtqvr","e0bDS","dLPEP"], "dLPEP", "parcelRequireaec4")
 
 //# sourceMappingURL=index.6701a6e1.js.map

@@ -5,7 +5,7 @@ import Container from 'react-bootstrap/Container';
 
 
 // bundle `./index.scss`
-import './index.scss';
+// import './index.scss';
 // Main component (will eventually use all the others)
 class MyFlixApplication extends React.Component {
 

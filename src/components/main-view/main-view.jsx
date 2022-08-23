@@ -1,7 +1,11 @@
 import React from "react"; // requirement for creating a component, like a blueprint
 import axios from "axios"; // fetch movie list from myFlix database
+
 import {Row, Col, Container, NavBar} from "react-bootstrap";
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
+
+import { DirectorView } from '../director-view/director-view';
+import { GenreView } from '../genre-view/genre-view';
 import { NavBar } from "../nav-view/nav-view";
 import { LoginView } from "../login-view/login-view";
 import { MovieCard } from "../movie-card/movie-card";
@@ -68,29 +72,29 @@ onLoggedOut() {
 render() {
   const { movies, user } = this.state;
             
-            if (!user) return <Row> 
-                <Col>
-                  <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
-                </Col>
-                </Row>
-            if (movies.length === 0) return <div className="main-view"></div>
+      if (!user) return <Row> 
+          <Col>
+            <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
+          </Col>
+        </Row>
+      if (movies.length === 0) return <div className="main-view"> The list is empty. Loading info... </div>
 
-            return (
-              <Router>
-                <Row className="main-view justify-content-md-center">
-                <Route exact path="/" render={() => {
-                return movies.map(m => (
-                  <Col md={3} key={m._id}>
-                    <MovieCard movie={m} />
-                  </Col>
-              ))
-            }} />
-
+    return (
+      <Router>
+        <Row className="main-view justify-content-md-center">
+              
+          <Route exact path="/" render={() => {
+            return movies.map(m => (
+              <Col md={3} key={m._id}>
+                <MovieCard movie={m} />
+              </Col>
+            ))
+          }} />
           <Route path="/register" render={() => {
             if (user) return <Redirect to="/" />
-              return  <Col md={8}>
-                        <RegistrationView /> 
-                      </Col>
+            return  <Col md={8}>
+                <RegistrationView /> 
+            </Col>
           }} />
           <Route path="/movies/:movieId" render={({ match, history }) => {
             if (!user) return 
@@ -122,7 +126,7 @@ render() {
               </Col>
             if (movies.length === 0) return <div className="main-view"></div>
               return  <Col md={8}>
-                        <DirectorView genre={movies.find(m => m.Genre.Name === match.params.name).Genre}
+                        <GenreView genre={movies.find(m => m.Genre.Name === match.params.name).Genre}
                         onBackClick={() => history.goBack()} />
                       </Col>
           }

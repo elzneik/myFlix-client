@@ -88,7 +88,7 @@ render() {
 
           <Route path="/register" render={() => {
             if (user) return <Redirect to="/" />
-              return  <Col md={8} md={8}>
+              return  <Col md={8}>
                         <RegistrationView /> 
                       </Col>
           }} />

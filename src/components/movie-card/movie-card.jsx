@@ -20,10 +20,7 @@ render() {
                   <Card.Title>{movie.Title}</Card.Title>
                   <Card.Text>{movie.Description}</Card.Text>
                   <Link to={`/movies/${movie._id}`}>
-                    <Button 
-                      variant="link">
-                          Open
-                    </Button>
+                    <Button variant="link">Open</Button>
                   </Link>
                 </Card.Body>
               </Card>
@@ -37,7 +34,7 @@ render() {
 
 // set up for propType to validate data
 MovieCard.propTypes = {
-  movie: PropTypes.shape({
+    movie: PropTypes.shape({
     Title: PropTypes.string.isRequired,
     Description: PropTypes.string.isRequired,
     Genre: PropTypes.shape({

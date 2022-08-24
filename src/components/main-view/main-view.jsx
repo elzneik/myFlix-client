@@ -131,7 +131,7 @@ render() {
                       </Col>
           }
           } />
-          <Route path={`/user/${user}`} render={({ match, history }) => {
+          <Route path={`/user/${user}`} render={({ history }) => {
             if (!user) return 
               <Col>
                 <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
@@ -146,7 +146,7 @@ render() {
                       </Col>
           }
           } />
-          <Route path={`/user-update/${user}`} render={({ match, history }) => {
+          <Route path={`/user-update/${user}`} render={({ history }) => {
             if (!user) return 
               <Col>
                 <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
@@ -158,6 +158,16 @@ render() {
                         onBackClick={() => history.goBack()} />
                       </Col>
           }} />
+          <Route path='/users/:username' render={({history, match}) => {
+            if (!user) return
+              <Col> 
+              < LoginView onLoggedIn={user => this.onLoggedIn(user)} />
+              </Col>
+            if (movies.length === 0) return <div className="main-view"></div>
+            return <Col>
+              <ProfileView history={history} movies={movies} user={user === match.params.username} />
+            </Col>
+            }} />
         </Row>
       </Router>
     );

@@ -113,7 +113,8 @@ return (
   );
 }
 
-LoginView.propTypes = {
+
+LoginView.PropTypes = {
   movie: PropTypes.shape({
     username: PropTypes.string.isRequired,
     password: PropTypes.string.isRequired

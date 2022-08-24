@@ -25489,7 +25489,7 @@ class MainView extends _reactDefault.default.Component {
                     }),
                     /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Route, {
                         path: `/user/${user}`,
-                        render: ({ match , history  })=>{
+                        render: ({ history  })=>{
                             if (!user) return;
                             /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Col, {
                                 children: /*#__PURE__*/ _jsxRuntime.jsx(_loginView.LoginView, {
@@ -25518,7 +25518,7 @@ class MainView extends _reactDefault.default.Component {
                     }),
                     /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Route, {
                         path: `/user-update/${user}`,
-                        render: ({ match , history  })=>{
+                        render: ({ history  })=>{
                             if (!user) return;
                             /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Col, {
                                 children: /*#__PURE__*/ _jsxRuntime.jsx(_loginView.LoginView, {
@@ -25541,6 +25541,32 @@ class MainView extends _reactDefault.default.Component {
                         __source: {
                             fileName: "src/components/main-view/main-view.jsx",
                             lineNumber: 149
+                        },
+                        __self: this
+                    }),
+                    /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Route, {
+                        path: "/users/:username",
+                        render: ({ history , match  })=>{
+                            if (!user) return;
+                            /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Col, {
+                                children: /*#__PURE__*/ _jsxRuntime.jsx(_loginView.LoginView, {
+                                    onLoggedIn: (user1)=>this.onLoggedIn(user1)
+                                })
+                            });
+                            if (movies.length === 0) return(/*#__PURE__*/ _jsxRuntime.jsx("div", {
+                                className: "main-view"
+                            }));
+                            return(/*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Col, {
+                                children: /*#__PURE__*/ _jsxRuntime.jsx(ProfileView, {
+                                    history: history,
+                                    movies: movies,
+                                    user: user === match.params.username
+                                })
+                            }));
+                        },
+                        __source: {
+                            fileName: "src/components/main-view/main-view.jsx",
+                            lineNumber: 161
                         },
                         __self: this
                     })
@@ -39087,7 +39113,7 @@ class MovieView extends _reactDefault.default.Component {
         }));
     }
 }
-MovieView.propTypes = {
+MovieView.PropTypes = {
     movie: _propTypesDefault.default.shape({
         Title: _propTypesDefault.default.string.isRequired,
         Description: _propTypesDefault.default.string.isRequired,
@@ -42531,7 +42557,7 @@ function LoginView(props) {
 }
 _s(LoginView, "bu3RTtfm4zH8nbQBLPx5pzN3ays=");
 _c = LoginView;
-LoginView.propTypes = {
+LoginView.PropTypes = {
     movie: _propTypesDefault.default.shape({
         username: _propTypesDefault.default.string.isRequired,
         password: _propTypesDefault.default.string.isRequired

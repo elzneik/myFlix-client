@@ -4,18 +4,25 @@ import axios from "axios"; // fetch movie list from myFlix database
 import {Row, Col, Container, NavBar} from "react-bootstrap";
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 
+// import { connect } from 'react-redux';
+// import { MovieList } from "../movies-list/movies-list";
+// delete movieCard, will be used later in movieList
+import { MovieCard } from "../movie-card/movie-card";
+
 import { DirectorView } from '../director-view/director-view';
 import { GenreView } from '../genre-view/genre-view';
 import { NavBar } from "../nav-view/nav-view";
 import { LoginView } from "../login-view/login-view";
-import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
 import { RegistrationView } from '../registration-view/registration-view';
 
 
 
+
+// REMOVE export KEYWORD for react redux
 export class MainView extends React.Component{ //creates MainView Component 
-      
+
+// REMOVE movies KEYWORD for react redux
 constructor(){
       super();
       this.state = {
@@ -31,6 +38,9 @@ getMovies(token) {
   })
   .then(response => {
     // Assign the result to the state
+    // ADD for REACT redx
+    // this.props.setMovies(response.data);
+    // DELETE next two lines and parantheses as necessary
     this.setState({
       movies: response.data
     });
@@ -70,19 +80,18 @@ onLoggedOut() {
 }
 
 render() {
+  // CHANGE code for REACT REDUX
+  // let { movies } = this.props;
+  // let { user } this.state;
   const { movies, user } = this.state;
             
-      if (!user) return <Row> 
-          <Col>
-            <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
-          </Col>
-        </Row>
-      if (movies.length === 0) return <div className="main-view"> The list is empty. Loading info... </div>
-
+      // LOOK up code for return: path / is shown to LOGIN VIEW
+      // COPY that code for ROUTE 
+      // Why is it changed back ??? especiall the path / ???
     return (
       <Router>
         <Row className="main-view justify-content-md-center">
-              
+            
           <Route exact path="/" render={() => {
             return movies.map(m => (
               <Col md={3} key={m._id}>
@@ -173,3 +182,11 @@ render() {
     );
   }
 }
+
+// ADD the FOLLOWING CODE for react REDUX
+
+// let mapStateToProps = state => {
+//  return { movies: state.movies }
+// }
+
+// export default connect (mapStateToProps, {setMovies}) (MainVies);

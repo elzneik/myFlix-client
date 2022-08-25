@@ -1,12 +1,11 @@
 import React from "react";
 import axios from "axios";
-import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
 // Split user profile into subtopics
-import UserInfo from "./user-info";
-import FavoriteMovies from "./favorite-movie";
-import UpdateUser from "./update-user";
+// import UserInfo from "./user-info";
+// import FavoriteMovies from "./favorite-movie";
+// import UpdateUser from "./update-user";
 
 // Import React Bootstrap Components
 import {Container, Row, Col, Card} from "react-bootstrap";

@@ -289,7 +289,7 @@
 119C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\fill-range\node_modules133040258377417404 1
 127C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\src\components\profile-view\profile-view.jsx133059043708907471 0
 110C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\react\index.js133040258407678123 0
-128C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\src\components\profile-view\profile-view.scss133059079620545133 0
+128C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\src\components\profile-view\profile-view.scss133059087956951486 0
 124C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\react-bootstrap\esm\Stack.js133052203605009336 0
 129C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\react-bootstrap\esm\PageItem.d.ts133052203613486683 0
 147C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\fill-range\node_modules\extend-shallow\package.json133040258405803117 0

@@ -25539,7 +25539,7 @@ class MainView extends _reactDefault.default.Component {
         // LOOK up code for return: path / is shown to LOGIN VIEW
         // COPY that code for ROUTE 
         // Why is it changed back ??? especiall the path / ???
-        return(/*#__PURE__*/ _jsxRuntime.jsxs(_reactRouterDom.BrowserRouter, {
+        return(/*#__PURE__*/ _jsxRuntime.jsxs(_reactRouterDom.Router, {
             __source: {
                 fileName: "src/components/main-view/main-view.jsx",
                 lineNumber: 94

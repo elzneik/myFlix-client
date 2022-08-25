@@ -145,7 +145,7 @@
 137C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\tiny-invariant\dist\tiny-invariant.esm.js133057295001930284 0
 106C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\pascalcase133040258411261898 1
 124C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\src\components\login-view\login-view.scss133059080203220946 0
-97C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\src\index.scss133059073607502734 0
+97C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\src\index.scss133059089439071413 0
 143C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\@popperjs\core\lib\utils\validateModifiers.d.ts133052203605547905 0
 132C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\react-router\umd\react-router.js.map133057295004190189 0
 114C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\strip-ansi\license133040258405085052 0

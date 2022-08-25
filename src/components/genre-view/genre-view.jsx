@@ -2,9 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 // Import React Bootstrap Components
-import Button from "react-bootstrap/Button";
-import Container from "react-bootstrap/Container";
-import Card from "react-bootstrap/Card";
+import {Button, Container, Card} from "react-bootstrap";
 
 // Import custom SCSS
 import "./genre-view.scss";

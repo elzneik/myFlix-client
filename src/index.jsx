@@ -11,13 +11,11 @@ import Container from 'react-bootstrap/Container';
 /// REACT REDUX
 import { MainView } from "./components/main-view/main-view";
 
+// Import statement to indicate that you need to bundle `./index.scss`
+import './index.scss';
 
 
-// bundle `./index.scss`
-// import './index.scss';
-
-
-// activate
+// activate for Task 3.8
 // const store = createStore (movieApp);
 
 

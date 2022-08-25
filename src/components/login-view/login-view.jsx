@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
-import {Form, Button, Card, CardGroup, Container, Row, Col} from "react-bootstrap";
+import {Form, Button, Card, Container, Row, Col} from "react-bootstrap";
+import { Link } from "react-router-dom";
+
+import "./login-view.scss";
 
 export function LoginView(props) {
   const [ username, setUsername ] = useState('');
@@ -16,8 +19,8 @@ const validate = () => {
     if(!username){
     setUsernameErr('Username Required');
     isReq = false;
-    }else if(username.length < 2){
-    setUsernameErr('Username must be 2 characters long');
+    }else if(username.length < 5){
+    setUsernameErr('Username must be 5 characters long');
     isReq = false;
     }
     if(!password){
@@ -35,7 +38,6 @@ const handleSubmit = (e) => {
     const isReq = validate();
     if(isReq) {
       /* Send request to the server for authentication */
-
     axios.post('https://protected-river-88909.herokuapp.com/login', {
       Username: username,
       Password: password
@@ -44,8 +46,8 @@ const handleSubmit = (e) => {
       const data = response.data;
       props.onLoggedIn(data);
     })
-    .catch(e => {
-      console.log('no such user')
+    .catch((e) => {
+      console.log("no such user")
     });
   }
 };
@@ -55,54 +57,53 @@ return (
     <Row>
       <Col>
         <CardGroup>
-          <Card>
+          <Card className="login-view">
             <Card.Body>
-              <Card.Title>Please login using your credentials</Card.Title>
+              <Card.Title>Log-in</Card.Title>
               <Form>
                 <Form.Group controlId="formUsername">
                   <Form.Label>Username:</Form.Label>
                   <Form.Control 
                     type="text"
+                    placeholder="Enter username"
                     value={username}
                     onChange={e => setUsername(e.target.value)} 
                     required
-                    placeholder="Enter username"
                     />
                     {/* code added here to display validation error */}
-                    {setUsernameErr && <p>{setUsernameErr}</p>}
+                    {usernameErr && <p>{usernameErr}</p>}
                 </Form.Group>
+
                 <Form.Group controlId="formPassword">
                   <Form.Label>Password:</Form.Label>
                   <Form.Control 
                     type="password"
+                    placeholder="Your password must be 5 or more characters"
                     value={password}
                     onChange={e => setPassword(e.target.value)}
                     required
                     minLength="5"
-                    placeholder="Your password must be 5 or more characters"
                     /> 
                     {/* code added here to display validation error */}
-                    {setPasswordErr && <p>{setPasswordErr}</p>}
+                    {passwordErr && <p>{passwordErr}</p>}
                   <Form.Text className="text-muted">
                     We'll never share your password with anyone else.
                   </Form.Text>
                 </Form.Group>
-                <Button 
+
+                <Button
+                  className="button-login"
                   variant="primary"
-                  size="lg"
+                  // size="lg"
                   type="submit" 
-                  onClick={handleSubmit}>
+                  onClick={handleSubmit}
+                >
                     Submit
                 </Button>
                 <br></br>
-                <Button
-                  href="#" // Link to Registraton View
-                  variant="primary"
-                  size="sm"
-                  type="submit" 
-                  onClick={handleSubmit}>
-                    Register
-                </Button>
+                <p>
+                  Need an account? <Link to={"/register"}>Sign up</Link>
+                </p>
               </Form>
             </Card.Body>
           </Card>
@@ -113,9 +114,10 @@ return (
   );
 }
 
-
-LoginView.PropTypes = {
-  movie: PropTypes.shape({
+// prop-types
+// Give informational warnings in browser if data does not match required shape
+LoginView.propTypes = {
+    user: PropTypes.shape({
     username: PropTypes.string.isRequired,
     password: PropTypes.string.isRequired
   }).isRequired,

@@ -3,6 +3,7 @@ import axios from "axios";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
+// Split user profile into subtopics
 import UserInfo from "./user-info";
 import FavoriteMovies from "./favorite-movie";
 import UpdateUser from "./update-user";
@@ -167,9 +168,148 @@ export class ProfileView extends React.Component {
     this.Birthday = value;
   }
 
+
   render() {
     const { movies } = this.props;
     const { FavoriteMovies, Username, Email, Birthday, Password } = this.state;
+
+    // Return First: user profile, Second: update profile, Third: Favorite Movie
+    return (
+      <Container>
+        <Row>
+          <Col>
+            <Card className="user-profile">
+              <Card.Header>User Profile</Card.Header>
+              <Card.Body>
+                <>
+                  <p>Name: {Username}</p>
+                  <p>Email: {Email}</p>
+                  <p>Birthday: {Birthday}</p>
+                </>
+              </Card.Body>
+            </Card>
+          </Col>
+
+          <Col>
+           <Card className="update-inputs">
+              <Card.Header>Update Profile</Card.Header>
+              <Card.Body>
+                <Card.Text>
+                  <Form
+                    className="update-form"
+                    onSubmit={(e) =>
+                      this.editUser(
+                        e,
+                        this.Username,
+                        this.Password,
+                        this.Email,
+                        this.Birthday
+                      )
+                    }
+                  >
+                    <Form.Group>
+                      <Form.Label>Username</Form.Label>
+                      <Form.Control
+                        type="text"
+                        name="Username"
+                        placeholder="New Username"
+                        onChange={(e) => this.setUsername(e.target.value)}
+                        required
+                      />
+                    </Form.Group>
+                    <Form.Group>
+                      <Form.Label>Password</Form.Label>
+                      <Form.Control
+                        type="password"
+                        name="Password"
+                        placeholder="New Password"
+                        onChange={(e) => this.setPassword(e.target.value)}
+                        required
+                      />
+                    </Form.Group>
+                    <Form.Group>
+                      <Form.Label>Email</Form.Label>
+                      <Form.Control
+                        type="email"
+                        name="Email"
+                        placeholder="New Email"
+                        onChange={(e) => this.setEmail(e.target.value)}
+                        required
+                      />
+                    </Form.Group>
+                    <Form.Group>
+                      <Form.Label>Birthday</Form.Label>
+                      <Form.Control
+                        type="date"
+                        name="Birthday"
+                        onChange={(e) => this.setBirthday(e.target.value)}
+                      />
+                    </Form.Group>
+                    <Form.Group>
+                      <Button
+                        variant="warning"
+                        type="submit"
+                        onClick={() => this.editUser()}
+                      >
+                        Update User
+                      </Button>
+                      <Button
+                        className="delete-button"
+                        variant="danger"
+                        onClick={() => this.onDeleteUser()}
+                      >
+                        Delete User
+                      </Button>
+                    </Form.Group>
+                  </Form>
+                </Card.Text>
+              </Card.Body>
+            </Card>
+          </Col>
+        </Row>
+
+        <Row></Row>
+
+        <Card className="favmov-inputs">
+          <Card.Body>
+            <Row>
+              <Col xs={12}>
+                <h4>Favorite Movies</h4>
+              </Col>
+            </Row>
+            <Row>
+              {FavoriteMovies.map((ImagePath, Title, _id) => {
+                return (
+                  <Col key={_id} className="fav-movie">
+                    <Figure>
+                      <Link to={`/movies/${movie._id}`}>
+                        <Figure.Image src={ImagePath} alt={Title} />
+                        <Figure.Caption>{Title}</Figure.Caption>
+                      </Link>
+                    </Figure>
+                    <Button
+                      className="remove"
+                      variant="secondary"
+                      onClick={() => removeFav(movie._id)}
+                    >
+                      Remove from the list
+                    </Button>
+                  </Col>
+                );
+              })}
+            </Row>
+          </Card.Body>
+        </Card>
+      </Container>
+    );
+  }
+}
+
+// Code to outsource the specific subtopics
+/*
+  render() {
+    const { movies } = this.props;
+    const { FavoriteMovies, UserInfo, UpdateUser, Username, Email, Birthday, Password } = this.state;
 
     return (
       <Container>
@@ -194,3 +334,4 @@ export class ProfileView extends React.Component {
     );
   }
 }
+*/

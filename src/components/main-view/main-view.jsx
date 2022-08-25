@@ -17,7 +17,7 @@ import { ProfileView } from "../profile-view/profile-view";
 
 import {Row, Col, Container, NavBar} from "react-bootstrap";
 
-import "./main-view.scss";
+// import "./main-view.scss";
 
 // REMOVE export KEYWORD for REACT REDUX
 export class MainView extends React.Component{ //creates MainView Component 

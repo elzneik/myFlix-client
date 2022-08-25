@@ -25452,6 +25452,7 @@ $parcel$ReactRefreshHelpers$35bf.prelude(module);
 try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
+// import "./main-view.scss";
 // REMOVE export KEYWORD for REACT REDUX
 parcelHelpers.export(exports, "MainView", ()=>MainView
 ) // ADD the FOLLOWING CODE for react REDUX
@@ -25478,7 +25479,6 @@ var _genreView = require("../genre-view/genre-view");
 var _registrationView = require("../registration-view/registration-view");
 var _profileView = require("../profile-view/profile-view");
 var _reactBootstrap = require("react-bootstrap");
-var _mainViewScss = require("./main-view.scss");
 class MainView extends _reactDefault.default.Component {
     // REMOVE movies KEYWORD for REACT REDUX
     constructor(){
@@ -25737,7 +25737,7 @@ class MainView extends _reactDefault.default.Component {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"8xIwr","react":"6TuXu","axios":"iYoWk","react-router-dom":"cpyQW","../movie-card/movie-card":"6EiBJ","../nav-view/nav-view":"5pvTd","../login-view/login-view":"054li","../movie-view/movie-view":"ikZdr","../director-view/director-view":"ck15y","../genre-view/genre-view":"8WCoL","../registration-view/registration-view":"aP2YV","../profile-view/profile-view":"2E7Aw","react-bootstrap":"h2YVd","./main-view.scss":"jyMAr","@parcel/transformer-js/src/esmodule-helpers.js":"7VCmx","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7iESW"}],"iYoWk":[function(require,module,exports) {
+},{"react/jsx-runtime":"8xIwr","react":"6TuXu","axios":"iYoWk","react-router-dom":"cpyQW","../movie-card/movie-card":"6EiBJ","../nav-view/nav-view":"5pvTd","../login-view/login-view":"054li","../movie-view/movie-view":"ikZdr","../director-view/director-view":"ck15y","../genre-view/genre-view":"8WCoL","../registration-view/registration-view":"aP2YV","../profile-view/profile-view":"2E7Aw","react-bootstrap":"h2YVd","@parcel/transformer-js/src/esmodule-helpers.js":"7VCmx","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7iESW"}],"iYoWk":[function(require,module,exports) {
 module.exports = require('./lib/axios');
 
 },{"./lib/axios":"3QmO2"}],"3QmO2":[function(require,module,exports) {
@@ -46137,6 +46137,6 @@ class ProfileView extends _reactDefault.default.Component {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"8xIwr","react":"6TuXu","axios":"iYoWk","react-router-dom":"cpyQW","react-bootstrap":"h2YVd","./profile-view.scss":"gb0ga","@parcel/transformer-js/src/esmodule-helpers.js":"7VCmx","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7iESW"}],"gb0ga":[function() {},{}],"jyMAr":[function() {},{}],"jUTZ8":[function() {},{}]},["Dtqvr","e0bDS","dLPEP"], "dLPEP", "parcelRequireaec4")
+},{"react/jsx-runtime":"8xIwr","react":"6TuXu","axios":"iYoWk","react-router-dom":"cpyQW","react-bootstrap":"h2YVd","./profile-view.scss":"gb0ga","@parcel/transformer-js/src/esmodule-helpers.js":"7VCmx","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7iESW"}],"gb0ga":[function() {},{}],"jUTZ8":[function() {},{}]},["Dtqvr","e0bDS","dLPEP"], "dLPEP", "parcelRequireaec4")
 
 //# sourceMappingURL=index.6701a6e1.js.map

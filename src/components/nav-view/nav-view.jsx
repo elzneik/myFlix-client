@@ -2,7 +2,7 @@ import React from 'react';
 import { Navbar, Container, Nav, Button } from "react-bootstrap"; 
 import { Link } from "react-router-dom";
 
-import "./navbar.scss";
+import "./nav-view.scss";
 
 export function NavBar() {
   let user = localStorage.getItem("user");

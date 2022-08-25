@@ -328,7 +328,7 @@
 121C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\react-bootstrap\FormGroup133052203608819159 1
 147C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\@parcel\core\node_modules\@parcel\types\build-ts.js133040258408296481 0
 131C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\caniuse-lite\data\regions\alt-oc.js133040258432265352 0
-119C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\src\components\nav-view\nav-view.jsx133059019933412965 0
+119C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\src\components\nav-view\nav-view.jsx133059083726322625 0
 123C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\src\components\movie-card\movie-card.jsx133058996535111330 0
 120C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\src\components\nav-view\nav-view.scss133059080008017580 0
 136C:\Users\Chris\Desktop\html\CareerFoundry\Coding\Backend Development\myFlix-client\node_modules\react-transition-group\ReplaceTransition133052203594746775 1

@@ -121,5 +121,5 @@ LoginView.propTypes = {
     username: PropTypes.string.isRequired,
     password: PropTypes.string.isRequired
   }).isRequired,
-  onMovieClick: PropTypes.func.isRequired
+  onLoggedIn: PropTypes.func.isRequired
 };

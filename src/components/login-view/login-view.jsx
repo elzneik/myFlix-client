@@ -56,7 +56,6 @@ return (
   <Container>
     <Row>
       <Col>
-        <CardGroup>
           <Card className="login-view">
             <Card.Body>
               <Card.Title>Log-in</Card.Title>
@@ -107,7 +106,6 @@ return (
               </Form>
             </Card.Body>
           </Card>
-        </CardGroup>
       </Col>
     </Row>
   </Container>

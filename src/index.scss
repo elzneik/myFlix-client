@@ -1,5 +1,49 @@
+$background-color: rgb(212, 215, 25);
+$text-color: rgb(5, 6, 7);
+$tealblue: rgb(51, 109, 130);
+$russiangreen: rgb(115, 149, 111);
+$middlebluegreen: rgb(129, 230, 217);
+$font-family_1: "Pathway Gothic One", sans-serif;
+$font-family_2: "League Gothic", sans-serif;
+
+body {
+  font-family: $font-family_1;
+  background-color: $background-color;
+  color: $text-color;
+}
+
+h1 {
+  font-family: $font-family_2;
+}
+
+@media (max-width: 797px) {
+  body {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+}
+
+/*
 $color: steelblue;
 
 .my-flix {
   color: $color;
 }
+
+$color: #3a3b3d ;
+$color2: #f2dc11 ;
+$color3: #ffffff ;
+
+body, html{
+
+    background: $color2;
+}
+
+.app-container {
+    width: 100%;
+    background: $color2;
+}
+.movieViewContainer{
+    background: $color3;
+}
+*/

@@ -1,17 +1,12 @@
 import React from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { MovieCard } from "../movie-card/movie-card";
 
-// Split user profile into subtopics
-// import UserInfo from "./user-info";
-// import FavoriteMovies from "./favorite-movie";
-// import UpdateUser from "./update-user";
-
-// Import React Bootstrap Components
 import {Container, Row, Col, Card, Form, Button} from "react-bootstrap";
+import { setUser, updateUser } from "../../actions/actions";
+import { connect } from "react-redux";
 
-
-// Import custom SCSS
 import "./profile-view.scss";
 
 export class ProfileView extends React.Component {
@@ -117,6 +112,34 @@ export class ProfileView extends React.Component {
       });
   };
 
+
+  handleFavorite = (movieId, action) => {
+    const { user, favoriteMovies } = this.state;
+    const accessToken = localStorage.getItem("token");
+    if (accessToken !== null && user !== null) {
+      // Add MovieID to Favorites
+
+      if (action === "remove") {
+        this.setState({
+          favoriteMovies: favoriteMovies.filter((id) => id !== movieId),
+        });
+        axios
+          .delete(
+            `https://protected-river-88909.herokuapp.com/users/${user}/movies/${movieId}`,
+            {
+              headers: { Authorization: `Bearer ${accessToken}` },
+            }
+          )
+          .then((res) => {
+            console.log(`Movie removed from ${user} favorite movies`);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      }
+    }
+  };
+
   // Deregister
   onDeleteUser() {
     const Username = localStorage.getItem("user");
@@ -169,13 +192,20 @@ export class ProfileView extends React.Component {
 
 
   render() {
-    const { movies } = this.props;
-    const { FavoriteMovies, Username, Email, Birthday, Password } = this.state;
+    const { movies, removeFav } = this.props;
+
+    const FavoriteMovies = movies.filter((m) => {
+      return this.state.FavoriteMovies.includes(m._id);
+    });
+    // const { FavoriteMovies, Username, Email, Birthday, Password } = this.state;
 
     // Return First: user profile, Second: update profile, Third: Favorite Movie
     return (
       <Container>
         <Row>
+
+          {/* USER PROFILE */}
+
           <Col>
             <Card className="user-profile">
               <Card.Header>User Profile</Card.Header>
@@ -188,6 +218,8 @@ export class ProfileView extends React.Component {
               </Card.Body>
             </Card>
           </Col>
+
+          {/* UPDATE ACCOUNT */}
 
           <Col>
            <Card className="update-inputs">
@@ -272,6 +304,8 @@ export class ProfileView extends React.Component {
 
         <Row></Row>
 
+        {/* FAVORITE MOVIES */}
+
         <Card className="favmov-inputs">
           <Card.Body>
             <Row>
@@ -292,9 +326,9 @@ export class ProfileView extends React.Component {
                     <Button
                       className="remove"
                       variant="secondary"
-                      onClick={() => removeFav(movie._id)}
+                      onClick={() => removeFav(movies._id, "remove")}
                     >
-                      Remove from the list
+                      Remove
                     </Button>
                   </Col>
                 );
@@ -306,6 +340,22 @@ export class ProfileView extends React.Component {
     );
   }
 }
+
+let mapStateToProps = (state) => {
+  return {
+    user: state.user,
+    movies: state.movies,
+  };
+};
+
+export default connect(mapStateToProps, { setUser, updateUser })(ProfileView);
+
+
+
+
+
+
+
 
 // Code to outsource the specific subtopics
 /*

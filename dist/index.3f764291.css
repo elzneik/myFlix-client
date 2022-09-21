@@ -403,4 +403,44 @@ img {
 .card {
   margin-bottom: 15px;
 }
+body {
+  font-family: "Pathway Gothic One", sans-serif;
+  background-color: rgb(223, 231, 231);
+  color: rgb(81, 84, 86);
+}
+
+h1 {
+  font-family: "League Gothic", sans-serif;
+}
+
+@media (max-width: 797px) {
+  body {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+}
+/*
+$color: steelblue;
+
+.my-flix {
+  color: $color;
+}
+
+$color: #3a3b3d ;
+$color2: #f2dc11 ;
+$color3: #ffffff ;
+
+body, html{
+
+    background: $color2;
+}
+
+.app-container {
+    width: 100%;
+    background: $color2;
+}
+.movieViewContainer{
+    background: $color3;
+}
+*/
 /*# sourceMappingURL=index.3f764291.css.map */

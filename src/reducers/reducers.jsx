@@ -1,5 +1,9 @@
 
+
 /*
+* First two reducer functions
+* Second the reducers are combined
+*/
 import { combineReducers } from 'redux';
 import { SET_FILTER, SET_MOVIES } from '../actions/actions';
 
@@ -27,4 +31,3 @@ const moviesApp = combineReducers({
 });
 
 export default moviesApp;
-*/

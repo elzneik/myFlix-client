@@ -41,7 +41,7 @@ export class MovieView extends React.Component {
                 onBackClick();
               }}
             >
-              Hello
+              Back
             </Button>
           </Card.Footer>
         </Card>

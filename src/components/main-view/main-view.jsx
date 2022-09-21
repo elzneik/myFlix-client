@@ -3,10 +3,10 @@ import axios from "axios";
 import { BrowserRouter as Router, Route, Redirect, Link } from "react-router-dom";
 import {Row, Col, Container, NavBar} from "react-bootstrap";
 
-// import { connect } from 'react-redux';
-// import { MovieList } from "../movies-list/movies-list";
-// delete movieCard, will be used later in movieList
-import { MovieCard } from "../movie-card/movie-card";
+import { connect } from 'react-redux';
+import { setMovies } from '../../actions/actions';
+import MoviesList from "../movies-list/movies-list";
+// import { MovieCard } from "../movie-card/movie-card";
 
 import { NavBar } from "../nav-view/nav-view";
 import { LoginView } from "../login-view/login-view";
@@ -21,14 +21,13 @@ import { ProfileView } from "../profile-view/profile-view";
 // ,import "./main-view.scss";
 
 // REMOVE export KEYWORD for REACT REDUX
-export class MainView extends React.Component{ //creates MainView Component 
+class MainView extends React.Component{ //creates MainView Component 
 
 // REMOVE movies KEYWORD for REACT REDUX
 constructor(){
       super();
       this.state = {
-        movies: [],
-        user: null,
+        user: null
       };
 } 
 
@@ -46,28 +45,21 @@ getMovies(token) {
   axios.get('https://protected-river-88909.herokuapp.com/movies', {
     headers: { Authorization: `Bearer ${token}`}
   })
-  .then(response => {
-    // Assign the result to the state
-    // ADD for REACT redx
-    // this.props.setMovies(response.data);
-    // DELETE next two lines and parantheses as necessary
-    this.setState({
-      movies: response.data,
-    });
-  })
+  .then(response => { 
+    this.props.setMovies(response.data); 
+    })
   .catch(function (error) {
     console.log(error);
   });
 }
 
-/* When a user successfully logs in, this function updates the `user` property in state to that *particular user*/
-
+/* When a user successfully logs in, this function updates 
+the `user` property in state to that *particular user*/
 onLoggedIn(authData) {
   console.log(authData);
   this.setState({
     user: authData.user.Username,
   });
-
   localStorage.setItem("token", authData.token);
   localStorage.setItem("user", authData.user.Username);
   this.getMovies(authData.token);
@@ -83,10 +75,8 @@ onLoggedOut() {
 }
 
 render() {
-  // CHANGE code for REACT REDUX
-  // let { movies } = this.props;
-  // let { user } this.state;
-  const { movies, user } = this.state;
+let { movies } = this.props;
+let { user } = this.state;
             
       // LOOK up code for return: path / is shown to LOGIN VIEW
       // COPY that code for ROUTE 
@@ -108,11 +98,7 @@ render() {
                     </Col>
                   );
                 if (movies.length === 0) return <div className="main-view" />;
-                  return movies.map((m) => (
-                    <Col md={3} key={m._id}>
-                      <MovieCard movie={m} />
-                    </Col>
-                ));
+                return <MoviesList movies={movies}/>;
               }}
             />
 
@@ -211,10 +197,8 @@ render() {
   }
 }
 
-// ADD the FOLLOWING CODE for react REDUX
+let mapStateToProps = state => {
+return { movies: state.movies }
+}
 
-// let mapStateToProps = state => {
-//  return { movies: state.movies }
-// }
-
-// export default connect (mapStateToProps, {setMovies}) (MainVies);
+export default connect (mapStateToProps, {setMovies}) (MainView);

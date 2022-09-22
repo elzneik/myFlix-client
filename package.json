@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/elzneik/myFlix-client#readme",
   "dependencies": {
+    "@reduxjs/toolkit": "^1.8.5",
     "and": "^0.0.3",
     "axios": "^0.27.2",
     "prop-types": "^15.8.1",

@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Container from 'react-bootstrap/Container';
-import { createStore, configureStore } from 'redux';
+import { configureStore } from 'redux';
 import { Provider } from 'react-redux';
 import moviesApp from './reducers/reducers';
 import { devToolsEnhancer } from 'redux-devtools-extension';

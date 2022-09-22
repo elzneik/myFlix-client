@@ -194,11 +194,11 @@ export class ProfileView extends React.Component {
   render() {
     const { movies, removeFav } = this.props;
 
-    const FavoriteMovies = movies.filter((m) => {
-      return this.state.FavoriteMovies.includes(m._id);
-    });
-    // const { FavoriteMovies, Username, Email, Birthday, Password } = this.state;
-
+    //const FavoriteMovies = movies.filter((m) => {
+    //return this.state.FavoriteMovies.includes(m._id);
+    //});
+    const {FavoriteMovies, Username, Email, Birthday, Password } = this.state;
+    //  
     // Return First: user profile, Second: update profile, Third: Favorite Movie
     return (
       <Container>

@@ -17,7 +17,7 @@ render() {
               <Card>
                 <Card.Img 
                   variant="top" 
-                  src={movie.ImagePath} />
+                  src={movie.ImagePath} style={{ height: "20rem" }} />
                 <Card.Body>
                   <Card.Title>{movie.Title}</Card.Title>
                   <Card.Text className="description">{movie.Description}</Card.Text>

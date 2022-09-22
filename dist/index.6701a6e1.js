@@ -47737,33 +47737,33 @@ class MovieCard extends _reactDefault.default.Component {
         }));
     }
 }
-/*
+MovieCard.propTypes = {
+    movie: _propTypesDefault.default.shape({
+        Title: _propTypesDefault.default.string.isRequired,
+        Description: _propTypesDefault.default.string.isRequired,
+        ImagePath: _propTypesDefault.default.string.isRequired,
+        Genre: _propTypesDefault.default.shape({
+            Name: _propTypesDefault.default.string.isRequired,
+            Description: _propTypesDefault.default.string.isRequired
+        }),
+        Director: _propTypesDefault.default.shape({
+            Name: _propTypesDefault.default.string.isRequired,
+            Bio: _propTypesDefault.default.string.isRequired,
+            Birthday: _propTypesDefault.default.string.isRequired
+        })
+    }).isRequired,
+    onMovieClick: _propTypesDefault.default.func.isRequired
+}; /*
+// set up for propType to validate data
 MovieCard.propTypes = {
   movie: PropTypes.shape({
     Title: PropTypes.string.isRequired,
     Description: PropTypes.string.isRequired,
     ImagePath: PropTypes.string.isRequired,
-    Genre: PropTypes.shape({
-      Name: PropTypes.string.isRequired,
-      Description: PropTypes.string.isRequired,
-    }),
-    Director: PropTypes.shape({
-      Name: PropTypes.string.isRequired,
-      Bio: PropTypes.string.isRequired,
-      Birthday: PropTypes.string.isRequired,
-    }),
   }).isRequired,
-  onMovieClick: PropTypes.func.isRequired,
+  onMovieClick: PropTypes.func,
 };
-*/ // set up for propType to validate data
-MovieCard.propTypes = {
-    movie: _propTypesDefault.default.shape({
-        Title: _propTypesDefault.default.string.isRequired,
-        Description: _propTypesDefault.default.string.isRequired,
-        ImagePath: _propTypesDefault.default.string.isRequired
-    }).isRequired,
-    onMovieClick: _propTypesDefault.default.func
-}; /*
+*/  /*
 MovieCard.propTypes = {
     movie: PropTypes.shape({
     Title: PropTypes.string.isRequired,

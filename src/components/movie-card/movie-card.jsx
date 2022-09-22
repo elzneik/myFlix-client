@@ -38,7 +38,7 @@ render() {
   }
 }
 
-/*
+
 MovieCard.propTypes = {
   movie: PropTypes.shape({
     Title: PropTypes.string.isRequired,
@@ -56,9 +56,9 @@ MovieCard.propTypes = {
   }).isRequired,
   onMovieClick: PropTypes.func.isRequired,
 };
-*/
 
 
+/*
 // set up for propType to validate data
 MovieCard.propTypes = {
   movie: PropTypes.shape({
@@ -68,7 +68,7 @@ MovieCard.propTypes = {
   }).isRequired,
   onMovieClick: PropTypes.func,
 };
-
+*/
 
 /*
 MovieCard.propTypes = {

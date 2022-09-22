@@ -947,7 +947,8 @@ var _reactDom = require("react-dom");
 var _reactDomDefault = parcelHelpers.interopDefault(_reactDom);
 var _container = require("react-bootstrap/Container");
 var _containerDefault = parcelHelpers.interopDefault(_container);
-var _redux = require("redux");
+var _toolkit = require("@reduxjs/toolkit");
+// import { configureStore } from 'redux';
 var _reactRedux = require("react-redux");
 var _reducers = require("./reducers/reducers");
 var _reducersDefault = parcelHelpers.interopDefault(_reducers);
@@ -955,7 +956,7 @@ var _reduxDevtoolsExtension = require("redux-devtools-extension");
 var _mainView = require("./components/main-view/main-view");
 var _mainViewDefault = parcelHelpers.interopDefault(_mainView);
 var _indexScss = require("./index.scss");
-const store = _redux.configureStore(_reducersDefault.default, _reduxDevtoolsExtension.devToolsEnhancer());
+const store = _toolkit.configureStore(_reducersDefault.default, _reduxDevtoolsExtension.devToolsEnhancer());
 // Main component (will eventually use all the others)
 class MyFlixApplication extends _reactDefault.default.Component {
     render() {
@@ -963,19 +964,19 @@ class MyFlixApplication extends _reactDefault.default.Component {
             store: store,
             __source: {
                 fileName: "src/index.jsx",
-                lineNumber: 20
+                lineNumber: 21
             },
             __self: this,
             children: /*#__PURE__*/ _jsxRuntime.jsx(_containerDefault.default, {
                 __source: {
                     fileName: "src/index.jsx",
-                    lineNumber: 21
+                    lineNumber: 22
                 },
                 __self: this,
                 children: /*#__PURE__*/ _jsxRuntime.jsx(_mainViewDefault.default, {
                     __source: {
                         fileName: "src/index.jsx",
-                        lineNumber: 22
+                        lineNumber: 23
                     },
                     __self: this
                 })
@@ -993,7 +994,7 @@ _reactDomDefault.default.render(/*#__PURE__*/ _reactDefault.default.createElemen
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"8xIwr","react":"6TuXu","react-dom":"gkWJK","react-bootstrap/Container":"2PRIq","./components/main-view/main-view":"2zHas","@parcel/transformer-js/src/esmodule-helpers.js":"7VCmx","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7iESW","redux":"4d0QS","react-redux":"2L0if","./reducers/reducers":"atdYA","redux-devtools-extension":"8GWVf","./index.scss":"jUTZ8"}],"8xIwr":[function(require,module,exports) {
+},{"react/jsx-runtime":"8xIwr","react":"6TuXu","react-dom":"gkWJK","react-bootstrap/Container":"2PRIq","./components/main-view/main-view":"2zHas","@parcel/transformer-js/src/esmodule-helpers.js":"7VCmx","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7iESW","react-redux":"2L0if","./reducers/reducers":"atdYA","redux-devtools-extension":"8GWVf","./index.scss":"jUTZ8","@reduxjs/toolkit":"kjiF3"}],"8xIwr":[function(require,module,exports) {
 'use strict';
 module.exports = require('./cjs/react-jsx-runtime.development.js');
 
@@ -47970,7 +47971,48 @@ $RefreshReg$(_c, "VisibilityFilterInput");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"8xIwr","react":"6TuXu","react-redux":"2L0if","react-bootstrap/Form":"5ykgY","../../actions/actions":"aNglQ","@parcel/transformer-js/src/esmodule-helpers.js":"7VCmx","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7iESW"}],"4d0QS":[function(require,module,exports) {
+},{"react/jsx-runtime":"8xIwr","react":"6TuXu","react-redux":"2L0if","react-bootstrap/Form":"5ykgY","../../actions/actions":"aNglQ","@parcel/transformer-js/src/esmodule-helpers.js":"7VCmx","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7iESW"}],"atdYA":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+/*
+* First two reducer functions
+* Second the reducers are combined
+*/ var _redux = require("redux");
+var _actions = require("../actions/actions");
+function visibilityFilter(state = '', action) {
+    switch(action.type){
+        case _actions.SET_FILTER:
+            return action.value;
+        default:
+            return state;
+    }
+}
+function movies(state = [], action) {
+    switch(action.type){
+        case _actions.SET_MOVIES:
+            return action.value;
+        default:
+            return state;
+    }
+}
+function user(state = [], action) {
+    switch(action.type){
+        case _actions.SET_USER:
+            return action.user;
+        case _actions.SET_UPDATE_USER:
+            return action.value;
+        default:
+            return state;
+    }
+}
+const moviesApp = _redux.combineReducers({
+    visibilityFilter,
+    movies,
+    user
+});
+exports.default = moviesApp;
+
+},{"redux":"4d0QS","../actions/actions":"aNglQ","@parcel/transformer-js/src/esmodule-helpers.js":"7VCmx"}],"4d0QS":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "__DO_NOT_USE__ActionTypes", ()=>ActionTypes
@@ -48548,48 +48590,7 @@ function _defineProperty(obj, key, value) {
 }
 exports.default = _defineProperty;
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"7VCmx"}],"atdYA":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-/*
-* First two reducer functions
-* Second the reducers are combined
-*/ var _redux = require("redux");
-var _actions = require("../actions/actions");
-function visibilityFilter(state = '', action) {
-    switch(action.type){
-        case _actions.SET_FILTER:
-            return action.value;
-        default:
-            return state;
-    }
-}
-function movies(state = [], action) {
-    switch(action.type){
-        case _actions.SET_MOVIES:
-            return action.value;
-        default:
-            return state;
-    }
-}
-function user(state = [], action) {
-    switch(action.type){
-        case _actions.SET_USER:
-            return action.user;
-        case _actions.SET_UPDATE_USER:
-            return action.value;
-        default:
-            return state;
-    }
-}
-const moviesApp = _redux.combineReducers({
-    visibilityFilter,
-    movies,
-    user
-});
-exports.default = moviesApp;
-
-},{"redux":"4d0QS","../actions/actions":"aNglQ","@parcel/transformer-js/src/esmodule-helpers.js":"7VCmx"}],"8GWVf":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"7VCmx"}],"8GWVf":[function(require,module,exports) {
 'use strict';
 var compose = require('redux').compose;
 exports.__esModule = true;
@@ -48604,6 +48605,3199 @@ exports.devToolsEnhancer = typeof window !== 'undefined' && window.__REDUX_DEVTO
     };
 };
 
-},{"redux":"4d0QS"}],"jUTZ8":[function() {},{}]},["Dtqvr","e0bDS","dLPEP"], "dLPEP", "parcelRequireaec4")
+},{"redux":"4d0QS"}],"jUTZ8":[function() {},{}],"kjiF3":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "MiddlewareArray", ()=>MiddlewareArray1
+);
+parcelHelpers.export(exports, "TaskAbortError", ()=>TaskAbortError
+);
+parcelHelpers.export(exports, "addListener", ()=>addListener
+);
+parcelHelpers.export(exports, "clearAllListeners", ()=>clearAllListeners
+);
+parcelHelpers.export(exports, "configureStore", ()=>configureStore
+);
+parcelHelpers.export(exports, "createAction", ()=>createAction
+);
+parcelHelpers.export(exports, "createAsyncThunk", ()=>createAsyncThunk
+);
+parcelHelpers.export(exports, "createDraftSafeSelector", ()=>createDraftSafeSelector
+);
+parcelHelpers.export(exports, "createEntityAdapter", ()=>createEntityAdapter
+);
+parcelHelpers.export(exports, "createImmutableStateInvariantMiddleware", ()=>createImmutableStateInvariantMiddleware
+);
+parcelHelpers.export(exports, "createListenerMiddleware", ()=>createListenerMiddleware
+);
+parcelHelpers.export(exports, "createNextState", ()=>_immerDefault.default
+);
+parcelHelpers.export(exports, "createReducer", ()=>createReducer
+);
+parcelHelpers.export(exports, "createSelector", ()=>_reselect.createSelector
+);
+parcelHelpers.export(exports, "createSerializableStateInvariantMiddleware", ()=>createSerializableStateInvariantMiddleware
+);
+parcelHelpers.export(exports, "createSlice", ()=>createSlice
+);
+parcelHelpers.export(exports, "current", ()=>_immer.current
+);
+parcelHelpers.export(exports, "findNonSerializableValue", ()=>findNonSerializableValue
+);
+parcelHelpers.export(exports, "freeze", ()=>_immer.freeze
+);
+parcelHelpers.export(exports, "getDefaultMiddleware", ()=>getDefaultMiddleware
+);
+parcelHelpers.export(exports, "getType", ()=>getType
+);
+parcelHelpers.export(exports, "isAllOf", ()=>isAllOf
+);
+parcelHelpers.export(exports, "isAnyOf", ()=>isAnyOf
+);
+parcelHelpers.export(exports, "isAsyncThunkAction", ()=>isAsyncThunkAction
+);
+parcelHelpers.export(exports, "isDraft", ()=>_immer.isDraft
+);
+parcelHelpers.export(exports, "isFulfilled", ()=>isFulfilled
+);
+parcelHelpers.export(exports, "isImmutableDefault", ()=>isImmutableDefault
+);
+parcelHelpers.export(exports, "isPending", ()=>isPending
+);
+parcelHelpers.export(exports, "isPlain", ()=>isPlain
+);
+parcelHelpers.export(exports, "isPlainObject", ()=>isPlainObject
+);
+parcelHelpers.export(exports, "isRejected", ()=>isRejected
+);
+parcelHelpers.export(exports, "isRejectedWithValue", ()=>isRejectedWithValue
+);
+parcelHelpers.export(exports, "miniSerializeError", ()=>miniSerializeError
+);
+parcelHelpers.export(exports, "nanoid", ()=>nanoid
+);
+parcelHelpers.export(exports, "original", ()=>_immer.original
+);
+parcelHelpers.export(exports, "removeListener", ()=>removeListener
+);
+parcelHelpers.export(exports, "unwrapResult", ()=>unwrapResult
+);
+// src/index.ts
+var _immer = require("immer");
+var _immerDefault = parcelHelpers.interopDefault(_immer);
+var _reselect = require("reselect");
+// src/configureStore.ts
+var _redux = require("redux");
+// src/getDefaultMiddleware.ts
+var _reduxThunk = require("redux-thunk");
+var _reduxThunkDefault = parcelHelpers.interopDefault(_reduxThunk);
+parcelHelpers.exportAll(_redux, exports);
+var process = require("process");
+var __extends = undefined && undefined.__extends || function() {
+    var extendStatics = function(d, b) {
+        extendStatics = Object.setPrototypeOf || ({
+            __proto__: []
+        }) instanceof Array && function(d1, b1) {
+            d1.__proto__ = b1;
+        } || function(d1, b1) {
+            for(var p in b1)if (Object.prototype.hasOwnProperty.call(b1, p)) d1[p] = b1[p];
+        };
+        return extendStatics(d, b);
+    };
+    return function(d, b) {
+        if (typeof b !== "function" && b !== null) throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() {
+            this.constructor = d;
+        }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+}();
+var __generator = undefined && undefined.__generator || function(thisArg, body) {
+    var _ = {
+        label: 0,
+        sent: function() {
+            if (t[0] & 1) throw t[1];
+            return t[1];
+        },
+        trys: [],
+        ops: []
+    }, f, y, t, g;
+    function verb(n) {
+        return function(v) {
+            return step([
+                n,
+                v
+            ]);
+        };
+    }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while(_)try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [
+                op[0] & 2,
+                t.value
+            ];
+            switch(op[0]){
+                case 0:
+                case 1:
+                    t = op;
+                    break;
+                case 4:
+                    _.label++;
+                    return {
+                        value: op[1],
+                        done: false
+                    };
+                case 5:
+                    _.label++;
+                    y = op[1];
+                    op = [
+                        0
+                    ];
+                    continue;
+                case 7:
+                    op = _.ops.pop();
+                    _.trys.pop();
+                    continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {
+                        _ = 0;
+                        continue;
+                    }
+                    if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {
+                        _.label = op[1];
+                        break;
+                    }
+                    if (op[0] === 6 && _.label < t[1]) {
+                        _.label = t[1];
+                        t = op;
+                        break;
+                    }
+                    if (t && _.label < t[2]) {
+                        _.label = t[2];
+                        _.ops.push(op);
+                        break;
+                    }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop();
+                    continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) {
+            op = [
+                6,
+                e
+            ];
+            y = 0;
+        } finally{
+            f = t = 0;
+        }
+        if (op[0] & 5) throw op[1];
+        return {
+            value: op[0] ? op[1] : void 0,
+            done: true
+        };
+    }
+    return g = {
+        next: verb(0),
+        "throw": verb(1),
+        "return": verb(2)
+    }, typeof Symbol === "function" && (g[Symbol.iterator] = function() {
+        return this;
+    }), g;
+};
+var __spreadArray = undefined && undefined.__spreadArray || function(to, from) {
+    for(var i = 0, il = from.length, j = to.length; i < il; i++, j++)to[j] = from[i];
+    return to;
+};
+var __defProp = Object.defineProperty;
+var __defProps = Object.defineProperties;
+var __getOwnPropDescs = Object.getOwnPropertyDescriptors;
+var __getOwnPropSymbols = Object.getOwnPropertySymbols;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __propIsEnum = Object.prototype.propertyIsEnumerable;
+var __defNormalProp = function(obj, key, value) {
+    return key in obj ? __defProp(obj, key, {
+        enumerable: true,
+        configurable: true,
+        writable: true,
+        value: value
+    }) : obj[key] = value;
+};
+var __spreadValues = function(a, b) {
+    for(var prop in b || (b = {
+    }))if (__hasOwnProp.call(b, prop)) __defNormalProp(a, prop, b[prop]);
+    if (__getOwnPropSymbols) for(var _i = 0, _c = __getOwnPropSymbols(b); _i < _c.length; _i++){
+        var prop = _c[_i];
+        if (__propIsEnum.call(b, prop)) __defNormalProp(a, prop, b[prop]);
+    }
+    return a;
+};
+var __spreadProps = function(a, b) {
+    return __defProps(a, __getOwnPropDescs(b));
+};
+var __async = function(__this, __arguments, generator) {
+    return new Promise(function(resolve, reject) {
+        var fulfilled = function(value) {
+            try {
+                step(generator.next(value));
+            } catch (e) {
+                reject(e);
+            }
+        };
+        var rejected = function(value) {
+            try {
+                step(generator.throw(value));
+            } catch (e) {
+                reject(e);
+            }
+        };
+        var step = function(x) {
+            return x.done ? resolve(x.value) : Promise.resolve(x.value).then(fulfilled, rejected);
+        };
+        step((generator = generator.apply(__this, __arguments)).next());
+    });
+};
+var createDraftSafeSelector = function() {
+    var args = [];
+    for(var _i = 0; _i < arguments.length; _i++)args[_i] = arguments[_i];
+    var selector = _reselect.createSelector.apply(void 0, args);
+    var wrappedSelector = function(value) {
+        var rest = [];
+        for(var _i1 = 1; _i1 < arguments.length; _i1++)rest[_i1 - 1] = arguments[_i1];
+        return selector.apply(void 0, __spreadArray([
+            _immer.isDraft(value) ? _immer.current(value) : value
+        ], rest));
+    };
+    return wrappedSelector;
+};
+var composeWithDevTools = typeof window !== "undefined" && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : function() {
+    if (arguments.length === 0) return void 0;
+    if (typeof arguments[0] === "object") return _redux.compose;
+    return _redux.compose.apply(null, arguments);
+};
+var devToolsEnhancer = typeof window !== "undefined" && window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__ : function() {
+    return function(noop2) {
+        return noop2;
+    };
+};
+// src/isPlainObject.ts
+function isPlainObject(value) {
+    if (typeof value !== "object" || value === null) return false;
+    var proto = Object.getPrototypeOf(value);
+    if (proto === null) return true;
+    var baseProto = proto;
+    while(Object.getPrototypeOf(baseProto) !== null)baseProto = Object.getPrototypeOf(baseProto);
+    return proto === baseProto;
+}
+function getTimeMeasureUtils(maxDelay, fnName) {
+    var elapsed = 0;
+    return {
+        measureTime: function(fn) {
+            var started = Date.now();
+            try {
+                return fn();
+            } finally{
+                var finished = Date.now();
+                elapsed += finished - started;
+            }
+        },
+        warnIfExceeded: function() {
+            if (elapsed > maxDelay) console.warn(fnName + " took " + elapsed + "ms, which is more than the warning threshold of " + maxDelay + "ms. \nIf your state or actions are very large, you may want to disable the middleware as it might cause too much of a slowdown in development mode. See https://redux-toolkit.js.org/api/getDefaultMiddleware for instructions.\nIt is disabled in production builds, so you don't need to worry about that.");
+        }
+    };
+}
+var MiddlewareArray1 = function(_super) {
+    __extends(MiddlewareArray2, _super);
+    function MiddlewareArray2() {
+        var args = [];
+        for(var _i = 0; _i < arguments.length; _i++)args[_i] = arguments[_i];
+        var _this = _super.apply(this, args) || this;
+        Object.setPrototypeOf(_this, MiddlewareArray2.prototype);
+        return _this;
+    }
+    Object.defineProperty(MiddlewareArray2, Symbol.species, {
+        get: function() {
+            return MiddlewareArray2;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    MiddlewareArray2.prototype.concat = function() {
+        var arr = [];
+        for(var _i = 0; _i < arguments.length; _i++)arr[_i] = arguments[_i];
+        return _super.prototype.concat.apply(this, arr);
+    };
+    MiddlewareArray2.prototype.prepend = function() {
+        var arr = [];
+        for(var _i = 0; _i < arguments.length; _i++)arr[_i] = arguments[_i];
+        if (arr.length === 1 && Array.isArray(arr[0])) return new (MiddlewareArray2.bind.apply(MiddlewareArray2, __spreadArray([
+            void 0
+        ], arr[0].concat(this))))();
+        return new (MiddlewareArray2.bind.apply(MiddlewareArray2, __spreadArray([
+            void 0
+        ], arr.concat(this))))();
+    };
+    return MiddlewareArray2;
+}(Array);
+function freezeDraftable(val) {
+    return _immer.isDraftable(val) ? _immerDefault.default(val, function() {
+    }) : val;
+}
+// src/immutableStateInvariantMiddleware.ts
+var isProduction = false;
+var prefix = "Invariant failed";
+function invariant(condition, message) {
+    if (condition) return;
+    if (isProduction) throw new Error(prefix);
+    throw new Error(prefix + ": " + (message || ""));
+}
+function stringify(obj, serializer, indent, decycler) {
+    return JSON.stringify(obj, getSerialize(serializer, decycler), indent);
+}
+function getSerialize(serializer, decycler) {
+    var stack = [], keys = [];
+    if (!decycler) decycler = function(_, value) {
+        if (stack[0] === value) return "[Circular ~]";
+        return "[Circular ~." + keys.slice(0, stack.indexOf(value)).join(".") + "]";
+    };
+    return function(key, value) {
+        if (stack.length > 0) {
+            var thisPos = stack.indexOf(this);
+            ~thisPos ? stack.splice(thisPos + 1) : stack.push(this);
+            ~thisPos ? keys.splice(thisPos, Infinity, key) : keys.push(key);
+            if (~stack.indexOf(value)) value = decycler.call(this, key, value);
+        } else stack.push(value);
+        return serializer == null ? value : serializer.call(this, key, value);
+    };
+}
+function isImmutableDefault(value) {
+    return typeof value !== "object" || value == null || Object.isFrozen(value);
+}
+function trackForMutations(isImmutable, ignorePaths, obj) {
+    var trackedProperties = trackProperties(isImmutable, ignorePaths, obj);
+    return {
+        detectMutations: function() {
+            return detectMutations(isImmutable, ignorePaths, trackedProperties, obj);
+        }
+    };
+}
+function trackProperties(isImmutable, ignorePaths, obj, path) {
+    if (ignorePaths === void 0) ignorePaths = [];
+    if (path === void 0) path = "";
+    var tracked = {
+        value: obj
+    };
+    if (!isImmutable(obj)) {
+        tracked.children = {
+        };
+        for(var key in obj){
+            var childPath = path ? path + "." + key : key;
+            if (ignorePaths.length && ignorePaths.indexOf(childPath) !== -1) continue;
+            tracked.children[key] = trackProperties(isImmutable, ignorePaths, obj[key], childPath);
+        }
+    }
+    return tracked;
+}
+function detectMutations(isImmutable, ignorePaths, trackedProperty, obj, sameParentRef, path) {
+    if (ignorePaths === void 0) ignorePaths = [];
+    if (sameParentRef === void 0) sameParentRef = false;
+    if (path === void 0) path = "";
+    var prevObj = trackedProperty ? trackedProperty.value : void 0;
+    var sameRef = prevObj === obj;
+    if (sameParentRef && !sameRef && !Number.isNaN(obj)) return {
+        wasMutated: true,
+        path: path
+    };
+    if (isImmutable(prevObj) || isImmutable(obj)) return {
+        wasMutated: false
+    };
+    var keysToDetect = {
+    };
+    for(var key in trackedProperty.children)keysToDetect[key] = true;
+    for(var key in obj)keysToDetect[key] = true;
+    for(var key in keysToDetect){
+        var childPath = path ? path + "." + key : key;
+        if (ignorePaths.length && ignorePaths.indexOf(childPath) !== -1) continue;
+        var result = detectMutations(isImmutable, ignorePaths, trackedProperty.children[key], obj[key], sameRef, childPath);
+        if (result.wasMutated) return result;
+    }
+    return {
+        wasMutated: false
+    };
+}
+function createImmutableStateInvariantMiddleware(options) {
+    if (options === void 0) options = {
+    };
+    var next, action;
+    var _c = options.isImmutable, isImmutable = _c === void 0 ? isImmutableDefault : _c, ignoredPaths = options.ignoredPaths, _d = options.warnAfter, warnAfter = _d === void 0 ? 32 : _d, ignore = options.ignore;
+    ignoredPaths = ignoredPaths || ignore;
+    var track = trackForMutations.bind(null, isImmutable, ignoredPaths);
+    return function(_c1) {
+        var getState = _c1.getState;
+        var state = getState();
+        var tracker = track(state);
+        var result;
+        return function(next1) {
+            return function(action1) {
+                var measureUtils = getTimeMeasureUtils(warnAfter, "ImmutableStateInvariantMiddleware");
+                measureUtils.measureTime(function() {
+                    state = getState();
+                    result = tracker.detectMutations();
+                    tracker = track(state);
+                    invariant(!result.wasMutated, "A state mutation was detected between dispatches, in the path '" + (result.path || "") + "'.  This may cause incorrect behavior. (https://redux.js.org/style-guide/style-guide#do-not-mutate-state)");
+                });
+                var dispatchedAction = next1(action1);
+                measureUtils.measureTime(function() {
+                    state = getState();
+                    result = tracker.detectMutations();
+                    tracker = track(state);
+                    result.wasMutated && invariant(!result.wasMutated, "A state mutation was detected inside a dispatch, in the path: " + (result.path || "") + ". Take a look at the reducer(s) handling the action " + stringify(action1) + ". (https://redux.js.org/style-guide/style-guide#do-not-mutate-state)");
+                });
+                measureUtils.warnIfExceeded();
+                return dispatchedAction;
+            };
+        };
+    };
+}
+// src/serializableStateInvariantMiddleware.ts
+function isPlain(val) {
+    var type = typeof val;
+    return val == null || type === "string" || type === "boolean" || type === "number" || Array.isArray(val) || isPlainObject(val);
+}
+function findNonSerializableValue(value, path, isSerializable, getEntries, ignoredPaths) {
+    if (path === void 0) path = "";
+    if (isSerializable === void 0) isSerializable = isPlain;
+    if (ignoredPaths === void 0) ignoredPaths = [];
+    var foundNestedSerializable;
+    if (!isSerializable(value)) return {
+        keyPath: path || "<root>",
+        value: value
+    };
+    if (typeof value !== "object" || value === null) return false;
+    var entries = getEntries != null ? getEntries(value) : Object.entries(value);
+    var hasIgnoredPaths = ignoredPaths.length > 0;
+    for(var _i = 0, entries_1 = entries; _i < entries_1.length; _i++){
+        var _c = entries_1[_i], key = _c[0], nestedValue = _c[1];
+        var nestedPath = path ? path + "." + key : key;
+        if (hasIgnoredPaths && ignoredPaths.indexOf(nestedPath) >= 0) continue;
+        if (!isSerializable(nestedValue)) return {
+            keyPath: nestedPath,
+            value: nestedValue
+        };
+        if (typeof nestedValue === "object") {
+            foundNestedSerializable = findNonSerializableValue(nestedValue, nestedPath, isSerializable, getEntries, ignoredPaths);
+            if (foundNestedSerializable) return foundNestedSerializable;
+        }
+    }
+    return false;
+}
+function createSerializableStateInvariantMiddleware(options) {
+    if (options === void 0) options = {
+    };
+    var next, action;
+    var _c = options.isSerializable, isSerializable = _c === void 0 ? isPlain : _c, getEntries = options.getEntries, _d = options.ignoredActions, ignoredActions = _d === void 0 ? [] : _d, _e = options.ignoredActionPaths, ignoredActionPaths = _e === void 0 ? [
+        "meta.arg",
+        "meta.baseQueryMeta"
+    ] : _e, _f = options.ignoredPaths, ignoredPaths = _f === void 0 ? [] : _f, _g = options.warnAfter, warnAfter = _g === void 0 ? 32 : _g, _h = options.ignoreState, ignoreState = _h === void 0 ? false : _h, _j = options.ignoreActions, ignoreActions = _j === void 0 ? false : _j;
+    return function(storeAPI) {
+        return function(next1) {
+            return function(action1) {
+                var result = next1(action1);
+                var measureUtils = getTimeMeasureUtils(warnAfter, "SerializableStateInvariantMiddleware");
+                if (!ignoreActions && !(ignoredActions.length && ignoredActions.indexOf(action1.type) !== -1)) measureUtils.measureTime(function() {
+                    var foundActionNonSerializableValue = findNonSerializableValue(action1, "", isSerializable, getEntries, ignoredActionPaths);
+                    if (foundActionNonSerializableValue) {
+                        var keyPath = foundActionNonSerializableValue.keyPath, value = foundActionNonSerializableValue.value;
+                        console.error("A non-serializable value was detected in an action, in the path: `" + keyPath + "`. Value:", value, "\nTake a look at the logic that dispatched this action: ", action1, "\n(See https://redux.js.org/faq/actions#why-should-type-be-a-string-or-at-least-serializable-why-should-my-action-types-be-constants)", "\n(To allow non-serializable values see: https://redux-toolkit.js.org/usage/usage-guide#working-with-non-serializable-data)");
+                    }
+                });
+                if (!ignoreState) {
+                    measureUtils.measureTime(function() {
+                        var state = storeAPI.getState();
+                        var foundStateNonSerializableValue = findNonSerializableValue(state, "", isSerializable, getEntries, ignoredPaths);
+                        if (foundStateNonSerializableValue) {
+                            var keyPath = foundStateNonSerializableValue.keyPath, value = foundStateNonSerializableValue.value;
+                            console.error("A non-serializable value was detected in the state, in the path: `" + keyPath + "`. Value:", value, "\nTake a look at the reducer(s) handling this action type: " + action1.type + ".\n(See https://redux.js.org/faq/organizing-state#can-i-put-functions-promises-or-other-non-serializable-items-in-my-store-state)");
+                        }
+                    });
+                    measureUtils.warnIfExceeded();
+                }
+                return result;
+            };
+        };
+    };
+}
+// src/getDefaultMiddleware.ts
+function isBoolean(x) {
+    return typeof x === "boolean";
+}
+function curryGetDefaultMiddleware() {
+    return function curriedGetDefaultMiddleware(options) {
+        return getDefaultMiddleware(options);
+    };
+}
+function getDefaultMiddleware(options) {
+    if (options === void 0) options = {
+    };
+    var _c = options.thunk, thunk = _c === void 0 ? true : _c, _d = options.immutableCheck, immutableCheck = _d === void 0 ? true : _d, _e = options.serializableCheck, serializableCheck = _e === void 0 ? true : _e;
+    var middlewareArray = new MiddlewareArray1();
+    if (thunk) {
+        if (isBoolean(thunk)) middlewareArray.push(_reduxThunkDefault.default);
+        else middlewareArray.push(_reduxThunkDefault.default.withExtraArgument(thunk.extraArgument));
+    }
+    if (immutableCheck) {
+        var immutableOptions = {
+        };
+        if (!isBoolean(immutableCheck)) immutableOptions = immutableCheck;
+        middlewareArray.unshift(createImmutableStateInvariantMiddleware(immutableOptions));
+    }
+    if (serializableCheck) {
+        var serializableOptions = {
+        };
+        if (!isBoolean(serializableCheck)) serializableOptions = serializableCheck;
+        middlewareArray.push(createSerializableStateInvariantMiddleware(serializableOptions));
+    }
+    return middlewareArray;
+}
+// src/configureStore.ts
+var IS_PRODUCTION = false;
+function configureStore(options) {
+    var curriedGetDefaultMiddleware = curryGetDefaultMiddleware();
+    var _c = options || {
+    }, _d = _c.reducer, reducer = _d === void 0 ? void 0 : _d, _e = _c.middleware, middleware = _e === void 0 ? curriedGetDefaultMiddleware() : _e, _f = _c.devTools, devTools = _f === void 0 ? true : _f, _g = _c.preloadedState, preloadedState = _g === void 0 ? void 0 : _g, _h = _c.enhancers, enhancers = _h === void 0 ? void 0 : _h;
+    var rootReducer;
+    if (typeof reducer === "function") rootReducer = reducer;
+    else if (isPlainObject(reducer)) rootReducer = _redux.combineReducers(reducer);
+    else throw new Error('"reducer" is a required argument, and must be a function or an object of functions that can be passed to combineReducers');
+    var finalMiddleware = middleware;
+    if (typeof finalMiddleware === "function") {
+        finalMiddleware = finalMiddleware(curriedGetDefaultMiddleware);
+        if (!IS_PRODUCTION && !Array.isArray(finalMiddleware)) throw new Error("when using a middleware builder function, an array of middleware must be returned");
+    }
+    if (!IS_PRODUCTION && finalMiddleware.some(function(item) {
+        return typeof item !== "function";
+    })) throw new Error("each middleware provided to configureStore must be a function");
+    var middlewareEnhancer = _redux.applyMiddleware.apply(void 0, finalMiddleware);
+    var finalCompose = _redux.compose;
+    if (devTools) finalCompose = composeWithDevTools(__spreadValues({
+        trace: !IS_PRODUCTION
+    }, typeof devTools === "object" && devTools));
+    var storeEnhancers = [
+        middlewareEnhancer
+    ];
+    if (Array.isArray(enhancers)) storeEnhancers = __spreadArray([
+        middlewareEnhancer
+    ], enhancers);
+    else if (typeof enhancers === "function") storeEnhancers = enhancers(storeEnhancers);
+    var composedEnhancer = finalCompose.apply(void 0, storeEnhancers);
+    return _redux.createStore(rootReducer, preloadedState, composedEnhancer);
+}
+// src/createAction.ts
+function createAction(type, prepareAction) {
+    function actionCreator() {
+        var args = [];
+        for(var _i = 0; _i < arguments.length; _i++)args[_i] = arguments[_i];
+        if (prepareAction) {
+            var prepared = prepareAction.apply(void 0, args);
+            if (!prepared) throw new Error("prepareAction did not return an object");
+            return __spreadValues(__spreadValues({
+                type: type,
+                payload: prepared.payload
+            }, "meta" in prepared && {
+                meta: prepared.meta
+            }), "error" in prepared && {
+                error: prepared.error
+            });
+        }
+        return {
+            type: type,
+            payload: args[0]
+        };
+    }
+    actionCreator.toString = function() {
+        return "" + type;
+    };
+    actionCreator.type = type;
+    actionCreator.match = function(action) {
+        return action.type === type;
+    };
+    return actionCreator;
+}
+function isFSA(action) {
+    return isPlainObject(action) && typeof action.type === "string" && Object.keys(action).every(isValidKey);
+}
+function isValidKey(key) {
+    return [
+        "type",
+        "payload",
+        "error",
+        "meta"
+    ].indexOf(key) > -1;
+}
+function getType(actionCreator) {
+    return "" + actionCreator;
+}
+// src/mapBuilders.ts
+function executeReducerBuilderCallback(builderCallback) {
+    var actionsMap = {
+    };
+    var actionMatchers = [];
+    var defaultCaseReducer;
+    var builder = {
+        addCase: function(typeOrActionCreator, reducer) {
+            if (actionMatchers.length > 0) throw new Error("`builder.addCase` should only be called before calling `builder.addMatcher`");
+            if (defaultCaseReducer) throw new Error("`builder.addCase` should only be called before calling `builder.addDefaultCase`");
+            var type = typeof typeOrActionCreator === "string" ? typeOrActionCreator : typeOrActionCreator.type;
+            if (type in actionsMap) throw new Error("addCase cannot be called with two reducers for the same action type");
+            actionsMap[type] = reducer;
+            return builder;
+        },
+        addMatcher: function(matcher, reducer) {
+            if (defaultCaseReducer) throw new Error("`builder.addMatcher` should only be called before calling `builder.addDefaultCase`");
+            actionMatchers.push({
+                matcher: matcher,
+                reducer: reducer
+            });
+            return builder;
+        },
+        addDefaultCase: function(reducer) {
+            if (defaultCaseReducer) throw new Error("`builder.addDefaultCase` can only be called once");
+            defaultCaseReducer = reducer;
+            return builder;
+        }
+    };
+    builderCallback(builder);
+    return [
+        actionsMap,
+        actionMatchers,
+        defaultCaseReducer
+    ];
+}
+// src/createReducer.ts
+function isStateFunction(x) {
+    return typeof x === "function";
+}
+function createReducer(initialState, mapOrBuilderCallback, actionMatchers, defaultCaseReducer) {
+    if (actionMatchers === void 0) actionMatchers = [];
+    var _c = typeof mapOrBuilderCallback === "function" ? executeReducerBuilderCallback(mapOrBuilderCallback) : [
+        mapOrBuilderCallback,
+        actionMatchers,
+        defaultCaseReducer
+    ], actionsMap = _c[0], finalActionMatchers = _c[1], finalDefaultCaseReducer = _c[2];
+    var getInitialState;
+    if (isStateFunction(initialState)) getInitialState = function() {
+        return freezeDraftable(initialState());
+    };
+    else {
+        var frozenInitialState_1 = freezeDraftable(initialState);
+        getInitialState = function() {
+            return frozenInitialState_1;
+        };
+    }
+    function reducer(state, action) {
+        if (state === void 0) state = getInitialState();
+        var caseReducers = __spreadArray([
+            actionsMap[action.type]
+        ], finalActionMatchers.filter(function(_c1) {
+            var matcher = _c1.matcher;
+            return matcher(action);
+        }).map(function(_c1) {
+            var reducer2 = _c1.reducer;
+            return reducer2;
+        }));
+        if (caseReducers.filter(function(cr) {
+            return !!cr;
+        }).length === 0) caseReducers = [
+            finalDefaultCaseReducer
+        ];
+        return caseReducers.reduce(function(previousState, caseReducer) {
+            if (caseReducer) {
+                if (_immer.isDraft(previousState)) {
+                    var draft = previousState;
+                    var result = caseReducer(draft, action);
+                    if (result === void 0) return previousState;
+                    return result;
+                } else if (!_immer.isDraftable(previousState)) {
+                    var result = caseReducer(previousState, action);
+                    if (result === void 0) {
+                        if (previousState === null) return previousState;
+                        throw Error("A case reducer on a non-draftable value must not return undefined");
+                    }
+                    return result;
+                } else return _immerDefault.default(previousState, function(draft) {
+                    return caseReducer(draft, action);
+                });
+            }
+            return previousState;
+        }, state);
+    }
+    reducer.getInitialState = getInitialState;
+    return reducer;
+}
+// src/createSlice.ts
+function getType2(slice, actionKey) {
+    return slice + "/" + actionKey;
+}
+function createSlice(options) {
+    var name = options.name;
+    if (!name) throw new Error("`name` is a required option for createSlice");
+    if (typeof process !== "undefined" && true) {
+        if (options.initialState === void 0) console.error("You must provide an `initialState` value that is not `undefined`. You may have misspelled `initialState`");
+    }
+    var initialState = typeof options.initialState == "function" ? options.initialState : freezeDraftable(options.initialState);
+    var reducers = options.reducers || {
+    };
+    var reducerNames = Object.keys(reducers);
+    var sliceCaseReducersByName = {
+    };
+    var sliceCaseReducersByType = {
+    };
+    var actionCreators = {
+    };
+    reducerNames.forEach(function(reducerName) {
+        var maybeReducerWithPrepare = reducers[reducerName];
+        var type = getType2(name, reducerName);
+        var caseReducer;
+        var prepareCallback;
+        if ("reducer" in maybeReducerWithPrepare) {
+            caseReducer = maybeReducerWithPrepare.reducer;
+            prepareCallback = maybeReducerWithPrepare.prepare;
+        } else caseReducer = maybeReducerWithPrepare;
+        sliceCaseReducersByName[reducerName] = caseReducer;
+        sliceCaseReducersByType[type] = caseReducer;
+        actionCreators[reducerName] = prepareCallback ? createAction(type, prepareCallback) : createAction(type);
+    });
+    function buildReducer() {
+        var _c = typeof options.extraReducers === "function" ? executeReducerBuilderCallback(options.extraReducers) : [
+            options.extraReducers
+        ], _d = _c[0], extraReducers = _d === void 0 ? {
+        } : _d, _e = _c[1], actionMatchers = _e === void 0 ? [] : _e, _f = _c[2], defaultCaseReducer = _f === void 0 ? void 0 : _f;
+        var finalCaseReducers = __spreadValues(__spreadValues({
+        }, extraReducers), sliceCaseReducersByType);
+        return createReducer(initialState, finalCaseReducers, actionMatchers, defaultCaseReducer);
+    }
+    var _reducer;
+    return {
+        name: name,
+        reducer: function(state, action) {
+            if (!_reducer) _reducer = buildReducer();
+            return _reducer(state, action);
+        },
+        actions: actionCreators,
+        caseReducers: sliceCaseReducersByName,
+        getInitialState: function() {
+            if (!_reducer) _reducer = buildReducer();
+            return _reducer.getInitialState();
+        }
+    };
+}
+// src/entities/entity_state.ts
+function getInitialEntityState() {
+    return {
+        ids: [],
+        entities: {
+        }
+    };
+}
+function createInitialStateFactory() {
+    function getInitialState(additionalState) {
+        if (additionalState === void 0) additionalState = {
+        };
+        return Object.assign(getInitialEntityState(), additionalState);
+    }
+    return {
+        getInitialState: getInitialState
+    };
+}
+// src/entities/state_selectors.ts
+function createSelectorsFactory() {
+    function getSelectors(selectState) {
+        var selectIds = function(state) {
+            return state.ids;
+        };
+        var selectEntities = function(state) {
+            return state.entities;
+        };
+        var selectAll = createDraftSafeSelector(selectIds, selectEntities, function(ids, entities) {
+            return ids.map(function(id) {
+                return entities[id];
+            });
+        });
+        var selectId = function(_, id) {
+            return id;
+        };
+        var selectById = function(entities, id) {
+            return entities[id];
+        };
+        var selectTotal = createDraftSafeSelector(selectIds, function(ids) {
+            return ids.length;
+        });
+        if (!selectState) return {
+            selectIds: selectIds,
+            selectEntities: selectEntities,
+            selectAll: selectAll,
+            selectTotal: selectTotal,
+            selectById: createDraftSafeSelector(selectEntities, selectId, selectById)
+        };
+        var selectGlobalizedEntities = createDraftSafeSelector(selectState, selectEntities);
+        return {
+            selectIds: createDraftSafeSelector(selectState, selectIds),
+            selectEntities: selectGlobalizedEntities,
+            selectAll: createDraftSafeSelector(selectState, selectAll),
+            selectTotal: createDraftSafeSelector(selectState, selectTotal),
+            selectById: createDraftSafeSelector(selectGlobalizedEntities, selectId, selectById)
+        };
+    }
+    return {
+        getSelectors: getSelectors
+    };
+}
+function createSingleArgumentStateOperator(mutator) {
+    var operator = createStateOperator(function(_, state) {
+        return mutator(state);
+    });
+    return function operation(state) {
+        return operator(state, void 0);
+    };
+}
+function createStateOperator(mutator) {
+    return function operation(state, arg) {
+        function isPayloadActionArgument(arg2) {
+            return isFSA(arg2);
+        }
+        var runMutator = function(draft) {
+            if (isPayloadActionArgument(arg)) mutator(arg.payload, draft);
+            else mutator(arg, draft);
+        };
+        if (_immer.isDraft(state)) {
+            runMutator(state);
+            return state;
+        } else return _immerDefault.default(state, runMutator);
+    };
+}
+// src/entities/utils.ts
+function selectIdValue(entity, selectId) {
+    var key = selectId(entity);
+    if (key === void 0) console.warn("The entity passed to the `selectId` implementation returned undefined.", "You should probably provide your own `selectId` implementation.", "The entity that was passed:", entity, "The `selectId` implementation:", selectId.toString());
+    return key;
+}
+function ensureEntitiesArray(entities) {
+    if (!Array.isArray(entities)) entities = Object.values(entities);
+    return entities;
+}
+function splitAddedUpdatedEntities(newEntities, selectId, state) {
+    newEntities = ensureEntitiesArray(newEntities);
+    var added = [];
+    var updated = [];
+    for(var _i = 0, newEntities_1 = newEntities; _i < newEntities_1.length; _i++){
+        var entity = newEntities_1[_i];
+        var id = selectIdValue(entity, selectId);
+        if (id in state.entities) updated.push({
+            id: id,
+            changes: entity
+        });
+        else added.push(entity);
+    }
+    return [
+        added,
+        updated
+    ];
+}
+// src/entities/unsorted_state_adapter.ts
+function createUnsortedStateAdapter(selectId) {
+    function addOneMutably(entity, state) {
+        var key = selectIdValue(entity, selectId);
+        if (key in state.entities) return;
+        state.ids.push(key);
+        state.entities[key] = entity;
+    }
+    function addManyMutably(newEntities, state) {
+        newEntities = ensureEntitiesArray(newEntities);
+        for(var _i = 0, newEntities_2 = newEntities; _i < newEntities_2.length; _i++){
+            var entity = newEntities_2[_i];
+            addOneMutably(entity, state);
+        }
+    }
+    function setOneMutably(entity, state) {
+        var key = selectIdValue(entity, selectId);
+        if (!(key in state.entities)) state.ids.push(key);
+        state.entities[key] = entity;
+    }
+    function setManyMutably(newEntities, state) {
+        newEntities = ensureEntitiesArray(newEntities);
+        for(var _i = 0, newEntities_3 = newEntities; _i < newEntities_3.length; _i++){
+            var entity = newEntities_3[_i];
+            setOneMutably(entity, state);
+        }
+    }
+    function setAllMutably(newEntities, state) {
+        newEntities = ensureEntitiesArray(newEntities);
+        state.ids = [];
+        state.entities = {
+        };
+        addManyMutably(newEntities, state);
+    }
+    function removeOneMutably(key, state) {
+        return removeManyMutably([
+            key
+        ], state);
+    }
+    function removeManyMutably(keys, state) {
+        var didMutate = false;
+        keys.forEach(function(key) {
+            if (key in state.entities) {
+                delete state.entities[key];
+                didMutate = true;
+            }
+        });
+        if (didMutate) state.ids = state.ids.filter(function(id) {
+            return id in state.entities;
+        });
+    }
+    function removeAllMutably(state) {
+        Object.assign(state, {
+            ids: [],
+            entities: {
+            }
+        });
+    }
+    function takeNewKey(keys, update, state) {
+        var original2 = state.entities[update.id];
+        var updated = Object.assign({
+        }, original2, update.changes);
+        var newKey = selectIdValue(updated, selectId);
+        var hasNewKey = newKey !== update.id;
+        if (hasNewKey) {
+            keys[update.id] = newKey;
+            delete state.entities[update.id];
+        }
+        state.entities[newKey] = updated;
+        return hasNewKey;
+    }
+    function updateOneMutably(update, state) {
+        return updateManyMutably([
+            update
+        ], state);
+    }
+    function updateManyMutably(updates, state) {
+        var newKeys = {
+        };
+        var updatesPerEntity = {
+        };
+        updates.forEach(function(update) {
+            if (update.id in state.entities) updatesPerEntity[update.id] = {
+                id: update.id,
+                changes: __spreadValues(__spreadValues({
+                }, updatesPerEntity[update.id] ? updatesPerEntity[update.id].changes : null), update.changes)
+            };
+        });
+        updates = Object.values(updatesPerEntity);
+        var didMutateEntities = updates.length > 0;
+        if (didMutateEntities) {
+            var didMutateIds = updates.filter(function(update) {
+                return takeNewKey(newKeys, update, state);
+            }).length > 0;
+            if (didMutateIds) state.ids = Object.keys(state.entities);
+        }
+    }
+    function upsertOneMutably(entity, state) {
+        return upsertManyMutably([
+            entity
+        ], state);
+    }
+    function upsertManyMutably(newEntities, state) {
+        var _c = splitAddedUpdatedEntities(newEntities, selectId, state), added = _c[0], updated = _c[1];
+        updateManyMutably(updated, state);
+        addManyMutably(added, state);
+    }
+    return {
+        removeAll: createSingleArgumentStateOperator(removeAllMutably),
+        addOne: createStateOperator(addOneMutably),
+        addMany: createStateOperator(addManyMutably),
+        setOne: createStateOperator(setOneMutably),
+        setMany: createStateOperator(setManyMutably),
+        setAll: createStateOperator(setAllMutably),
+        updateOne: createStateOperator(updateOneMutably),
+        updateMany: createStateOperator(updateManyMutably),
+        upsertOne: createStateOperator(upsertOneMutably),
+        upsertMany: createStateOperator(upsertManyMutably),
+        removeOne: createStateOperator(removeOneMutably),
+        removeMany: createStateOperator(removeManyMutably)
+    };
+}
+// src/entities/sorted_state_adapter.ts
+function createSortedStateAdapter(selectId, sort) {
+    var _c = createUnsortedStateAdapter(selectId), removeOne = _c.removeOne, removeMany = _c.removeMany, removeAll = _c.removeAll;
+    function addOneMutably(entity, state) {
+        return addManyMutably([
+            entity
+        ], state);
+    }
+    function addManyMutably(newEntities, state) {
+        newEntities = ensureEntitiesArray(newEntities);
+        var models = newEntities.filter(function(model) {
+            return !(selectIdValue(model, selectId) in state.entities);
+        });
+        if (models.length !== 0) merge(models, state);
+    }
+    function setOneMutably(entity, state) {
+        return setManyMutably([
+            entity
+        ], state);
+    }
+    function setManyMutably(newEntities, state) {
+        newEntities = ensureEntitiesArray(newEntities);
+        if (newEntities.length !== 0) merge(newEntities, state);
+    }
+    function setAllMutably(newEntities, state) {
+        newEntities = ensureEntitiesArray(newEntities);
+        state.entities = {
+        };
+        state.ids = [];
+        addManyMutably(newEntities, state);
+    }
+    function updateOneMutably(update, state) {
+        return updateManyMutably([
+            update
+        ], state);
+    }
+    function updateManyMutably(updates, state) {
+        var appliedUpdates = false;
+        for(var _i = 0, updates_1 = updates; _i < updates_1.length; _i++){
+            var update = updates_1[_i];
+            var entity = state.entities[update.id];
+            if (!entity) continue;
+            appliedUpdates = true;
+            Object.assign(entity, update.changes);
+            var newId = selectId(entity);
+            if (update.id !== newId) {
+                delete state.entities[update.id];
+                state.entities[newId] = entity;
+            }
+        }
+        if (appliedUpdates) resortEntities(state);
+    }
+    function upsertOneMutably(entity, state) {
+        return upsertManyMutably([
+            entity
+        ], state);
+    }
+    function upsertManyMutably(newEntities, state) {
+        var _c1 = splitAddedUpdatedEntities(newEntities, selectId, state), added = _c1[0], updated = _c1[1];
+        updateManyMutably(updated, state);
+        addManyMutably(added, state);
+    }
+    function areArraysEqual(a, b) {
+        if (a.length !== b.length) return false;
+        for(var i = 0; i < a.length && i < b.length; i++){
+            if (a[i] === b[i]) continue;
+            return false;
+        }
+        return true;
+    }
+    function merge(models, state) {
+        models.forEach(function(model) {
+            state.entities[selectId(model)] = model;
+        });
+        resortEntities(state);
+    }
+    function resortEntities(state) {
+        var allEntities = Object.values(state.entities);
+        allEntities.sort(sort);
+        var newSortedIds = allEntities.map(selectId);
+        var ids = state.ids;
+        if (!areArraysEqual(ids, newSortedIds)) state.ids = newSortedIds;
+    }
+    return {
+        removeOne: removeOne,
+        removeMany: removeMany,
+        removeAll: removeAll,
+        addOne: createStateOperator(addOneMutably),
+        updateOne: createStateOperator(updateOneMutably),
+        upsertOne: createStateOperator(upsertOneMutably),
+        setOne: createStateOperator(setOneMutably),
+        setMany: createStateOperator(setManyMutably),
+        setAll: createStateOperator(setAllMutably),
+        addMany: createStateOperator(addManyMutably),
+        updateMany: createStateOperator(updateManyMutably),
+        upsertMany: createStateOperator(upsertManyMutably)
+    };
+}
+// src/entities/create_adapter.ts
+function createEntityAdapter(options) {
+    if (options === void 0) options = {
+    };
+    var _c = __spreadValues({
+        sortComparer: false,
+        selectId: function(instance) {
+            return instance.id;
+        }
+    }, options), selectId = _c.selectId, sortComparer = _c.sortComparer;
+    var stateFactory = createInitialStateFactory();
+    var selectorsFactory = createSelectorsFactory();
+    var stateAdapter = sortComparer ? createSortedStateAdapter(selectId, sortComparer) : createUnsortedStateAdapter(selectId);
+    return __spreadValues(__spreadValues(__spreadValues({
+        selectId: selectId,
+        sortComparer: sortComparer
+    }, stateFactory), selectorsFactory), stateAdapter);
+}
+// src/nanoid.ts
+var urlAlphabet = "ModuleSymbhasOwnPr-0123456789ABCDEFGHNRVfgctiUvz_KqYTJkLxpZXIjQW";
+var nanoid = function(size) {
+    if (size === void 0) size = 21;
+    var id = "";
+    var i = size;
+    while(i--)id += urlAlphabet[Math.random() * 64 | 0];
+    return id;
+};
+// src/createAsyncThunk.ts
+var commonProperties = [
+    "name",
+    "message",
+    "stack",
+    "code"
+];
+var RejectWithValue = function() {
+    function RejectWithValue1(payload, meta) {
+        this.payload = payload;
+        this.meta = meta;
+    }
+    return RejectWithValue1;
+}();
+var FulfillWithMeta = function() {
+    function FulfillWithMeta1(payload, meta) {
+        this.payload = payload;
+        this.meta = meta;
+    }
+    return FulfillWithMeta1;
+}();
+var miniSerializeError = function(value) {
+    if (typeof value === "object" && value !== null) {
+        var simpleError = {
+        };
+        for(var _i = 0, commonProperties_1 = commonProperties; _i < commonProperties_1.length; _i++){
+            var property = commonProperties_1[_i];
+            if (typeof value[property] === "string") simpleError[property] = value[property];
+        }
+        return simpleError;
+    }
+    return {
+        message: String(value)
+    };
+};
+function createAsyncThunk(typePrefix, payloadCreator, options) {
+    var fulfilled = createAction(typePrefix + "/fulfilled", function(payload, requestId, arg, meta) {
+        return {
+            payload: payload,
+            meta: __spreadProps(__spreadValues({
+            }, meta || {
+            }), {
+                arg: arg,
+                requestId: requestId,
+                requestStatus: "fulfilled"
+            })
+        };
+    });
+    var pending = createAction(typePrefix + "/pending", function(requestId, arg, meta) {
+        return {
+            payload: void 0,
+            meta: __spreadProps(__spreadValues({
+            }, meta || {
+            }), {
+                arg: arg,
+                requestId: requestId,
+                requestStatus: "pending"
+            })
+        };
+    });
+    var rejected = createAction(typePrefix + "/rejected", function(error, requestId, arg, payload, meta) {
+        return {
+            payload: payload,
+            error: (options && options.serializeError || miniSerializeError)(error || "Rejected"),
+            meta: __spreadProps(__spreadValues({
+            }, meta || {
+            }), {
+                arg: arg,
+                requestId: requestId,
+                rejectedWithValue: !!payload,
+                requestStatus: "rejected",
+                aborted: (error == null ? void 0 : error.name) === "AbortError",
+                condition: (error == null ? void 0 : error.name) === "ConditionError"
+            })
+        };
+    });
+    var displayedWarning = false;
+    var AC = typeof AbortController !== "undefined" ? AbortController : function() {
+        function class_1() {
+            this.signal = {
+                aborted: false,
+                addEventListener: function() {
+                },
+                dispatchEvent: function() {
+                    return false;
+                },
+                onabort: function() {
+                },
+                removeEventListener: function() {
+                },
+                reason: void 0,
+                throwIfAborted: function() {
+                }
+            };
+        }
+        class_1.prototype.abort = function() {
+            if (!displayedWarning) {
+                displayedWarning = true;
+                console.info("This platform does not implement AbortController. \nIf you want to use the AbortController to react to `abort` events, please consider importing a polyfill like 'abortcontroller-polyfill/dist/abortcontroller-polyfill-only'.");
+            }
+        };
+        return class_1;
+    }();
+    function actionCreator(arg) {
+        return function(dispatch, getState, extra) {
+            var requestId = (options == null ? void 0 : options.idGenerator) ? options.idGenerator(arg) : nanoid();
+            var abortController = new AC();
+            var abortReason;
+            var abortedPromise = new Promise(function(_, reject) {
+                return abortController.signal.addEventListener("abort", function() {
+                    return reject({
+                        name: "AbortError",
+                        message: abortReason || "Aborted"
+                    });
+                });
+            });
+            var started = false;
+            function abort(reason) {
+                if (started) {
+                    abortReason = reason;
+                    abortController.abort();
+                }
+            }
+            var promise = function() {
+                return __async(this, null, function() {
+                    var _a, _b, finalAction, conditionResult, err_1, skipDispatch;
+                    return __generator(this, function(_c) {
+                        switch(_c.label){
+                            case 0:
+                                _c.trys.push([
+                                    0,
+                                    4,
+                                    ,
+                                    5
+                                ]);
+                                conditionResult = (_a = options == null ? void 0 : options.condition) == null ? void 0 : _a.call(options, arg, {
+                                    getState: getState,
+                                    extra: extra
+                                });
+                                if (!isThenable(conditionResult)) return [
+                                    3 /*break*/ ,
+                                    2
+                                ];
+                                return [
+                                    4 /*yield*/ ,
+                                    conditionResult
+                                ];
+                            case 1:
+                                conditionResult = _c.sent();
+                                _c.label = 2;
+                            case 2:
+                                if (conditionResult === false) throw {
+                                    name: "ConditionError",
+                                    message: "Aborted due to condition callback returning false."
+                                };
+                                started = true;
+                                dispatch(pending(requestId, arg, (_b = options == null ? void 0 : options.getPendingMeta) == null ? void 0 : _b.call(options, {
+                                    requestId: requestId,
+                                    arg: arg
+                                }, {
+                                    getState: getState,
+                                    extra: extra
+                                })));
+                                return [
+                                    4 /*yield*/ ,
+                                    Promise.race([
+                                        abortedPromise,
+                                        Promise.resolve(payloadCreator(arg, {
+                                            dispatch: dispatch,
+                                            getState: getState,
+                                            extra: extra,
+                                            requestId: requestId,
+                                            signal: abortController.signal,
+                                            rejectWithValue: function(value, meta) {
+                                                return new RejectWithValue(value, meta);
+                                            },
+                                            fulfillWithValue: function(value, meta) {
+                                                return new FulfillWithMeta(value, meta);
+                                            }
+                                        })).then(function(result) {
+                                            if (result instanceof RejectWithValue) throw result;
+                                            if (result instanceof FulfillWithMeta) return fulfilled(result.payload, requestId, arg, result.meta);
+                                            return fulfilled(result, requestId, arg);
+                                        })
+                                    ])
+                                ];
+                            case 3:
+                                finalAction = _c.sent();
+                                return [
+                                    3 /*break*/ ,
+                                    5
+                                ];
+                            case 4:
+                                err_1 = _c.sent();
+                                finalAction = err_1 instanceof RejectWithValue ? rejected(null, requestId, arg, err_1.payload, err_1.meta) : rejected(err_1, requestId, arg);
+                                return [
+                                    3 /*break*/ ,
+                                    5
+                                ];
+                            case 5:
+                                skipDispatch = options && !options.dispatchConditionRejection && rejected.match(finalAction) && finalAction.meta.condition;
+                                if (!skipDispatch) dispatch(finalAction);
+                                return [
+                                    2 /*return*/ ,
+                                    finalAction
+                                ];
+                        }
+                    });
+                });
+            }();
+            return Object.assign(promise, {
+                abort: abort,
+                requestId: requestId,
+                arg: arg,
+                unwrap: function() {
+                    return promise.then(unwrapResult);
+                }
+            });
+        };
+    }
+    return Object.assign(actionCreator, {
+        pending: pending,
+        rejected: rejected,
+        fulfilled: fulfilled,
+        typePrefix: typePrefix
+    });
+}
+function unwrapResult(action) {
+    if (action.meta && action.meta.rejectedWithValue) throw action.payload;
+    if (action.error) throw action.error;
+    return action.payload;
+}
+function isThenable(value) {
+    return value !== null && typeof value === "object" && typeof value.then === "function";
+}
+// src/tsHelpers.ts
+var hasMatchFunction = function(v) {
+    return v && typeof v.match === "function";
+};
+// src/matchers.ts
+var matches = function(matcher, action) {
+    if (hasMatchFunction(matcher)) return matcher.match(action);
+    else return matcher(action);
+};
+function isAnyOf() {
+    var matchers = [];
+    for(var _i = 0; _i < arguments.length; _i++)matchers[_i] = arguments[_i];
+    return function(action) {
+        return matchers.some(function(matcher) {
+            return matches(matcher, action);
+        });
+    };
+}
+function isAllOf() {
+    var matchers = [];
+    for(var _i = 0; _i < arguments.length; _i++)matchers[_i] = arguments[_i];
+    return function(action) {
+        return matchers.every(function(matcher) {
+            return matches(matcher, action);
+        });
+    };
+}
+function hasExpectedRequestMetadata(action, validStatus) {
+    if (!action || !action.meta) return false;
+    var hasValidRequestId = typeof action.meta.requestId === "string";
+    var hasValidRequestStatus = validStatus.indexOf(action.meta.requestStatus) > -1;
+    return hasValidRequestId && hasValidRequestStatus;
+}
+function isAsyncThunkArray(a) {
+    return typeof a[0] === "function" && "pending" in a[0] && "fulfilled" in a[0] && "rejected" in a[0];
+}
+function isPending() {
+    var asyncThunks = [];
+    for(var _i = 0; _i < arguments.length; _i++)asyncThunks[_i] = arguments[_i];
+    if (asyncThunks.length === 0) return function(action) {
+        return hasExpectedRequestMetadata(action, [
+            "pending"
+        ]);
+    };
+    if (!isAsyncThunkArray(asyncThunks)) return isPending()(asyncThunks[0]);
+    return function(action) {
+        var matchers = asyncThunks.map(function(asyncThunk) {
+            return asyncThunk.pending;
+        });
+        var combinedMatcher = isAnyOf.apply(void 0, matchers);
+        return combinedMatcher(action);
+    };
+}
+function isRejected() {
+    var asyncThunks = [];
+    for(var _i = 0; _i < arguments.length; _i++)asyncThunks[_i] = arguments[_i];
+    if (asyncThunks.length === 0) return function(action) {
+        return hasExpectedRequestMetadata(action, [
+            "rejected"
+        ]);
+    };
+    if (!isAsyncThunkArray(asyncThunks)) return isRejected()(asyncThunks[0]);
+    return function(action) {
+        var matchers = asyncThunks.map(function(asyncThunk) {
+            return asyncThunk.rejected;
+        });
+        var combinedMatcher = isAnyOf.apply(void 0, matchers);
+        return combinedMatcher(action);
+    };
+}
+function isRejectedWithValue() {
+    var asyncThunks = [];
+    for(var _i = 0; _i < arguments.length; _i++)asyncThunks[_i] = arguments[_i];
+    var hasFlag = function(action) {
+        return action && action.meta && action.meta.rejectedWithValue;
+    };
+    if (asyncThunks.length === 0) return function(action) {
+        var combinedMatcher = isAllOf(isRejected.apply(void 0, asyncThunks), hasFlag);
+        return combinedMatcher(action);
+    };
+    if (!isAsyncThunkArray(asyncThunks)) return isRejectedWithValue()(asyncThunks[0]);
+    return function(action) {
+        var combinedMatcher = isAllOf(isRejected.apply(void 0, asyncThunks), hasFlag);
+        return combinedMatcher(action);
+    };
+}
+function isFulfilled() {
+    var asyncThunks = [];
+    for(var _i = 0; _i < arguments.length; _i++)asyncThunks[_i] = arguments[_i];
+    if (asyncThunks.length === 0) return function(action) {
+        return hasExpectedRequestMetadata(action, [
+            "fulfilled"
+        ]);
+    };
+    if (!isAsyncThunkArray(asyncThunks)) return isFulfilled()(asyncThunks[0]);
+    return function(action) {
+        var matchers = asyncThunks.map(function(asyncThunk) {
+            return asyncThunk.fulfilled;
+        });
+        var combinedMatcher = isAnyOf.apply(void 0, matchers);
+        return combinedMatcher(action);
+    };
+}
+function isAsyncThunkAction() {
+    var asyncThunks = [];
+    for(var _i = 0; _i < arguments.length; _i++)asyncThunks[_i] = arguments[_i];
+    if (asyncThunks.length === 0) return function(action) {
+        return hasExpectedRequestMetadata(action, [
+            "pending",
+            "fulfilled",
+            "rejected"
+        ]);
+    };
+    if (!isAsyncThunkArray(asyncThunks)) return isAsyncThunkAction()(asyncThunks[0]);
+    return function(action) {
+        var matchers = [];
+        for(var _i1 = 0, asyncThunks_1 = asyncThunks; _i1 < asyncThunks_1.length; _i1++){
+            var asyncThunk = asyncThunks_1[_i1];
+            matchers.push(asyncThunk.pending, asyncThunk.rejected, asyncThunk.fulfilled);
+        }
+        var combinedMatcher = isAnyOf.apply(void 0, matchers);
+        return combinedMatcher(action);
+    };
+}
+// src/listenerMiddleware/utils.ts
+var assertFunction = function(func, expected) {
+    if (typeof func !== "function") throw new TypeError(expected + " is not a function");
+};
+var noop = function() {
+};
+var catchRejection = function(promise, onError) {
+    if (onError === void 0) onError = noop;
+    promise.catch(onError);
+    return promise;
+};
+var addAbortSignalListener = function(abortSignal, callback) {
+    abortSignal.addEventListener("abort", callback, {
+        once: true
+    });
+};
+var abortControllerWithReason = function(abortController, reason) {
+    var signal = abortController.signal;
+    if (signal.aborted) return;
+    if (!("reason" in signal)) Object.defineProperty(signal, "reason", {
+        enumerable: true,
+        value: reason,
+        configurable: true,
+        writable: true
+    });
+    abortController.abort(reason);
+};
+// src/listenerMiddleware/exceptions.ts
+var task = "task";
+var listener = "listener";
+var completed = "completed";
+var cancelled = "cancelled";
+var taskCancelled = "task-" + cancelled;
+var taskCompleted = "task-" + completed;
+var listenerCancelled = listener + "-" + cancelled;
+var listenerCompleted = listener + "-" + completed;
+var TaskAbortError = function() {
+    function TaskAbortError1(code) {
+        this.code = code;
+        this.name = "TaskAbortError";
+        this.message = task + " " + cancelled + " (reason: " + code + ")";
+    }
+    return TaskAbortError1;
+}();
+// src/listenerMiddleware/task.ts
+var validateActive = function(signal) {
+    if (signal.aborted) throw new TaskAbortError(signal.reason);
+};
+var promisifyAbortSignal = function(signal) {
+    return catchRejection(new Promise(function(_, reject) {
+        var notifyRejection = function() {
+            return reject(new TaskAbortError(signal.reason));
+        };
+        if (signal.aborted) notifyRejection();
+        else addAbortSignalListener(signal, notifyRejection);
+    }));
+};
+var runTask = function(task2, cleanUp) {
+    return __async(void 0, null, function() {
+        var value, error_1;
+        return __generator(this, function(_c) {
+            switch(_c.label){
+                case 0:
+                    _c.trys.push([
+                        0,
+                        3,
+                        4,
+                        5
+                    ]);
+                    return [
+                        4 /*yield*/ ,
+                        Promise.resolve()
+                    ];
+                case 1:
+                    _c.sent();
+                    return [
+                        4 /*yield*/ ,
+                        task2()
+                    ];
+                case 2:
+                    value = _c.sent();
+                    return [
+                        2 /*return*/ ,
+                        {
+                            status: "ok",
+                            value: value
+                        }
+                    ];
+                case 3:
+                    error_1 = _c.sent();
+                    return [
+                        2 /*return*/ ,
+                        {
+                            status: error_1 instanceof TaskAbortError ? "cancelled" : "rejected",
+                            error: error_1
+                        }
+                    ];
+                case 4:
+                    cleanUp == null || cleanUp();
+                    return [
+                        7 /*endfinally*/ 
+                    ];
+                case 5:
+                    return [
+                        2 /*return*/ 
+                    ];
+            }
+        });
+    });
+};
+var createPause = function(signal) {
+    return function(promise) {
+        return catchRejection(Promise.race([
+            promisifyAbortSignal(signal),
+            promise
+        ]).then(function(output) {
+            validateActive(signal);
+            return output;
+        }));
+    };
+};
+var createDelay = function(signal) {
+    var pause = createPause(signal);
+    return function(timeoutMs) {
+        return pause(new Promise(function(resolve) {
+            return setTimeout(resolve, timeoutMs);
+        }));
+    };
+};
+// src/listenerMiddleware/index.ts
+var assign = Object.assign;
+var INTERNAL_NIL_TOKEN = {
+};
+var alm = "listenerMiddleware";
+var createFork = function(parentAbortSignal) {
+    var linkControllers = function(controller) {
+        return addAbortSignalListener(parentAbortSignal, function() {
+            return abortControllerWithReason(controller, parentAbortSignal.reason);
+        });
+    };
+    return function(taskExecutor) {
+        assertFunction(taskExecutor, "taskExecutor");
+        var childAbortController = new AbortController();
+        linkControllers(childAbortController);
+        var result = runTask(function() {
+            return __async(void 0, null, function() {
+                var result2;
+                return __generator(this, function(_c) {
+                    switch(_c.label){
+                        case 0:
+                            validateActive(parentAbortSignal);
+                            validateActive(childAbortController.signal);
+                            return [
+                                4 /*yield*/ ,
+                                taskExecutor({
+                                    pause: createPause(childAbortController.signal),
+                                    delay: createDelay(childAbortController.signal),
+                                    signal: childAbortController.signal
+                                })
+                            ];
+                        case 1:
+                            result2 = _c.sent();
+                            validateActive(childAbortController.signal);
+                            return [
+                                2 /*return*/ ,
+                                result2
+                            ];
+                    }
+                });
+            });
+        }, function() {
+            return abortControllerWithReason(childAbortController, taskCompleted);
+        });
+        return {
+            result: createPause(parentAbortSignal)(result),
+            cancel: function() {
+                abortControllerWithReason(childAbortController, taskCancelled);
+            }
+        };
+    };
+};
+var createTakePattern = function(startListening, signal) {
+    var take = function(predicate, timeout) {
+        return __async(void 0, null, function() {
+            var unsubscribe, tuplePromise, promises, output;
+            return __generator(this, function(_c) {
+                switch(_c.label){
+                    case 0:
+                        validateActive(signal);
+                        unsubscribe = function() {
+                        };
+                        tuplePromise = new Promise(function(resolve) {
+                            unsubscribe = startListening({
+                                predicate: predicate,
+                                effect: function(action, listenerApi) {
+                                    listenerApi.unsubscribe();
+                                    resolve([
+                                        action,
+                                        listenerApi.getState(),
+                                        listenerApi.getOriginalState()
+                                    ]);
+                                }
+                            });
+                        });
+                        promises = [
+                            promisifyAbortSignal(signal),
+                            tuplePromise
+                        ];
+                        if (timeout != null) promises.push(new Promise(function(resolve) {
+                            return setTimeout(resolve, timeout, null);
+                        }));
+                        _c.label = 1;
+                    case 1:
+                        _c.trys.push([
+                            1,
+                            ,
+                            3,
+                            4
+                        ]);
+                        return [
+                            4 /*yield*/ ,
+                            Promise.race(promises)
+                        ];
+                    case 2:
+                        output = _c.sent();
+                        validateActive(signal);
+                        return [
+                            2 /*return*/ ,
+                            output
+                        ];
+                    case 3:
+                        unsubscribe();
+                        return [
+                            7 /*endfinally*/ 
+                        ];
+                    case 4:
+                        return [
+                            2 /*return*/ 
+                        ];
+                }
+            });
+        });
+    };
+    return function(predicate, timeout) {
+        return catchRejection(take(predicate, timeout));
+    };
+};
+var getListenerEntryPropsFrom = function(options) {
+    var type = options.type, actionCreator = options.actionCreator, matcher = options.matcher, predicate = options.predicate, effect = options.effect;
+    if (type) predicate = createAction(type).match;
+    else if (actionCreator) {
+        type = actionCreator.type;
+        predicate = actionCreator.match;
+    } else if (matcher) predicate = matcher;
+    else if (predicate) ;
+    else throw new Error("Creating or removing a listener requires one of the known fields for matching an action");
+    assertFunction(effect, "options.listener");
+    return {
+        predicate: predicate,
+        type: type,
+        effect: effect
+    };
+};
+var createListenerEntry = function(options) {
+    var _c = getListenerEntryPropsFrom(options), type = _c.type, predicate = _c.predicate, effect = _c.effect;
+    var id = nanoid();
+    var entry = {
+        id: id,
+        effect: effect,
+        type: type,
+        predicate: predicate,
+        pending: new Set(),
+        unsubscribe: function() {
+            throw new Error("Unsubscribe not initialized");
+        }
+    };
+    return entry;
+};
+var createClearListenerMiddleware = function(listenerMap) {
+    return function() {
+        listenerMap.forEach(cancelActiveListeners);
+        listenerMap.clear();
+    };
+};
+var safelyNotifyError = function(errorHandler, errorToNotify, errorInfo) {
+    try {
+        errorHandler(errorToNotify, errorInfo);
+    } catch (errorHandlerError) {
+        setTimeout(function() {
+            throw errorHandlerError;
+        }, 0);
+    }
+};
+var addListener = createAction(alm + "/add");
+var clearAllListeners = createAction(alm + "/removeAll");
+var removeListener = createAction(alm + "/remove");
+var defaultErrorHandler = function() {
+    var args = [];
+    for(var _i = 0; _i < arguments.length; _i++)args[_i] = arguments[_i];
+    console.error.apply(console, __spreadArray([
+        alm + "/error"
+    ], args));
+};
+var cancelActiveListeners = function(entry) {
+    entry.pending.forEach(function(controller) {
+        abortControllerWithReason(controller, listenerCancelled);
+    });
+};
+function createListenerMiddleware(middlewareOptions) {
+    var _this = this;
+    if (middlewareOptions === void 0) middlewareOptions = {
+    };
+    var listenerMap = new Map();
+    var extra = middlewareOptions.extra, _c = middlewareOptions.onError, onError = _c === void 0 ? defaultErrorHandler : _c;
+    assertFunction(onError, "onError");
+    var insertEntry = function(entry) {
+        entry.unsubscribe = function() {
+            return listenerMap.delete(entry.id);
+        };
+        listenerMap.set(entry.id, entry);
+        return function(cancelOptions) {
+            entry.unsubscribe();
+            if (cancelOptions == null ? void 0 : cancelOptions.cancelActive) cancelActiveListeners(entry);
+        };
+    };
+    var findListenerEntry = function(comparator) {
+        for(var _i = 0, _c1 = Array.from(listenerMap.values()); _i < _c1.length; _i++){
+            var entry = _c1[_i];
+            if (comparator(entry)) return entry;
+        }
+        return void 0;
+    };
+    var startListening = function(options) {
+        var entry = findListenerEntry(function(existingEntry) {
+            return existingEntry.effect === options.effect;
+        });
+        if (!entry) entry = createListenerEntry(options);
+        return insertEntry(entry);
+    };
+    var stopListening = function(options) {
+        var _c1 = getListenerEntryPropsFrom(options), type = _c1.type, effect = _c1.effect, predicate = _c1.predicate;
+        var entry = findListenerEntry(function(entry2) {
+            var matchPredicateOrType = typeof type === "string" ? entry2.type === type : entry2.predicate === predicate;
+            return matchPredicateOrType && entry2.effect === effect;
+        });
+        if (entry) {
+            entry.unsubscribe();
+            if (options.cancelActive) cancelActiveListeners(entry);
+        }
+        return !!entry;
+    };
+    var notifyListener = function(entry, action, api, getOriginalState) {
+        return __async(_this, null, function() {
+            var internalTaskController, take, listenerError_1;
+            return __generator(this, function(_c1) {
+                switch(_c1.label){
+                    case 0:
+                        internalTaskController = new AbortController();
+                        take = createTakePattern(startListening, internalTaskController.signal);
+                        _c1.label = 1;
+                    case 1:
+                        _c1.trys.push([
+                            1,
+                            3,
+                            4,
+                            5
+                        ]);
+                        entry.pending.add(internalTaskController);
+                        return [
+                            4 /*yield*/ ,
+                            Promise.resolve(entry.effect(action, assign({
+                            }, api, {
+                                getOriginalState: getOriginalState,
+                                condition: function(predicate, timeout) {
+                                    return take(predicate, timeout).then(Boolean);
+                                },
+                                take: take,
+                                delay: createDelay(internalTaskController.signal),
+                                pause: createPause(internalTaskController.signal),
+                                extra: extra,
+                                signal: internalTaskController.signal,
+                                fork: createFork(internalTaskController.signal),
+                                unsubscribe: entry.unsubscribe,
+                                subscribe: function() {
+                                    listenerMap.set(entry.id, entry);
+                                },
+                                cancelActiveListeners: function() {
+                                    entry.pending.forEach(function(controller, _, set) {
+                                        if (controller !== internalTaskController) {
+                                            abortControllerWithReason(controller, listenerCancelled);
+                                            set.delete(controller);
+                                        }
+                                    });
+                                }
+                            })))
+                        ];
+                    case 2:
+                        _c1.sent();
+                        return [
+                            3 /*break*/ ,
+                            5
+                        ];
+                    case 3:
+                        listenerError_1 = _c1.sent();
+                        if (!(listenerError_1 instanceof TaskAbortError)) safelyNotifyError(onError, listenerError_1, {
+                            raisedBy: "effect"
+                        });
+                        return [
+                            3 /*break*/ ,
+                            5
+                        ];
+                    case 4:
+                        abortControllerWithReason(internalTaskController, listenerCompleted);
+                        entry.pending.delete(internalTaskController);
+                        return [
+                            7 /*endfinally*/ 
+                        ];
+                    case 5:
+                        return [
+                            2 /*return*/ 
+                        ];
+                }
+            });
+        });
+    };
+    var clearListenerMiddleware = createClearListenerMiddleware(listenerMap);
+    var middleware = function(api) {
+        return function(next) {
+            return function(action) {
+                if (addListener.match(action)) return startListening(action.payload);
+                if (clearAllListeners.match(action)) {
+                    clearListenerMiddleware();
+                    return;
+                }
+                if (removeListener.match(action)) return stopListening(action.payload);
+                var originalState = api.getState();
+                var getOriginalState = function() {
+                    if (originalState === INTERNAL_NIL_TOKEN) throw new Error(alm + ": getOriginalState can only be called synchronously");
+                    return originalState;
+                };
+                var result;
+                try {
+                    result = next(action);
+                    if (listenerMap.size > 0) {
+                        var currentState = api.getState();
+                        var listenerEntries = Array.from(listenerMap.values());
+                        for(var _i = 0, listenerEntries_1 = listenerEntries; _i < listenerEntries_1.length; _i++){
+                            var entry = listenerEntries_1[_i];
+                            var runListener = false;
+                            try {
+                                runListener = entry.predicate(action, currentState, originalState);
+                            } catch (predicateError) {
+                                runListener = false;
+                                safelyNotifyError(onError, predicateError, {
+                                    raisedBy: "predicate"
+                                });
+                            }
+                            if (!runListener) continue;
+                            notifyListener(entry, action, api, getOriginalState);
+                        }
+                    }
+                } finally{
+                    originalState = INTERNAL_NIL_TOKEN;
+                }
+                return result;
+            };
+        };
+    };
+    return {
+        middleware: middleware,
+        startListening: startListening,
+        stopListening: stopListening,
+        clearListeners: clearListenerMiddleware
+    };
+}
+// src/index.ts
+_immer.enableES5();
+
+},{"process":"fnyW3","immer":"92mES","redux":"4d0QS","reselect":"6oqac","redux-thunk":"7lPYg","@parcel/transformer-js/src/esmodule-helpers.js":"7VCmx"}],"92mES":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "Immer", ()=>un
+);
+parcelHelpers.export(exports, "applyPatches", ()=>pn
+);
+parcelHelpers.export(exports, "castDraft", ()=>K
+);
+parcelHelpers.export(exports, "castImmutable", ()=>$
+);
+parcelHelpers.export(exports, "createDraft", ()=>ln
+);
+parcelHelpers.export(exports, "current", ()=>D
+);
+parcelHelpers.export(exports, "enableAllPlugins", ()=>J
+);
+parcelHelpers.export(exports, "enableES5", ()=>N
+);
+parcelHelpers.export(exports, "enableMapSet", ()=>C
+);
+parcelHelpers.export(exports, "enablePatches", ()=>T
+);
+parcelHelpers.export(exports, "finishDraft", ()=>dn
+);
+parcelHelpers.export(exports, "freeze", ()=>d
+);
+parcelHelpers.export(exports, "immerable", ()=>L
+);
+parcelHelpers.export(exports, "isDraft", ()=>r
+);
+parcelHelpers.export(exports, "isDraftable", ()=>t
+);
+parcelHelpers.export(exports, "nothing", ()=>H
+);
+parcelHelpers.export(exports, "original", ()=>e
+);
+parcelHelpers.export(exports, "produce", ()=>fn
+);
+parcelHelpers.export(exports, "produceWithPatches", ()=>cn
+);
+parcelHelpers.export(exports, "setAutoFreeze", ()=>sn
+);
+parcelHelpers.export(exports, "setUseProxies", ()=>vn
+);
+function n(n1) {
+    for(var r = arguments.length, t = Array(r > 1 ? r - 1 : 0), e = 1; e < r; e++)t[e - 1] = arguments[e];
+    var i = Y[n1], o = i ? "function" == typeof i ? i.apply(null, t) : i : "unknown error nr: " + n1;
+    throw Error("[Immer] " + o);
+    throw Error("[Immer] minified error nr: " + n1 + (t.length ? " " + t.map(function(n2) {
+        return "'" + n2 + "'";
+    }).join(",") : "") + ". Find the full error at: https://bit.ly/3cXEKWf");
+}
+function r(n1) {
+    return !!n1 && !!n1[Q];
+}
+function t(n1) {
+    return !!n1 && ((function(n2) {
+        if (!n2 || "object" != typeof n2) return !1;
+        var r1 = Object.getPrototypeOf(n2);
+        if (null === r1) return !0;
+        var t1 = Object.hasOwnProperty.call(r1, "constructor") && r1.constructor;
+        return t1 === Object || "function" == typeof t1 && Function.toString.call(t1) === Z;
+    })(n1) || Array.isArray(n1) || !!n1[L] || !!n1.constructor[L] || s1(n1) || v(n1));
+}
+function e(t1) {
+    return r(t1) || n(23, t1), t1[Q].t;
+}
+function i(n1, r1, t1) {
+    (void 0) === t1 && (t1 = !1), 0 === o3(n1) ? (t1 ? Object.keys : nn)(n1).forEach(function(e1) {
+        t1 && "symbol" == typeof e1 || r1(e1, n1[e1], n1);
+    }) : n1.forEach(function(t2, e1) {
+        return r1(e1, t2, n1);
+    });
+}
+function o3(n1) {
+    var r1 = n1[Q];
+    return r1 ? r1.i > 3 ? r1.i - 4 : r1.i : Array.isArray(n1) ? 1 : s1(n1) ? 2 : v(n1) ? 3 : 0;
+}
+function u(n1, r1) {
+    return 2 === o3(n1) ? n1.has(r1) : Object.prototype.hasOwnProperty.call(n1, r1);
+}
+function a1(n1, r1) {
+    return 2 === o3(n1) ? n1.get(r1) : n1[r1];
+}
+function f1(n1, r1, t1) {
+    var e1 = o3(n1);
+    2 === e1 ? n1.set(r1, t1) : 3 === e1 ? (n1.delete(r1), n1.add(t1)) : n1[r1] = t1;
+}
+function c(n1, r1) {
+    return n1 === r1 ? 0 !== n1 || 1 / n1 == 1 / r1 : n1 != n1 && r1 != r1;
+}
+function s1(n1) {
+    return X && n1 instanceof Map;
+}
+function v(n1) {
+    return q && n1 instanceof Set;
+}
+function p(n1) {
+    return n1.o || n1.t;
+}
+function l(n1) {
+    if (Array.isArray(n1)) return Array.prototype.slice.call(n1);
+    var r1 = rn(n1);
+    delete r1[Q];
+    for(var t1 = nn(r1), e1 = 0; e1 < t1.length; e1++){
+        var i1 = t1[e1], o1 = r1[i1];
+        !1 === o1.writable && (o1.writable = !0, o1.configurable = !0), (o1.get || o1.set) && (r1[i1] = {
+            configurable: !0,
+            writable: !0,
+            enumerable: o1.enumerable,
+            value: n1[i1]
+        });
+    }
+    return Object.create(Object.getPrototypeOf(n1), r1);
+}
+function d(n1, e1) {
+    return (void 0) === e1 && (e1 = !1), y(n1) || r(n1) || !t(n1) ? n1 : (o3(n1) > 1 && (n1.set = n1.add = n1.clear = n1.delete = h), Object.freeze(n1), e1 && i(n1, function(n2, r1) {
+        return d(r1, !0);
+    }, !0), n1);
+}
+function h() {
+    n(2);
+}
+function y(n1) {
+    return null == n1 || "object" != typeof n1 || Object.isFrozen(n1);
+}
+function b(r1) {
+    var t1 = tn[r1];
+    return t1 || n(18, r1), t1;
+}
+function m(n1, r1) {
+    tn[n1] || (tn[n1] = r1);
+}
+function _() {
+    return U || n(0), U;
+}
+function j(n1, r1) {
+    r1 && (b("Patches"), n1.u = [], n1.s = [], n1.v = r1);
+}
+function O(n1) {
+    g(n1), n1.p.forEach(S), n1.p = null;
+}
+function g(n1) {
+    n1 === U && (U = n1.l);
+}
+function w(n1) {
+    return U = {
+        p: [],
+        l: U,
+        h: n1,
+        m: !0,
+        _: 0
+    };
+}
+function S(n1) {
+    var r1 = n1[Q];
+    0 === r1.i || 1 === r1.i ? r1.j() : r1.O = !0;
+}
+function P(r1, e1) {
+    e1._ = e1.p.length;
+    var i2 = e1.p[0], o2 = (void 0) !== r1 && r1 !== i2;
+    return e1.h.g || b("ES5").S(e1, r1, o2), o2 ? (i2[Q].P && (O(e1), n(4)), t(r1) && (r1 = M(e1, r1), e1.l || x(e1, r1)), e1.u && b("Patches").M(i2[Q].t, r1, e1.u, e1.s)) : r1 = M(e1, i2, []), O(e1), e1.u && e1.v(e1.u, e1.s), r1 !== H ? r1 : void 0;
+}
+function M(n1, r1, t1) {
+    if (y(r1)) return r1;
+    var e1 = r1[Q];
+    if (!e1) return i(r1, function(i2, o2) {
+        return A(n1, e1, r1, i2, o2, t1);
+    }, !0), r1;
+    if (e1.A !== n1) return r1;
+    if (!e1.P) return x(n1, e1.t, !0), e1.t;
+    if (!e1.I) {
+        e1.I = !0, e1.A._--;
+        var o2 = 4 === e1.i || 5 === e1.i ? e1.o = l(e1.k) : e1.o;
+        i(3 === e1.i ? new Set(o2) : o2, function(r2, i2) {
+            return A(n1, e1, o2, r2, i2, t1);
+        }), x(n1, o2, !1), t1 && n1.u && b("Patches").R(e1, t1, n1.u, n1.s);
+    }
+    return e1.o;
+}
+function A(e1, i2, o3, a1, c1, s1) {
+    if (c1 === o3 && n(5), r(c1)) {
+        var v1 = M(e1, c1, s1 && i2 && 3 !== i2.i && !u(i2.D, a1) ? s1.concat(a1) : void 0);
+        if (f1(o3, a1, v1), !r(v1)) return;
+        e1.m = !1;
+    }
+    if (t(c1) && !y(c1)) {
+        if (!e1.h.F && e1._ < 1) return;
+        M(e1, c1), i2 && i2.A.l || x(e1, c1);
+    }
+}
+function x(n1, r1, t1) {
+    (void 0) === t1 && (t1 = !1), n1.h.F && n1.m && d(r1, t1);
+}
+function z(n1, r1) {
+    var t1 = n1[Q];
+    return (t1 ? p(t1) : n1)[r1];
+}
+function I(n1, r1) {
+    if (r1 in n1) for(var t1 = Object.getPrototypeOf(n1); t1;){
+        var e1 = Object.getOwnPropertyDescriptor(t1, r1);
+        if (e1) return e1;
+        t1 = Object.getPrototypeOf(t1);
+    }
+}
+function k(n1) {
+    n1.P || (n1.P = !0, n1.l && k(n1.l));
+}
+function E(n1) {
+    n1.o || (n1.o = l(n1.t));
+}
+function R(n1, r1, t1) {
+    var e2 = s1(r1) ? b("MapSet").N(r1, t1) : v(r1) ? b("MapSet").T(r1, t1) : n1.g ? function(n2, r2) {
+        var t2 = Array.isArray(n2), e3 = {
+            i: t2 ? 1 : 0,
+            A: r2 ? r2.A : _(),
+            P: !1,
+            I: !1,
+            D: {
+            },
+            l: r2,
+            t: n2,
+            k: null,
+            o: null,
+            j: null,
+            C: !1
+        }, i2 = e3, o3 = en;
+        t2 && (i2 = [
+            e3
+        ], o3 = on);
+        var u1 = Proxy.revocable(i2, o3), a1 = u1.revoke, f1 = u1.proxy;
+        return e3.k = f1, e3.j = a1, f1;
+    }(r1, t1) : b("ES5").J(r1, t1);
+    return (t1 ? t1.A : _()).p.push(e2), e2;
+}
+function D(e2) {
+    return r(e2) || n(22, e2), (function n1(r1) {
+        if (!t(r1)) return r1;
+        var e3, u1 = r1[Q], c1 = o3(r1);
+        if (u1) {
+            if (!u1.P && (u1.i < 4 || !b("ES5").K(u1))) return u1.t;
+            u1.I = !0, e3 = F(r1, c1), u1.I = !1;
+        } else e3 = F(r1, c1);
+        return i(e3, function(r2, t1) {
+            u1 && a1(u1.t, r2) === t1 || f1(e3, r2, n1(t1));
+        }), 3 === c1 ? new Set(e3) : e3;
+    })(e2);
+}
+function F(n1, r1) {
+    switch(r1){
+        case 2:
+            return new Map(n1);
+        case 3:
+            return Array.from(n1);
+    }
+    return l(n1);
+}
+function N() {
+    function t1(n1, r1) {
+        var t2 = s3[n1];
+        return t2 ? t2.enumerable = r1 : s3[n1] = t2 = {
+            configurable: !0,
+            enumerable: r1,
+            get: function() {
+                var r2 = this[Q];
+                return f3(r2), en.get(r2, n1);
+            },
+            set: function(r2) {
+                var t3 = this[Q];
+                f3(t3), en.set(t3, n1, r2);
+            }
+        }, t2;
+    }
+    function e2(n1) {
+        for(var r1 = n1.length - 1; r1 >= 0; r1--){
+            var t2 = n1[r1][Q];
+            if (!t2.P) switch(t2.i){
+                case 5:
+                    a3(t2) && k(t2);
+                    break;
+                case 4:
+                    o4(t2) && k(t2);
+            }
+        }
+    }
+    function o4(n1) {
+        for(var r1 = n1.t, t3 = n1.k, e3 = nn(t3), i2 = e3.length - 1; i2 >= 0; i2--){
+            var o5 = e3[i2];
+            if (o5 !== Q) {
+                var a2 = r1[o5];
+                if ((void 0) === a2 && !u(r1, o5)) return !0;
+                var f2 = t3[o5], s2 = f2 && f2[Q];
+                if (s2 ? s2.t !== a2 : !c(f2, a2)) return !0;
+            }
+        }
+        var v2 = !!r1[Q];
+        return e3.length !== nn(r1).length + (v2 ? 0 : 1);
+    }
+    function a3(n1) {
+        var r1 = n1.k;
+        if (r1.length !== n1.t.length) return !0;
+        var t3 = Object.getOwnPropertyDescriptor(r1, r1.length - 1);
+        if (t3 && !t3.get) return !0;
+        for(var e3 = 0; e3 < r1.length; e3++)if (!r1.hasOwnProperty(e3)) return !0;
+        return !1;
+    }
+    function f3(r1) {
+        r1.O && n(3, JSON.stringify(p(r1)));
+    }
+    var s3 = {
+    };
+    m("ES5", {
+        J: function(n1, r1) {
+            var e3 = Array.isArray(n1), i2 = function(n2, r2) {
+                if (n2) {
+                    for(var e4 = Array(r2.length), i3 = 0; i3 < r2.length; i3++)Object.defineProperty(e4, "" + i3, t1(i3, !0));
+                    return e4;
+                }
+                var o6 = rn(r2);
+                delete o6[Q];
+                for(var u1 = nn(o6), a4 = 0; a4 < u1.length; a4++){
+                    var f4 = u1[a4];
+                    o6[f4] = t1(f4, n2 || !!o6[f4].enumerable);
+                }
+                return Object.create(Object.getPrototypeOf(r2), o6);
+            }(e3, n1), o6 = {
+                i: e3 ? 5 : 4,
+                A: r1 ? r1.A : _(),
+                P: !1,
+                I: !1,
+                D: {
+                },
+                l: r1,
+                t: n1,
+                k: i2,
+                o: null,
+                O: !1,
+                C: !1
+            };
+            return Object.defineProperty(i2, Q, {
+                value: o6,
+                writable: !0
+            }), i2;
+        },
+        S: function(n1, t3, o6) {
+            o6 ? r(t3) && t3[Q].A === n1 && e2(n1.p) : (n1.u && (function n2(r1) {
+                if (r1 && "object" == typeof r1) {
+                    var t4 = r1[Q];
+                    if (t4) {
+                        var e3 = t4.t, o7 = t4.k, f5 = t4.D, c1 = t4.i;
+                        if (4 === c1) i(o7, function(r2) {
+                            r2 !== Q && ((void 0) !== e3[r2] || u(e3, r2) ? f5[r2] || n2(o7[r2]) : (f5[r2] = !0, k(t4)));
+                        }), i(e3, function(n3) {
+                            (void 0) !== o7[n3] || u(o7, n3) || (f5[n3] = !1, k(t4));
+                        });
+                        else if (5 === c1) {
+                            if (a3(t4) && (k(t4), f5.length = !0), o7.length < e3.length) for(var s4 = o7.length; s4 < e3.length; s4++)f5[s4] = !1;
+                            else for(var v2 = e3.length; v2 < o7.length; v2++)f5[v2] = !0;
+                            for(var p1 = Math.min(o7.length, e3.length), l1 = 0; l1 < p1; l1++)o7.hasOwnProperty(l1) || (f5[l1] = !0), (void 0) === f5[l1] && n2(o7[l1]);
+                        }
+                    }
+                }
+            })(n1.p[0]), e2(n1.p));
+        },
+        K: function(n1) {
+            return 4 === n1.i ? o4(n1) : a3(n1);
+        }
+    });
+}
+function T() {
+    function e2(n1) {
+        if (!t(n1)) return n1;
+        if (Array.isArray(n1)) return n1.map(e2);
+        if (s1(n1)) return new Map(Array.from(n1.entries()).map(function(n2) {
+            return [
+                n2[0],
+                e2(n2[1])
+            ];
+        }));
+        if (v(n1)) return new Set(Array.from(n1).map(e2));
+        var r1 = Object.create(Object.getPrototypeOf(n1));
+        for(var i2 in n1)r1[i2] = e2(n1[i2]);
+        return u(n1, L) && (r1[L] = n1[L]), r1;
+    }
+    function f3(n1) {
+        return r(n1) ? e2(n1) : n1;
+    }
+    var c2 = "add";
+    m("Patches", {
+        $: function(r1, t1) {
+            return t1.forEach(function(t3) {
+                for(var i2 = t3.path, u1 = t3.op, f6 = r1, s3 = 0; s3 < i2.length - 1; s3++){
+                    var v3 = o3(f6), p2 = "" + i2[s3];
+                    0 !== v3 && 1 !== v3 || "__proto__" !== p2 && "constructor" !== p2 || n(24), "function" == typeof f6 && "prototype" === p2 && n(24), "object" != typeof (f6 = a1(f6, p2)) && n(15, i2.join("/"));
+                }
+                var l2 = o3(f6), d1 = e2(t3.value), h1 = i2[i2.length - 1];
+                switch(u1){
+                    case "replace":
+                        switch(l2){
+                            case 2:
+                                return f6.set(h1, d1);
+                            case 3:
+                                n(16);
+                            default:
+                                return f6[h1] = d1;
+                        }
+                    case c2:
+                        switch(l2){
+                            case 1:
+                                return "-" === h1 ? f6.push(d1) : f6.splice(h1, 0, d1);
+                            case 2:
+                                return f6.set(h1, d1);
+                            case 3:
+                                return f6.add(d1);
+                            default:
+                                return f6[h1] = d1;
+                        }
+                    case "remove":
+                        switch(l2){
+                            case 1:
+                                return f6.splice(h1, 1);
+                            case 2:
+                                return f6.delete(h1);
+                            case 3:
+                                return f6.delete(t3.value);
+                            default:
+                                return delete f6[h1];
+                        }
+                    default:
+                        n(17, u1);
+                }
+            }), r1;
+        },
+        R: function(n1, r1, t1, e5) {
+            switch(n1.i){
+                case 0:
+                case 4:
+                case 2:
+                    return (function(n2, r2, t3, e6) {
+                        var o4 = n2.t, s3 = n2.o;
+                        i(n2.D, function(n3, i2) {
+                            var v4 = a1(o4, n3), p3 = a1(s3, n3), l2 = i2 ? u(o4, n3) ? "replace" : c2 : "remove";
+                            if (v4 !== p3 || "replace" !== l2) {
+                                var d1 = r2.concat(n3);
+                                t3.push("remove" === l2 ? {
+                                    op: l2,
+                                    path: d1
+                                } : {
+                                    op: l2,
+                                    path: d1,
+                                    value: p3
+                                }), e6.push(l2 === c2 ? {
+                                    op: "remove",
+                                    path: d1
+                                } : "remove" === l2 ? {
+                                    op: c2,
+                                    path: d1,
+                                    value: f3(v4)
+                                } : {
+                                    op: "replace",
+                                    path: d1,
+                                    value: f3(v4)
+                                });
+                            }
+                        });
+                    })(n1, r1, t1, e5);
+                case 5:
+                case 1:
+                    return (function(n2, r2, t3, e6) {
+                        var i2 = n2.t, o4 = n2.D, u1 = n2.o;
+                        if (u1.length < i2.length) {
+                            var a3 = [
+                                u1,
+                                i2
+                            ];
+                            i2 = a3[0], u1 = a3[1];
+                            var s3 = [
+                                e6,
+                                t3
+                            ];
+                            t3 = s3[0], e6 = s3[1];
+                        }
+                        for(var v4 = 0; v4 < i2.length; v4++)if (o4[v4] && u1[v4] !== i2[v4]) {
+                            var p3 = r2.concat([
+                                v4
+                            ]);
+                            t3.push({
+                                op: "replace",
+                                path: p3,
+                                value: f3(u1[v4])
+                            }), e6.push({
+                                op: "replace",
+                                path: p3,
+                                value: f3(i2[v4])
+                            });
+                        }
+                        for(var l2 = i2.length; l2 < u1.length; l2++){
+                            var d2 = r2.concat([
+                                l2
+                            ]);
+                            t3.push({
+                                op: c2,
+                                path: d2,
+                                value: f3(u1[l2])
+                            });
+                        }
+                        i2.length < u1.length && e6.push({
+                            op: "replace",
+                            path: r2.concat([
+                                "length"
+                            ]),
+                            value: i2.length
+                        });
+                    })(n1, r1, t1, e5);
+                case 3:
+                    return (function(n2, r2, t3, e6) {
+                        var i2 = n2.t, o4 = n2.o, u1 = 0;
+                        i2.forEach(function(n3) {
+                            if (!o4.has(n3)) {
+                                var i4 = r2.concat([
+                                    u1
+                                ]);
+                                t3.push({
+                                    op: "remove",
+                                    path: i4,
+                                    value: n3
+                                }), e6.unshift({
+                                    op: c2,
+                                    path: i4,
+                                    value: n3
+                                });
+                            }
+                            u1++;
+                        }), u1 = 0, o4.forEach(function(n3) {
+                            if (!i2.has(n3)) {
+                                var o6 = r2.concat([
+                                    u1
+                                ]);
+                                t3.push({
+                                    op: c2,
+                                    path: o6,
+                                    value: n3
+                                }), e6.unshift({
+                                    op: "remove",
+                                    path: o6,
+                                    value: n3
+                                });
+                            }
+                            u1++;
+                        });
+                    })(n1, r1, t1, e5);
+            }
+        },
+        M: function(n1, r1, t1, e5) {
+            t1.push({
+                op: "replace",
+                path: [],
+                value: r1 === H ? void 0 : r1
+            }), e5.push({
+                op: "replace",
+                path: [],
+                value: n1
+            });
+        }
+    });
+}
+function C() {
+    function r1(n1, r2) {
+        function t1() {
+            this.constructor = n1;
+        }
+        a4(n1, r2), n1.prototype = (t1.prototype = r2.prototype, new t1);
+    }
+    function e2(n1) {
+        n1.o || (n1.D = new Map, n1.o = new Map(n1.t));
+    }
+    function o4(n1) {
+        n1.o || (n1.o = new Set, n1.t.forEach(function(r2) {
+            if (t(r2)) {
+                var e5 = R(n1.A.h, r2, n1);
+                n1.p.set(r2, e5), n1.o.add(e5);
+            } else n1.o.add(r2);
+        }));
+    }
+    function u1(r2) {
+        r2.O && n(3, JSON.stringify(p(r2)));
+    }
+    var a4 = function(n1, r2) {
+        return (a4 = Object.setPrototypeOf || ({
+            __proto__: []
+        }) instanceof Array && function(n2, r3) {
+            n2.__proto__ = r3;
+        } || function(n2, r3) {
+            for(var t1 in r3)r3.hasOwnProperty(t1) && (n2[t1] = r3[t1]);
+        })(n1, r2);
+    }, f3 = function() {
+        function n1(n2, r2) {
+            return this[Q] = {
+                i: 2,
+                l: r2,
+                A: r2 ? r2.A : _(),
+                P: !1,
+                I: !1,
+                o: void 0,
+                D: void 0,
+                t: n2,
+                k: this,
+                C: !1,
+                O: !1
+            }, this;
+        }
+        r1(n1, Map);
+        var o8 = n1.prototype;
+        return Object.defineProperty(o8, "size", {
+            get: function() {
+                return p(this[Q]).size;
+            }
+        }), o8.has = function(n2) {
+            return p(this[Q]).has(n2);
+        }, o8.set = function(n2, r2) {
+            var t1 = this[Q];
+            return u1(t1), p(t1).has(n2) && p(t1).get(n2) === r2 || (e2(t1), k(t1), t1.D.set(n2, !0), t1.o.set(n2, r2), t1.D.set(n2, !0)), this;
+        }, o8.delete = function(n2) {
+            if (!this.has(n2)) return !1;
+            var r2 = this[Q];
+            return u1(r2), e2(r2), k(r2), r2.t.has(n2) ? r2.D.set(n2, !1) : r2.D.delete(n2), r2.o.delete(n2), !0;
+        }, o8.clear = function() {
+            var n2 = this[Q];
+            u1(n2), p(n2).size && (e2(n2), k(n2), n2.D = new Map, i(n2.t, function(r2) {
+                n2.D.set(r2, !1);
+            }), n2.o.clear());
+        }, o8.forEach = function(n2, r2) {
+            var t1 = this;
+            p(this[Q]).forEach(function(e6, i2) {
+                n2.call(r2, t1.get(i2), i2, t1);
+            });
+        }, o8.get = function(n2) {
+            var r2 = this[Q];
+            u1(r2);
+            var i2 = p(r2).get(n2);
+            if (r2.I || !t(i2)) return i2;
+            if (i2 !== r2.t.get(n2)) return i2;
+            var o9 = R(r2.A.h, i2, r2);
+            return e2(r2), r2.o.set(n2, o9), o9;
+        }, o8.keys = function() {
+            return p(this[Q]).keys();
+        }, o8.values = function() {
+            var n2, r2 = this, t1 = this.keys();
+            return (n2 = {
+            })[V] = function() {
+                return r2.values();
+            }, n2.next = function() {
+                var n3 = t1.next();
+                return n3.done ? n3 : {
+                    done: !1,
+                    value: r2.get(n3.value)
+                };
+            }, n2;
+        }, o8.entries = function() {
+            var n2, r2 = this, t1 = this.keys();
+            return (n2 = {
+            })[V] = function() {
+                return r2.entries();
+            }, n2.next = function() {
+                var n3 = t1.next();
+                if (n3.done) return n3;
+                var e6 = r2.get(n3.value);
+                return {
+                    done: !1,
+                    value: [
+                        n3.value,
+                        e6
+                    ]
+                };
+            }, n2;
+        }, o8[V] = function() {
+            return this.entries();
+        }, n1;
+    }(), c2 = function() {
+        function n1(n2, r2) {
+            return this[Q] = {
+                i: 3,
+                l: r2,
+                A: r2 ? r2.A : _(),
+                P: !1,
+                I: !1,
+                o: void 0,
+                t: n2,
+                k: this,
+                p: new Map,
+                O: !1,
+                C: !1
+            }, this;
+        }
+        r1(n1, Set);
+        var t1 = n1.prototype;
+        return Object.defineProperty(t1, "size", {
+            get: function() {
+                return p(this[Q]).size;
+            }
+        }), t1.has = function(n2) {
+            var r2 = this[Q];
+            return u1(r2), r2.o ? !!r2.o.has(n2) || !(!r2.p.has(n2) || !r2.o.has(r2.p.get(n2))) : r2.t.has(n2);
+        }, t1.add = function(n2) {
+            var r2 = this[Q];
+            return u1(r2), this.has(n2) || (o4(r2), k(r2), r2.o.add(n2)), this;
+        }, t1.delete = function(n2) {
+            if (!this.has(n2)) return !1;
+            var r2 = this[Q];
+            return u1(r2), o4(r2), k(r2), r2.o.delete(n2) || !!r2.p.has(n2) && r2.o.delete(r2.p.get(n2));
+        }, t1.clear = function() {
+            var n2 = this[Q];
+            u1(n2), p(n2).size && (o4(n2), k(n2), n2.o.clear());
+        }, t1.values = function() {
+            var n2 = this[Q];
+            return u1(n2), o4(n2), n2.o.values();
+        }, t1.entries = function() {
+            var n2 = this[Q];
+            return u1(n2), o4(n2), n2.o.entries();
+        }, t1.keys = function() {
+            return this.values();
+        }, t1[V] = function() {
+            return this.values();
+        }, t1.forEach = function(n2, r2) {
+            for(var t3 = this.values(), e6 = t3.next(); !e6.done;)n2.call(r2, e6.value, e6.value, this), e6 = t3.next();
+        }, n1;
+    }();
+    m("MapSet", {
+        N: function(n1, r2) {
+            return new f3(n1, r2);
+        },
+        T: function(n1, r2) {
+            return new c2(n1, r2);
+        }
+    });
+}
+function J() {
+    N(), C(), T();
+}
+function K(n1) {
+    return n1;
+}
+function $(n1) {
+    return n1;
+}
+var G, U, W = "undefined" != typeof Symbol && "symbol" == typeof Symbol("x"), X = "undefined" != typeof Map, q = "undefined" != typeof Set, B = "undefined" != typeof Proxy && (void 0) !== Proxy.revocable && "undefined" != typeof Reflect, H = W ? Symbol.for("immer-nothing") : ((G = {
+})["immer-nothing"] = !0, G), L = W ? Symbol.for("immer-draftable") : "__$immer_draftable", Q = W ? Symbol.for("immer-state") : "__$immer_state", V = "undefined" != typeof Symbol && Symbol.iterator || "@@iterator", Y = {
+    0: "Illegal state",
+    1: "Immer drafts cannot have computed properties",
+    2: "This object has been frozen and should not be mutated",
+    3: function(n1) {
+        return "Cannot use a proxy that has been revoked. Did you pass an object from inside an immer function to an async process? " + n1;
+    },
+    4: "An immer producer returned a new value *and* modified its draft. Either return a new value *or* modify the draft.",
+    5: "Immer forbids circular references",
+    6: "The first or second argument to `produce` must be a function",
+    7: "The third argument to `produce` must be a function or undefined",
+    8: "First argument to `createDraft` must be a plain object, an array, or an immerable object",
+    9: "First argument to `finishDraft` must be a draft returned by `createDraft`",
+    10: "The given draft is already finalized",
+    11: "Object.defineProperty() cannot be used on an Immer draft",
+    12: "Object.setPrototypeOf() cannot be used on an Immer draft",
+    13: "Immer only supports deleting array indices",
+    14: "Immer only supports setting array indices and the 'length' property",
+    15: function(n1) {
+        return "Cannot apply patch, path doesn't resolve: " + n1;
+    },
+    16: 'Sets cannot have "replace" patches.',
+    17: function(n1) {
+        return "Unsupported patch operation: " + n1;
+    },
+    18: function(n1) {
+        return "The plugin for '" + n1 + "' has not been loaded into Immer. To enable the plugin, import and call `enable" + n1 + "()` when initializing your application.";
+    },
+    20: "Cannot use proxies if Proxy, Proxy.revocable or Reflect are not available",
+    21: function(n1) {
+        return "produce can only be called on things that are draftable: plain objects, arrays, Map, Set or classes that are marked with '[immerable]: true'. Got '" + n1 + "'";
+    },
+    22: function(n1) {
+        return "'current' expects a draft, got: " + n1;
+    },
+    23: function(n1) {
+        return "'original' expects a draft, got: " + n1;
+    },
+    24: "Patching reserved attributes like __proto__, prototype and constructor is not allowed"
+}, Z = "" + Object.prototype.constructor, nn = "undefined" != typeof Reflect && Reflect.ownKeys ? Reflect.ownKeys : (void 0) !== Object.getOwnPropertySymbols ? function(n1) {
+    return Object.getOwnPropertyNames(n1).concat(Object.getOwnPropertySymbols(n1));
+} : Object.getOwnPropertyNames, rn = Object.getOwnPropertyDescriptors || function(n1) {
+    var r1 = {
+    };
+    return nn(n1).forEach(function(t1) {
+        r1[t1] = Object.getOwnPropertyDescriptor(n1, t1);
+    }), r1;
+}, tn = {
+}, en = {
+    get: function(n1, r1) {
+        if (r1 === Q) return n1;
+        var e2 = p(n1);
+        if (!u(e2, r1)) return (function(n2, r2, t1) {
+            var e6, i2 = I(r2, t1);
+            return i2 ? "value" in i2 ? i2.value : null === (e6 = i2.get) || (void 0) === e6 ? void 0 : e6.call(n2.k) : void 0;
+        })(n1, e2, r1);
+        var i2 = e2[r1];
+        return n1.I || !t(i2) ? i2 : i2 === z(n1.t, r1) ? (E(n1), n1.o[r1] = R(n1.A.h, i2, n1)) : i2;
+    },
+    has: function(n1, r1) {
+        return r1 in p(n1);
+    },
+    ownKeys: function(n1) {
+        return Reflect.ownKeys(p(n1));
+    },
+    set: function(n1, r1, t1) {
+        var e2 = I(p(n1), r1);
+        if (null == e2 ? void 0 : e2.set) return e2.set.call(n1.k, t1), !0;
+        if (!n1.P) {
+            var i2 = z(p(n1), r1), o4 = null == i2 ? void 0 : i2[Q];
+            if (o4 && o4.t === t1) return n1.o[r1] = t1, n1.D[r1] = !1, !0;
+            if (c(t1, i2) && ((void 0) !== t1 || u(n1.t, r1))) return !0;
+            E(n1), k(n1);
+        }
+        return n1.o[r1] === t1 && "number" != typeof t1 && ((void 0) !== t1 || r1 in n1.o) || (n1.o[r1] = t1, n1.D[r1] = !0, !0);
+    },
+    deleteProperty: function(n1, r1) {
+        return (void 0) !== z(n1.t, r1) || r1 in n1.t ? (n1.D[r1] = !1, E(n1), k(n1)) : delete n1.D[r1], n1.o && delete n1.o[r1], !0;
+    },
+    getOwnPropertyDescriptor: function(n1, r1) {
+        var t1 = p(n1), e2 = Reflect.getOwnPropertyDescriptor(t1, r1);
+        return e2 ? {
+            writable: !0,
+            configurable: 1 !== n1.i || "length" !== r1,
+            enumerable: e2.enumerable,
+            value: t1[r1]
+        } : e2;
+    },
+    defineProperty: function() {
+        n(11);
+    },
+    getPrototypeOf: function(n1) {
+        return Object.getPrototypeOf(n1.t);
+    },
+    setPrototypeOf: function() {
+        n(12);
+    }
+}, on = {
+};
+i(en, function(n1, r1) {
+    on[n1] = function() {
+        return arguments[0] = arguments[0][0], r1.apply(this, arguments);
+    };
+}), on.deleteProperty = function(r1, t1) {
+    return isNaN(parseInt(t1)) && n(13), on.set.call(this, r1, t1, void 0);
+}, on.set = function(r1, t1, e2) {
+    return "length" !== t1 && isNaN(parseInt(t1)) && n(14), en.set.call(this, r1[0], t1, e2, r1[0]);
+};
+var un = function() {
+    function e2(r1) {
+        var e6 = this;
+        this.g = B, this.F = !0, this.produce = function(r2, i5, o8) {
+            if ("function" == typeof r2 && "function" != typeof i5) {
+                var u1 = i5;
+                i5 = r2;
+                var a4 = e6;
+                return function(n1) {
+                    var r3 = this;
+                    (void 0) === n1 && (n1 = u1);
+                    for(var t1 = arguments.length, e7 = Array(t1 > 1 ? t1 - 1 : 0), o9 = 1; o9 < t1; o9++)e7[o9 - 1] = arguments[o9];
+                    return a4.produce(n1, function(n2) {
+                        var t3;
+                        return (t3 = i5).call.apply(t3, [
+                            r3,
+                            n2
+                        ].concat(e7));
+                    });
+                };
+            }
+            var f3;
+            if ("function" != typeof i5 && n(6), (void 0) !== o8 && "function" != typeof o8 && n(7), t(r2)) {
+                var c2 = w(e6), s5 = R(e6, r2, void 0), v4 = !0;
+                try {
+                    f3 = i5(s5), v4 = !1;
+                } finally{
+                    v4 ? O(c2) : g(c2);
+                }
+                return "undefined" != typeof Promise && f3 instanceof Promise ? f3.then(function(n1) {
+                    return j(c2, o8), P(n1, c2);
+                }, function(n1) {
+                    throw O(c2), n1;
+                }) : (j(c2, o8), P(f3, c2));
+            }
+            if (!r2 || "object" != typeof r2) {
+                if ((void 0) === (f3 = i5(r2)) && (f3 = r2), f3 === H && (f3 = void 0), e6.F && d(f3, !0), o8) {
+                    var p4 = [], l2 = [];
+                    b("Patches").M(r2, f3, p4, l2), o8(p4, l2);
+                }
+                return f3;
+            }
+            n(21, r2);
+        }, this.produceWithPatches = function(n1, r2) {
+            if ("function" == typeof n1) return function(r3) {
+                for(var t1 = arguments.length, i5 = Array(t1 > 1 ? t1 - 1 : 0), o8 = 1; o8 < t1; o8++)i5[o8 - 1] = arguments[o8];
+                return e6.produceWithPatches(r3, function(r4) {
+                    return n1.apply(void 0, [
+                        r4
+                    ].concat(i5));
+                });
+            };
+            var t1, i5, o8 = e6.produce(n1, r2, function(n2, r3) {
+                t1 = n2, i5 = r3;
+            });
+            return "undefined" != typeof Promise && o8 instanceof Promise ? o8.then(function(n2) {
+                return [
+                    n2,
+                    t1,
+                    i5
+                ];
+            }) : [
+                o8,
+                t1,
+                i5
+            ];
+        }, "boolean" == typeof (null == r1 ? void 0 : r1.useProxies) && this.setUseProxies(r1.useProxies), "boolean" == typeof (null == r1 ? void 0 : r1.autoFreeze) && this.setAutoFreeze(r1.autoFreeze);
+    }
+    var i5 = e2.prototype;
+    return i5.createDraft = function(e6) {
+        t(e6) || n(8), r(e6) && (e6 = D(e6));
+        var i6 = w(this), o8 = R(this, e6, void 0);
+        return o8[Q].C = !0, g(i6), o8;
+    }, i5.finishDraft = function(r1, t1) {
+        var e6 = r1 && r1[Q];
+        e6 && e6.C || n(9), e6.I && n(10);
+        var i6 = e6.A;
+        return j(i6, t1), P(void 0, i6);
+    }, i5.setAutoFreeze = function(n1) {
+        this.F = n1;
+    }, i5.setUseProxies = function(r1) {
+        r1 && !B && n(20), this.g = r1;
+    }, i5.applyPatches = function(n1, t1) {
+        var e6;
+        for(e6 = t1.length - 1; e6 >= 0; e6--){
+            var i6 = t1[e6];
+            if (0 === i6.path.length && "replace" === i6.op) {
+                n1 = i6.value;
+                break;
+            }
+        }
+        e6 > -1 && (t1 = t1.slice(e6 + 1));
+        var o8 = b("Patches").$;
+        return r(n1) ? o8(n1, t1) : this.produce(n1, function(n2) {
+            return o8(n2, t1);
+        });
+    }, e2;
+}(), an = new un, fn = an.produce, cn = an.produceWithPatches.bind(an), sn = an.setAutoFreeze.bind(an), vn = an.setUseProxies.bind(an), pn = an.applyPatches.bind(an), ln = an.createDraft.bind(an), dn = an.finishDraft.bind(an);
+exports.default = fn;
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"7VCmx"}],"6oqac":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "defaultMemoize", ()=>_defaultMemoize.defaultMemoize
+);
+parcelHelpers.export(exports, "defaultEqualityCheck", ()=>_defaultMemoize.defaultEqualityCheck
+);
+parcelHelpers.export(exports, "createSelectorCreator", ()=>createSelectorCreator
+);
+parcelHelpers.export(exports, "createSelector", ()=>createSelector
+);
+parcelHelpers.export(exports, "createStructuredSelector", ()=>createStructuredSelector
+);
+var _defaultMemoize = require("./defaultMemoize");
+function getDependencies(funcs) {
+    var dependencies = Array.isArray(funcs[0]) ? funcs[0] : funcs;
+    if (!dependencies.every(function(dep) {
+        return typeof dep === 'function';
+    })) {
+        var dependencyTypes = dependencies.map(function(dep) {
+            return typeof dep === 'function' ? "function " + (dep.name || 'unnamed') + "()" : typeof dep;
+        }).join(', ');
+        throw new Error("createSelector expects all input-selectors to be functions, but received the following types: [" + dependencyTypes + "]");
+    }
+    return dependencies;
+}
+function createSelectorCreator(memoize) {
+    for(var _len = arguments.length, memoizeOptionsFromArgs = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++)memoizeOptionsFromArgs[_key - 1] = arguments[_key];
+    var createSelector = function createSelector1() {
+        for(var _len2 = arguments.length, funcs = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++)funcs[_key2] = arguments[_key2];
+        var _recomputations = 0;
+        var _lastResult; // Due to the intricacies of rest params, we can't do an optional arg after `...funcs`.
+        // So, start by declaring the default value here.
+        // (And yes, the words 'memoize' and 'options' appear too many times in this next sequence.)
+        var directlyPassedOptions = {
+            memoizeOptions: undefined
+        }; // Normally, the result func or "output selector" is the last arg
+        var resultFunc = funcs.pop(); // If the result func is actually an _object_, assume it's our options object
+        if (typeof resultFunc === 'object') {
+            directlyPassedOptions = resultFunc; // and pop the real result func off
+            resultFunc = funcs.pop();
+        }
+        if (typeof resultFunc !== 'function') throw new Error("createSelector expects an output function after the inputs, but received: [" + typeof resultFunc + "]");
+         // Determine which set of options we're using. Prefer options passed directly,
+        // but fall back to options given to createSelectorCreator.
+        var _directlyPassedOption = directlyPassedOptions, _directlyPassedOption2 = _directlyPassedOption.memoizeOptions, memoizeOptions = _directlyPassedOption2 === void 0 ? memoizeOptionsFromArgs : _directlyPassedOption2; // Simplifying assumption: it's unlikely that the first options arg of the provided memoizer
+        // is an array. In most libs I've looked at, it's an equality function or options object.
+        // Based on that, if `memoizeOptions` _is_ an array, we assume it's a full
+        // user-provided array of options. Otherwise, it must be just the _first_ arg, and so
+        // we wrap it in an array so we can apply it.
+        var finalMemoizeOptions = Array.isArray(memoizeOptions) ? memoizeOptions : [
+            memoizeOptions
+        ];
+        var dependencies = getDependencies(funcs);
+        var memoizedResultFunc = memoize.apply(void 0, [
+            function recomputationWrapper() {
+                _recomputations++; // apply arguments instead of spreading for performance.
+                return resultFunc.apply(null, arguments);
+            }
+        ].concat(finalMemoizeOptions)); // If a selector is called with the exact same arguments we don't need to traverse our dependencies again.
+        var selector = memoize(function dependenciesChecker() {
+            var params = [];
+            var length = dependencies.length;
+            for(var i = 0; i < length; i++)// apply arguments instead of spreading and mutate a local list of params for performance.
+            // @ts-ignore
+            params.push(dependencies[i].apply(null, arguments));
+             // apply arguments instead of spreading for performance.
+            _lastResult = memoizedResultFunc.apply(null, params);
+            return _lastResult;
+        });
+        Object.assign(selector, {
+            resultFunc: resultFunc,
+            memoizedResultFunc: memoizedResultFunc,
+            dependencies: dependencies,
+            lastResult: function lastResult() {
+                return _lastResult;
+            },
+            recomputations: function recomputations() {
+                return _recomputations;
+            },
+            resetRecomputations: function resetRecomputations() {
+                return _recomputations = 0;
+            }
+        });
+        return selector;
+    }; // @ts-ignore
+    return createSelector;
+}
+var createSelector = /* #__PURE__ */ createSelectorCreator(_defaultMemoize.defaultMemoize);
+var createStructuredSelector = function createStructuredSelector1(selectors, selectorCreator) {
+    if (selectorCreator === void 0) selectorCreator = createSelector;
+    if (typeof selectors !== 'object') throw new Error('createStructuredSelector expects first argument to be an object ' + ("where each property is a selector, instead received a " + typeof selectors));
+    var objectKeys = Object.keys(selectors);
+    var resultSelector = selectorCreator(objectKeys.map(function(key) {
+        return selectors[key];
+    }), function() {
+        for(var _len3 = arguments.length, values = new Array(_len3), _key3 = 0; _key3 < _len3; _key3++)values[_key3] = arguments[_key3];
+        return values.reduce(function(composition, value, index) {
+            composition[objectKeys[index]] = value;
+            return composition;
+        }, {
+        });
+    });
+    return resultSelector;
+};
+
+},{"./defaultMemoize":"4MNtg","@parcel/transformer-js/src/esmodule-helpers.js":"7VCmx"}],"4MNtg":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "defaultEqualityCheck", ()=>defaultEqualityCheck
+);
+parcelHelpers.export(exports, "createCacheKeyComparator", ()=>createCacheKeyComparator
+);
+// defaultMemoize now supports a configurable cache size with LRU behavior,
+// and optional comparison of the result value with existing values
+parcelHelpers.export(exports, "defaultMemoize", ()=>defaultMemoize
+);
+// Cache implementation based on Erik Rasmussen's `lru-memoize`:
+// https://github.com/erikras/lru-memoize
+var NOT_FOUND = 'NOT_FOUND';
+function createSingletonCache(equals) {
+    var entry;
+    return {
+        get: function get(key) {
+            if (entry && equals(entry.key, key)) return entry.value;
+            return NOT_FOUND;
+        },
+        put: function put(key, value) {
+            entry = {
+                key: key,
+                value: value
+            };
+        },
+        getEntries: function getEntries() {
+            return entry ? [
+                entry
+            ] : [];
+        },
+        clear: function clear() {
+            entry = undefined;
+        }
+    };
+}
+function createLruCache(maxSize, equals) {
+    var entries = [];
+    function get(key) {
+        var cacheIndex = entries.findIndex(function(entry) {
+            return equals(key, entry.key);
+        }); // We found a cached entry
+        if (cacheIndex > -1) {
+            var entry = entries[cacheIndex]; // Cached entry not at top of cache, move it to the top
+            if (cacheIndex > 0) {
+                entries.splice(cacheIndex, 1);
+                entries.unshift(entry);
+            }
+            return entry.value;
+        } // No entry found in cache, return sentinel
+        return NOT_FOUND;
+    }
+    function put(key, value) {
+        if (get(key) === NOT_FOUND) {
+            // TODO Is unshift slow?
+            entries.unshift({
+                key: key,
+                value: value
+            });
+            if (entries.length > maxSize) entries.pop();
+        }
+    }
+    function getEntries() {
+        return entries;
+    }
+    function clear() {
+        entries = [];
+    }
+    return {
+        get: get,
+        put: put,
+        getEntries: getEntries,
+        clear: clear
+    };
+}
+var defaultEqualityCheck = function defaultEqualityCheck1(a, b) {
+    return a === b;
+};
+function createCacheKeyComparator(equalityCheck) {
+    return function areArgumentsShallowlyEqual(prev, next) {
+        if (prev === null || next === null || prev.length !== next.length) return false;
+         // Do this in a for loop (and not a `forEach` or an `every`) so we can determine equality as fast as possible.
+        var length = prev.length;
+        for(var i = 0; i < length; i++){
+            if (!equalityCheck(prev[i], next[i])) return false;
+        }
+        return true;
+    };
+}
+function defaultMemoize(func, equalityCheckOrOptions) {
+    var providedOptions = typeof equalityCheckOrOptions === 'object' ? equalityCheckOrOptions : {
+        equalityCheck: equalityCheckOrOptions
+    };
+    var _providedOptions$equa = providedOptions.equalityCheck, equalityCheck = _providedOptions$equa === void 0 ? defaultEqualityCheck : _providedOptions$equa, _providedOptions$maxS = providedOptions.maxSize, maxSize = _providedOptions$maxS === void 0 ? 1 : _providedOptions$maxS, resultEqualityCheck = providedOptions.resultEqualityCheck;
+    var comparator = createCacheKeyComparator(equalityCheck);
+    var cache = maxSize === 1 ? createSingletonCache(comparator) : createLruCache(maxSize, comparator); // we reference arguments instead of spreading them for performance reasons
+    function memoized() {
+        var value = cache.get(arguments);
+        if (value === NOT_FOUND) {
+            // @ts-ignore
+            value = func.apply(null, arguments);
+            if (resultEqualityCheck) {
+                var entries = cache.getEntries();
+                var matchingEntry = entries.find(function(entry) {
+                    return resultEqualityCheck(entry.value, value);
+                });
+                if (matchingEntry) value = matchingEntry.value;
+            }
+            cache.put(arguments, value);
+        }
+        return value;
+    }
+    memoized.clearCache = function() {
+        return cache.clear();
+    };
+    return memoized;
+}
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"7VCmx"}],"7lPYg":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+/** A function that accepts a potential "extra argument" value to be injected later,
+ * and returns an instance of the thunk middleware that uses that value
+ */ function createThunkMiddleware(extraArgument) {
+    // Standard Redux middleware definition pattern:
+    // See: https://redux.js.org/tutorials/fundamentals/part-4-store#writing-custom-middleware
+    var middleware = function middleware1(_ref) {
+        var dispatch = _ref.dispatch, getState = _ref.getState;
+        return function(next) {
+            return function(action) {
+                // The thunk middleware looks for any functions that were passed to `store.dispatch`.
+                // If this "action" is really a function, call it and return the result.
+                if (typeof action === 'function') // Inject the store's `dispatch` and `getState` methods, as well as any "extra arg"
+                return action(dispatch, getState, extraArgument);
+                 // Otherwise, pass the action down the middleware chain as usual
+                return next(action);
+            };
+        };
+    };
+    return middleware;
+}
+var thunk = createThunkMiddleware(); // Attach the factory function so users can create a customized version
+// with whatever "extra arg" they want to inject into their thunks
+thunk.withExtraArgument = createThunkMiddleware;
+exports.default = thunk;
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"7VCmx"}]},["Dtqvr","e0bDS","dLPEP"], "dLPEP", "parcelRequireaec4")
 
 //# sourceMappingURL=index.6701a6e1.js.map

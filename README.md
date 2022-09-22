@@ -38,6 +38,12 @@ A user need to first create an account (to register ) to access the full feature
 * The application must contain a mix of class components and function components
 * The application may be hosted online
 ## Dependencies:
-How to get the project running
-Project dependencies (e.g., JavaScript version, ESLint rules)
-Which API the project uses
+* React
+* React-bootstrap
+* React-dom
+* React-redux
+* React-router-dom
+* Redux
+* Axios
+* Prop-types
+* Redux-devtools-extension

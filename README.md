@@ -38,7 +38,7 @@ Start the app
 npm run start
 ```
 
-Above steps if you get any error try to google
+> Above steps if you get any error try to google
 
 # Usage
 Once the app starts you will see the login page, with Sign-up link on the navigation bar or below sign-in button.

@@ -24,6 +24,9 @@ npm npm install npm@latest -g
 Required installation to get started with the App, follow these steps.
 
 Clone the repo
+```
+https://github.com/elzneik/myFlix-client
+```
 
 Install NPM packages 
 ```
